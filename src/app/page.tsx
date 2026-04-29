@@ -412,10 +412,10 @@ function CTA() {
             className="mt-10 flex flex-wrap items-center justify-center gap-4"
           >
             <a
-              href="mailto:hello@blankcollar.vc?subject=Application%20%E2%80%94%20Blank%20Collar%20VC"
+              href="mailto:hey@theblankcollar.com?subject=Application%20%E2%80%94%20Blank%20Collar%20VC"
               className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 font-mono text-[12px] uppercase tracking-[0.18em] text-bone transition-all hover:bg-ink/85"
             >
-              hello@blankcollar.vc
+              hey@theblankcollar.com
               <span className="transition-transform group-hover:translate-x-0.5">→</span>
             </a>
             <a
@@ -464,8 +464,8 @@ function Footer() {
           <a href="https://www.blankcollar.ai" target="_blank" rel="noreferrer" className="hover:text-ink">
             blankcollar.ai
           </a>
-          <a href="mailto:hello@blankcollar.vc" className="hover:text-ink">
-            hello@blankcollar.vc
+          <a href="mailto:hey@theblankcollar.com" className="hover:text-ink">
+            hey@theblankcollar.com
           </a>
         </div>
         <span>© {year ?? ""} Blank Collar VC</span>
