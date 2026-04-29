@@ -28,6 +28,16 @@ Open <http://localhost:3000>.
 Push to the connected branch and Vercel will pick it up automatically.
 The production domain is **www.blankcollar.vc**.
 
+### Environment variables (for the application form)
+
+| Var | Required | What |
+|---|---|---|
+| `RESEND_API_KEY` | Yes (in production) | API key from [resend.com](https://resend.com). Without it, the form runs in mock mode and just logs submissions. |
+| `APPLY_TO_EMAIL` | No | Where applications are sent. Defaults to `hey@theblankcollar.com`. |
+| `APPLY_FROM_EMAIL` | No | The "from" address. Defaults to `Blank Collar VC <onboarding@resend.dev>`. Once you verify a domain in Resend, set this to e.g. `apply@blankcollar.vc`. |
+
+Add these in **Vercel → Project → Settings → Environment Variables**.
+
 ## Structure
 
 ```

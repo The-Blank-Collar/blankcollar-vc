@@ -8,7 +8,6 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SplitWords } from "@/components/SplitWords";
-import { MagneticLink } from "@/components/MagneticLink";
 import { CountUp } from "@/components/CountUp";
 import { StackDiagram } from "@/components/StackDiagram";
 import { ProcessFlow } from "@/components/ProcessFlow";
@@ -16,6 +15,9 @@ import { ComparisonMatrix } from "@/components/ComparisonMatrix";
 import { ConstellationGraphic } from "@/components/ConstellationGraphic";
 import { FounderToolkit } from "@/components/FounderToolkit";
 import { Portfolio } from "@/components/Portfolio";
+import { FoundersSection } from "@/components/FoundersSection";
+import { NetworkSection } from "@/components/NetworkSection";
+import Link from "next/link";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -65,13 +67,12 @@ function Header() {
           <a href="#portfolio" className="hover:opacity-60 transition-opacity">Portfolio</a>
           <a href="#terms" className="hover:opacity-60 transition-opacity">Terms</a>
         </nav>
-        <MagneticLink
-          href="#apply"
-          strength={0.35}
+        <Link
+          href="/apply"
           className="rounded-full bg-ink px-4 py-2 font-bot text-[12px] uppercase tracking-mono text-bone hover:bg-ink/85 transition-colors"
         >
           Apply →
-        </MagneticLink>
+        </Link>
       </div>
     </motion.header>
   );
@@ -173,21 +174,19 @@ function Hero() {
             transition={{ duration: 0.7, ease, delay: 0.85 }}
             className="mt-8 flex flex-wrap items-center gap-3"
           >
-            <MagneticLink
-              href="#apply"
-              strength={0.3}
+            <Link
+              href="/apply"
               className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
             >
               Apply for funding
               <span className="transition-transform group-hover:translate-x-0.5">→</span>
-            </MagneticLink>
-            <MagneticLink
+            </Link>
+            <a
               href="#manifesto"
-              strength={0.2}
               className="inline-flex items-center gap-3 rounded-full border border-ink/20 px-6 py-3.5 font-bot text-[12px] uppercase tracking-mono hover:bg-ink/5"
             >
               Read the manifesto
-            </MagneticLink>
+            </a>
           </motion.div>
 
           <motion.div
@@ -669,21 +668,19 @@ function CTA() {
             transition={{ duration: 0.7, ease, delay: 0.55 }}
             className="mt-9 flex flex-wrap items-center justify-center gap-4"
           >
-            <MagneticLink
-              href="mailto:hey@theblankcollar.com?subject=Application%20%E2%80%94%20Blank%20Collar%20VC"
-              strength={0.35}
+            <Link
+              href="/apply"
               className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
             >
-              hey@theblankcollar.com
+              Start your application
               <span className="transition-transform group-hover:translate-x-0.5">→</span>
-            </MagneticLink>
-            <MagneticLink
+            </Link>
+            <a
               href="#portfolio"
-              strength={0.2}
               className="inline-flex items-center gap-3 rounded-full border border-ink/20 px-7 py-4 font-bot text-[12px] uppercase tracking-mono hover:bg-ink/5"
             >
               See the portfolio
-            </MagneticLink>
+            </a>
           </motion.div>
         </div>
       </div>
@@ -728,7 +725,7 @@ function Footer() {
             <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">Contact</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href="mailto:hey@theblankcollar.com" className="hover:text-ink text-ink/75">hey@theblankcollar.com</a></li>
-              <li><a href="#apply" className="hover:text-ink text-ink/75">Apply →</a></li>
+              <li><Link href="/apply" className="hover:text-ink text-ink/75">Apply →</Link></li>
             </ul>
           </div>
         </div>
@@ -748,12 +745,14 @@ export default function Page() {
       <Hero />
       <StatBand />
       <Manifesto />
+      <FoundersSection />
       <Stack />
       <Toolkit />
       <Network />
       <Process />
       <Compare />
       <PortfolioSection />
+      <NetworkSection />
       <Terms />
       <CTA />
       <Footer />
