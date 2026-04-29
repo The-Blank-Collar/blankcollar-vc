@@ -5,12 +5,6 @@ import { NetworkGraphic } from "./NetworkGraphic";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const stats = [
-  { n: "26+", label: "Co-investors in the network" },
-  { n: "Pre-seed → Series B", label: "Across every follow-on stage" },
-  { n: "0 cold emails", label: "We open the room for you" },
-];
-
 export function NetworkSection() {
   return (
     <section className="relative bg-ink text-bone px-6 py-24 md:px-10 md:py-36">
@@ -27,29 +21,33 @@ export function NetworkSection() {
           className="mb-12 flex items-center gap-3 eyebrow text-bone/60"
         >
           <span className="h-px w-8 bg-bone/30" />
-          07b — The Network
+          07b — FYI
         </motion.div>
 
         <div className="grid gap-14 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
             <h2 className="font-medium text-display-md text-balance">
-              <span className="block">When it&apos;s time</span>
-              <span className="block">for the next round,</span>
-              <span className="block text-bone/50">you don&apos;t start cold.</span>
+              <span className="block">We know a lot</span>
+              <span className="block text-bone/50">of investors.</span>
             </h2>
             <p className="mt-7 max-w-md text-base leading-relaxed text-bone/70 md:text-lg text-balance">
-              Our cheque is the start. The harder problem — the seed and Series
-              A round 12–18 months later — is what most pre-seed funds leave
-              you to figure out alone.
+              Not a sales pitch — just useful to know. After years of building
+              and exiting our own startups, we&apos;ve kept the contacts: seed
+              funds, Series A, family offices, the right angels.
             </p>
             <p className="mt-4 max-w-md text-base leading-relaxed text-bone/70 md:text-lg text-balance">
-              We don&apos;t. We co-invest with seed and Series A funds across
-              Europe and the US, and warm-intro every portfolio company into
-              the rooms that matter — before the round opens.
+              We don&apos;t co-invest, and we&apos;re not selling a
+              &quot;network.&quot; But when you&apos;re ready to raise the next
+              round, we&apos;ll make warm intros to the right ones — directly,
+              not via a portal.
             </p>
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-bone/15 bg-bone/10 sm:grid-cols-3">
-              {stats.map((s, i) => (
+              {[
+                { n: "Direct", label: "Relationships, not a portal" },
+                { n: "Pre-seed → B", label: "Across follow-on stages" },
+                { n: "Warm only", label: "We make the intro, not you" },
+              ].map((s, i) => (
                 <motion.div
                   key={s.label}
                   initial={{ opacity: 0, y: 12 }}
@@ -58,7 +56,7 @@ export function NetworkSection() {
                   transition={{ duration: 0.6, ease, delay: i * 0.06 }}
                   className="bg-ink p-4"
                 >
-                  <div className="text-2xl font-medium tracking-tighter text-bone md:text-3xl">
+                  <div className="text-xl font-medium tracking-tighter text-bone md:text-2xl">
                     {s.n}
                   </div>
                   <div className="mt-1 font-bot text-[10px] uppercase tracking-mono text-bone/55">

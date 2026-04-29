@@ -16,10 +16,10 @@ export default function ApplyPage() {
           <div className="mx-auto flex max-w-7xl items-center justify-between">
             <Link href="/" className="flex items-center gap-2.5 font-bot text-[12px] uppercase tracking-mono">
               <span className="grid grid-cols-2 gap-0.5" aria-hidden>
-                <span className="block h-2 w-2 bg-bone" />
+                <span className="block h-2 w-2 bg-pink" />
                 <span className="block h-2 w-2 bg-accent" />
                 <span className="block h-2 w-2 bg-accent" />
-                <span className="block h-2 w-2 bg-bone" />
+                <span className="block h-2 w-2 bg-pink" />
               </span>
               <span>
                 <span className="font-medium">Blank Collar</span>

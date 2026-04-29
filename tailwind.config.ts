@@ -26,6 +26,9 @@ const config: Config = {
         accent: {
           DEFAULT: "#E8FF5C",
         },
+        pink: {
+          DEFAULT: "#FA2BB8",
+        },
       },
       letterSpacing: {
         tightest: "-0.04em",
