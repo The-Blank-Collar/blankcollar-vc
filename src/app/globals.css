@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bone: #f4f1ea;
+  --bone-soft: #ede8dd;
+  --ink: #0a0a0a;
+  --ink-soft: #111111;
+  --accent: #e8ff5c;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background: var(--bone);
+  color: var(--ink);
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--accent);
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.gradient-mesh {
+  background:
+    radial-gradient(60% 50% at 80% 0%, rgba(232, 255, 92, 0.35) 0%, rgba(232, 255, 92, 0) 60%),
+    radial-gradient(50% 50% at 10% 10%, rgba(10, 10, 10, 0.06) 0%, rgba(10, 10, 10, 0) 60%),
+    radial-gradient(80% 60% at 50% 100%, rgba(10, 10, 10, 0.08) 0%, rgba(10, 10, 10, 0) 60%);
+}
