@@ -379,14 +379,14 @@ function Tiers() {
   return (
     <section id="tiers" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="02b" label="Tiers" />
+        <Eyebrow n="02b" label="How we work" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
             <SplitWords text="One application." />
           </span>
           <span className="block text-ink/40">
-            <SplitWords text="Three ways to work together." delay={0.18} />
+            <SplitWords text="We pick the right fit." delay={0.18} />
           </span>
         </h2>
 
@@ -397,13 +397,36 @@ function Tiers() {
           transition={{ duration: 0.7, ease, delay: 0.2 }}
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
-          Different stages need different things. Pick the tier that matches
-          where you&apos;re actually at — capital, knowledge, OS, or all three.
+          Different stages need different things. We work with founders in one
+          of three ways, depending on where they actually are. Once we&apos;ve
+          read your application, we&apos;ll come back with the fit that makes
+          sense for you.
         </motion.p>
 
         <div className="mt-14">
           <InvestmentTiers />
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.7, ease, delay: 0.3 }}
+          className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-bone-soft/50 px-6 py-5"
+        >
+          <div className="text-[15px] text-ink/75 max-w-xl">
+            Not sure which fits? That&apos;s the point of the application —
+            tell us what you&apos;re building, and we&apos;ll come back with
+            our read.
+          </div>
+          <Link
+            href="/apply"
+            className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
+          >
+            Send us your application
+            <span className="transition-transform group-hover:translate-x-0.5">→</span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

@@ -15,7 +15,6 @@ import {
   type TierId,
   initialData,
   stageLabels,
-  tierLabels,
   workedTogetherLabels,
 } from "./types";
 
@@ -602,33 +601,6 @@ export function ApplicationForm() {
 
   return (
     <div ref={formRef} className="relative">
-      {/* Tier chips — what tier are you applying for? */}
-      <div className="mx-auto mb-6 flex max-w-3xl flex-wrap items-center gap-2">
-        <span className="font-bot text-[11px] uppercase tracking-mono text-bone/55">
-          Applying for:
-        </span>
-        {(Object.entries(tierLabels) as [TierId, string][]).map(
-          ([id, label]) => {
-            const active = data.tier === id;
-            return (
-              <button
-                key={id}
-                type="button"
-                onClick={() => set("tier", id)}
-                className={`rounded-full border px-3 py-1.5 font-bot text-[11px] uppercase tracking-mono transition-all ${
-                  active
-                    ? "border-accent bg-accent text-ink"
-                    : "border-bone/20 text-bone/65 hover:border-bone/40 hover:text-bone"
-                }`}
-              >
-                {active && "● "}
-                {label}
-              </button>
-            );
-          }
-        )}
-      </div>
-
       {/* Top progress + section indicator */}
       <div className="sticky top-0 z-30 -mx-6 mb-10 border-b border-bone/10 bg-ink/85 px-6 py-4 backdrop-blur md:-mx-10 md:px-10">
         <div className="mx-auto flex max-w-3xl items-center gap-6">

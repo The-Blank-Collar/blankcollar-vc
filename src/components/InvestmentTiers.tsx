@@ -7,7 +7,6 @@ const ease = [0.22, 1, 0.36, 1] as const;
 type Tier = {
   id: string;
   name: string;
-  tagline: string;
   audience: string;
   capital: string;
   knowledge: boolean;
@@ -20,8 +19,7 @@ const tiers: Tier[] = [
   {
     id: "os-pass",
     name: "The OS Pass",
-    tagline: "For founders who already have capital but want the brain.",
-    audience: "Funded · Post-incorporation",
+    audience: "Funded · Already incorporated",
     capital: "No cheque",
     knowledge: true,
     os: true,
@@ -35,7 +33,6 @@ const tiers: Tier[] = [
   {
     id: "full-stack",
     name: "The Full Stack",
-    tagline: "Capital + knowledge + OS. Most first-time founders pick this.",
     audience: "Pre-seed · First-time or repeat",
     capital: "Up to CHF 50K",
     knowledge: true,
@@ -51,7 +48,6 @@ const tiers: Tier[] = [
   {
     id: "cheque",
     name: "The Cheque",
-    tagline: "Capital, minimal interference. We get out of your way.",
     audience: "Pre-seed · You've done this before",
     capital: "Up to CHF 50K",
     knowledge: false,
@@ -107,7 +103,7 @@ export function InvestmentTiers() {
         >
           {tier.emphasis && (
             <div className="absolute -top-3 left-6 rounded-full bg-accent px-2.5 py-1 font-bot text-[10px] uppercase tracking-mono text-ink">
-              Most picked
+              Most common
             </div>
           )}
 
@@ -117,9 +113,6 @@ export function InvestmentTiers() {
           <h3 className="text-2xl font-medium tracking-tighter text-ink md:text-3xl">
             {tier.name}
           </h3>
-          <p className="mt-3 text-[15px] leading-relaxed text-ink/70 text-balance">
-            {tier.tagline}
-          </p>
 
           <div className="my-6 flex items-baseline gap-2 border-b border-ink/10 pb-6">
             <span className="text-3xl font-medium tracking-tighter text-ink md:text-4xl">
@@ -139,7 +132,7 @@ export function InvestmentTiers() {
             </span>
           </div>
 
-          <ul className="mb-6 flex-1 space-y-3 text-[14px] leading-relaxed text-ink/75">
+          <ul className="flex-1 space-y-3 text-[14px] leading-relaxed text-ink/75">
             {tier.features.map((f) => (
               <li key={f} className="flex items-start gap-2.5">
                 <span className="mt-1.5 inline-block h-1 w-1 shrink-0 rounded-full bg-ink/40" />
@@ -147,18 +140,6 @@ export function InvestmentTiers() {
               </li>
             ))}
           </ul>
-
-          <a
-            href={`/apply?tier=${tier.id}`}
-            className={`group inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-bot text-[12px] uppercase tracking-mono transition-colors ${
-              tier.emphasis
-                ? "bg-ink text-bone hover:bg-ink/85"
-                : "border border-ink/20 text-ink hover:bg-ink/5"
-            }`}
-          >
-            Apply for {tier.name}
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
-          </a>
         </motion.div>
       ))}
     </div>
