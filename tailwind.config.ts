@@ -32,9 +32,9 @@ const config: Config = {
         tighter2: "-0.025em",
       },
       fontSize: {
-        "display-xl": ["clamp(64px, 12vw, 200px)", { lineHeight: "0.92", letterSpacing: "-0.045em" }],
-        "display-lg": ["clamp(48px, 8vw, 128px)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
-        "display-md": ["clamp(36px, 5.5vw, 88px)", { lineHeight: "1.0", letterSpacing: "-0.035em" }],
+        "display-xl": ["clamp(44px, 7.6vw, 112px)", { lineHeight: "0.96", letterSpacing: "-0.04em" }],
+        "display-lg": ["clamp(40px, 6.5vw, 96px)", { lineHeight: "0.98", letterSpacing: "-0.035em" }],
+        "display-md": ["clamp(32px, 4.8vw, 72px)", { lineHeight: "1.02", letterSpacing: "-0.03em" }],
       },
     },
   },

@@ -5,16 +5,16 @@ import { motion, useReducedMotion } from "framer-motion";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const services = [
-  { angle: 0, label: "Growth" },
-  { angle: 36, label: "Sales" },
-  { angle: 72, label: "Ops" },
-  { angle: 108, label: "Finance" },
-  { angle: 144, label: "Design" },
-  { angle: 180, label: "Engineering" },
-  { angle: 216, label: "Hiring" },
-  { angle: 252, label: "Legal" },
-  { angle: 288, label: "Brand" },
-  { angle: 324, label: "PR" },
+  { angle: 0, label: "Pitch deck" },
+  { angle: 36, label: "Data room" },
+  { angle: 72, label: "Business model" },
+  { angle: 108, label: "Fundraising" },
+  { angle: 144, label: "Hiring" },
+  { angle: 180, label: "Sales" },
+  { angle: 216, label: "Pricing" },
+  { angle: 252, label: "Finance" },
+  { angle: 288, label: "Legal" },
+  { angle: 324, label: "Brand" },
 ];
 
 const agents = [
@@ -211,11 +211,11 @@ export function ConstellationGraphic() {
       >
         <span className="flex items-center gap-2">
           <span className="inline-block h-2 w-2 rounded-full bg-ink" />
-          Operators (human)
+          Knowledge we share (human)
         </span>
         <span className="flex items-center gap-2">
           <span className="inline-block h-2 w-2 rounded-full bg-accent ring-1 ring-ink/30" />
-          Agents (bot)
+          Agents we set up (bot)
         </span>
       </motion.div>
     </div>

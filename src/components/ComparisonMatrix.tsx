@@ -7,11 +7,13 @@ const ease = [0.22, 1, 0.36, 1] as const;
 const rows = [
   { feature: "Cheque size", trad: "$50K – $250K (often diluted)", us: "Up to $25K, founder-friendly" },
   { feature: "Decision time", trad: "Weeks of meetings", us: "14 days, max" },
-  { feature: "After the wire", trad: "Quarterly check-ins", us: "Embedded operators, day one" },
-  { feature: "Hiring help", trad: "Intros to recruiters", us: "Operators on tap, no full-time hires" },
-  { feature: "AI / automation", trad: "“Have you tried ChatGPT?”", us: "Free seat on our agentic OS" },
+  { feature: "After the wire", trad: "Quarterly check-ins", us: "Hands-on help on the hard things" },
+  { feature: "Pitch deck & data room", trad: "“Send us when ready”", us: "Co-built with you, week one" },
+  { feature: "Business model help", trad: "Intros to advisors", us: "Pricing, unit economics, moats" },
+  { feature: "AI / automation", trad: "“Have you tried ChatGPT?”", us: "We set up blankcollar.ai for you" },
+  { feature: "Hiring help", trad: "Intros to recruiters", us: "Playbooks, JDs, comp benchmarks" },
   { feature: "Board involvement", trad: "Observer seat", us: "None at this stage" },
-  { feature: "Network", trad: "LP intros", us: "Operators + agents + portfolio" },
+  { feature: "Network", trad: "LP intros", us: "Knowledge + agents + portfolio" },
 ];
 
 export function ComparisonMatrix() {

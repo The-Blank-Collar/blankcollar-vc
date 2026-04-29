@@ -25,14 +25,14 @@ const steps = [
   },
   {
     n: "04",
-    label: "Operators activated",
-    body: "Your embedded team from theblankcollar.com plugs in week one.",
-    detail: "Day 1",
+    label: "Knowledge transfer",
+    body: "We sit with you on the hard stuff — pitch deck, data room, business model, hiring.",
+    detail: "Week 1+",
   },
   {
     n: "05",
-    label: "OS deployed",
-    body: "Free seat on blankcollar.ai. Memory, agents, routines — running for you.",
+    label: "OS configured",
+    body: "We set up blankcollar.ai for you. Your agents, your memory, codifying our knowledge.",
     detail: "Free, forever",
   },
 ];

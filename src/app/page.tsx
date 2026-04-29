@@ -14,24 +14,19 @@ import { StackDiagram } from "@/components/StackDiagram";
 import { ProcessFlow } from "@/components/ProcessFlow";
 import { ComparisonMatrix } from "@/components/ComparisonMatrix";
 import { ConstellationGraphic } from "@/components/ConstellationGraphic";
+import { FounderToolkit } from "@/components/FounderToolkit";
+import { Portfolio } from "@/components/Portfolio";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 function Logo({ onDark = false }: { onDark?: boolean }) {
   return (
     <div className="flex items-center gap-2.5 font-bot text-[12px] uppercase tracking-mono">
-      <span
-        className={`grid grid-cols-2 gap-0.5 ${onDark ? "" : ""}`}
-        aria-hidden
-      >
-        <span
-          className={`block h-2 w-2 ${onDark ? "bg-bone" : "bg-ink"}`}
-        />
+      <span className="grid grid-cols-2 gap-0.5" aria-hidden>
+        <span className={`block h-2 w-2 ${onDark ? "bg-bone" : "bg-ink"}`} />
         <span className="block h-2 w-2 bg-accent" />
         <span className="block h-2 w-2 bg-accent" />
-        <span
-          className={`block h-2 w-2 ${onDark ? "bg-bone" : "bg-ink"}`}
-        />
+        <span className={`block h-2 w-2 ${onDark ? "bg-bone" : "bg-ink"}`} />
       </span>
       <span>
         <span className="font-medium">Blank Collar</span>
@@ -53,29 +48,22 @@ function Header() {
       initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease, delay: 0.1 }}
-      className="fixed top-0 left-0 right-0 z-40 px-4 pt-4 md:px-6 md:pt-6"
+      className="fixed top-0 left-0 right-0 z-40 px-3 pt-3 md:px-6 md:pt-5"
     >
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-5 py-3 transition-all duration-300 md:px-7 md:py-3.5 ${
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 md:px-6 md:py-3 ${
           scrolled
             ? "border-ink/10 bg-bone/85 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
             : "border-transparent bg-transparent"
         }`}
       >
         <Logo />
-        <nav className="hidden items-center gap-7 font-bot text-[12px] uppercase tracking-mono md:flex">
-          <a href="#manifesto" className="hover:opacity-60 transition-opacity">
-            Manifesto
-          </a>
-          <a href="#stack" className="hover:opacity-60 transition-opacity">
-            Stack
-          </a>
-          <a href="#process" className="hover:opacity-60 transition-opacity">
-            Process
-          </a>
-          <a href="#terms" className="hover:opacity-60 transition-opacity">
-            Terms
-          </a>
+        <nav className="hidden items-center gap-7 font-bot text-[12px] uppercase tracking-mono lg:flex">
+          <a href="#manifesto" className="hover:opacity-60 transition-opacity">Manifesto</a>
+          <a href="#stack" className="hover:opacity-60 transition-opacity">Stack</a>
+          <a href="#toolkit" className="hover:opacity-60 transition-opacity">Toolkit</a>
+          <a href="#portfolio" className="hover:opacity-60 transition-opacity">Portfolio</a>
+          <a href="#terms" className="hover:opacity-60 transition-opacity">Terms</a>
         </nav>
         <MagneticLink
           href="#apply"
@@ -126,44 +114,40 @@ function Hero() {
     target: ref,
     offset: ["start start", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 200]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const yMesh = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 160]);
+  const opacityMesh = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
-    <section ref={ref} className="relative overflow-hidden pt-40 md:pt-44">
+    <section
+      ref={ref}
+      className="relative flex min-h-[100svh] flex-col overflow-hidden"
+    >
       <motion.div
-        style={{ y, opacity }}
+        style={{ y: yMesh, opacity: opacityMesh }}
         className="gradient-mesh absolute inset-0 -z-10"
         aria-hidden
       />
-      <div className="relative z-10 px-6 pb-24 md:px-10 md:pb-32">
-        <div className="mx-auto max-w-7xl">
+      <div className="relative z-10 flex flex-1 items-center px-6 pt-24 md:px-10 md:pt-28">
+        <div className="mx-auto w-full max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.05 }}
-            className="mb-10 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-bone-soft/70 px-3 py-1.5 eyebrow backdrop-blur"
+            className="mb-7 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-bone-soft/70 px-3 py-1.5 eyebrow backdrop-blur"
           >
             <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink" />
             The Blank Collar Family · Pre-seed
           </motion.div>
 
-          <h1 className="font-medium text-display-xl text-balance">
+          <h1 className="font-medium text-display-xl text-balance max-w-[18ch]">
             <span className="block">
               <SplitWords text="Capital is easy." />
             </span>
-            <span className="block">
+            <span className="block text-ink/40">
               <SplitWords
-                text="Building the company"
-                delay={0.15}
-                stagger={0.07}
-              />
-            </span>
-            <span className="block">
-              <SplitWords
-                text="is the hard part."
-                delay={0.35}
-                stagger={0.07}
+                text="Building the company is the hard part."
+                delay={0.18}
+                stagger={0.05}
               />
             </span>
           </h1>
@@ -172,25 +156,27 @@ function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.7 }}
-            className="mt-12 max-w-2xl text-lg leading-relaxed text-ink/70 md:text-xl text-balance"
+            className="mt-7 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
           >
             We&apos;re the pre-seed VC arm of Blank Collar. Up to{" "}
-            <span className="text-ink font-medium">$25K</span> in capital, plus
-            access to <span className="font-bot text-ink">theblankcollar.com</span>{" "}
-            operators and free seats on our agentic OS{" "}
-            <span className="font-bot text-ink">blankcollar.ai</span>.
+            <span className="font-medium text-ink">$25K</span> in capital, plus
+            the knowledge from{" "}
+            <span className="font-bot text-ink">theblankcollar.com</span> and a
+            free, fully-configured{" "}
+            <span className="font-bot text-ink">blankcollar.ai</span> — our
+            agentic OS — set up <em className="not-italic underline decoration-accent decoration-2 underline-offset-4">for</em> you.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.85 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-8 flex flex-wrap items-center gap-3"
           >
             <MagneticLink
               href="#apply"
               strength={0.3}
-              className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
+              className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
             >
               Apply for funding
               <span className="transition-transform group-hover:translate-x-0.5">→</span>
@@ -198,10 +184,28 @@ function Hero() {
             <MagneticLink
               href="#manifesto"
               strength={0.2}
-              className="inline-flex items-center gap-3 rounded-full border border-ink/20 px-7 py-4 font-bot text-[12px] uppercase tracking-mono hover:bg-ink/5"
+              className="inline-flex items-center gap-3 rounded-full border border-ink/20 px-6 py-3.5 font-bot text-[12px] uppercase tracking-mono hover:bg-ink/5"
             >
               Read the manifesto
             </MagneticLink>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, ease, delay: 1.1 }}
+            className="mt-12 hidden items-center gap-6 font-bot text-[11px] uppercase tracking-mono text-ink/50 md:flex"
+          >
+            <span>Backed:</span>
+            <span>Numarics</span>
+            <span aria-hidden className="text-ink/25">●</span>
+            <span>Cybee.ai</span>
+            <span aria-hidden className="text-ink/25">●</span>
+            <span>iQTax</span>
+            <span aria-hidden className="text-ink/25">●</span>
+            <span>Alletta</span>
+            <span aria-hidden className="text-ink/25">●</span>
+            <span>Visorway</span>
           </motion.div>
         </div>
       </div>
@@ -215,14 +219,14 @@ function Marquee() {
   const items = [
     "Pre-seed cheques up to $25K",
     "Decisions in 14 days",
-    "Operators on tap from theblankcollar.com",
-    "Free seat on blankcollar.ai",
+    "Knowledge from theblankcollar.com",
+    "Free, configured seat on blankcollar.ai",
+    "Pitch deck, data room, business model — co-built",
     "Hands-on, not hands-off",
-    "Built by operators, for operators",
   ];
   const loop = [...items, ...items];
   return (
-    <div className="relative z-10 border-y border-ink/10 bg-bone-soft/60 py-4 overflow-hidden">
+    <div className="relative z-10 border-y border-ink/10 bg-bone-soft/60 py-3.5 overflow-hidden">
       <div className="marquee-track flex w-max gap-12 whitespace-nowrap eyebrow text-ink/70">
         {loop.map((t, i) => (
           <span key={i} className="flex items-center gap-12">
@@ -239,11 +243,11 @@ function StatBand() {
   const stats = [
     { label: "Cheque size", value: 25000, prefix: "$", suffix: "" },
     { label: "Decision time", value: 14, prefix: "", suffix: " days" },
-    { label: "Operator domains", value: 10, prefix: "", suffix: "+" },
+    { label: "Toolkit modules", value: 8, prefix: "", suffix: "" },
     { label: "Always-on agents", value: 5, prefix: "", suffix: "" },
   ];
   return (
-    <section className="relative px-6 py-16 md:px-10 md:py-24">
+    <section className="relative px-6 py-16 md:px-10 md:py-20">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -264,7 +268,7 @@ function StatBand() {
               <div className="font-bot text-[11px] uppercase tracking-mono text-ink/55">
                 {s.label}
               </div>
-              <div className="mt-3 text-4xl font-medium tracking-tighter md:text-6xl tabular">
+              <div className="mt-3 text-4xl font-medium tracking-tighter md:text-5xl tabular">
                 <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
             </motion.div>
@@ -283,17 +287,17 @@ function Manifesto() {
 
         <h2 className="font-medium text-display-lg text-balance">
           <span className="block">
-            <SplitWords text="Most pre-seed funds wire" />
+            <SplitWords text="Most pre-seed funds wire money" />
           </span>
           <span className="block">
-            <SplitWords text="money and disappear." delay={0.15} />
+            <SplitWords text="and disappear." delay={0.16} />
           </span>
           <span className="block text-ink/40">
-            <SplitWords text="We do the opposite." delay={0.32} />
+            <SplitWords text="We do the opposite." delay={0.3} />
           </span>
         </h2>
 
-        <div className="mt-16 grid gap-12 md:grid-cols-12">
+        <div className="mt-14 grid gap-10 md:grid-cols-12">
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -302,9 +306,9 @@ function Manifesto() {
             className="md:col-span-6 md:col-start-1 text-lg leading-relaxed text-ink/75 md:text-xl text-balance"
           >
             The biggest problem founders face isn&apos;t getting the cheque.
-            It&apos;s everything that comes after — sales, hiring, ops, finance,
-            growth, infra — all at once, with no team and no time. Most VCs
-            offer a quarterly call and a Twitter follow.
+            It&apos;s the pitch deck, the data room, the business model, the
+            first hires, the pricing — the things first-time founders
+            shouldn&apos;t have to figure out alone, but always do.
           </motion.p>
 
           <motion.p
@@ -314,13 +318,12 @@ function Manifesto() {
             transition={{ duration: 0.7, ease, delay: 0.12 }}
             className="md:col-span-6 md:col-start-7 text-lg leading-relaxed text-ink/75 md:text-xl text-balance"
           >
-            Blank Collar is built differently. We&apos;re a family of three:{" "}
-            <span className="font-bot text-ink">theblankcollar.com</span> runs
-            companies for founders.{" "}
-            <span className="font-bot text-ink">blankcollar.ai</span> automates
-            the work that shouldn&apos;t need humans.{" "}
-            <span className="font-bot text-ink">blankcollar.vc</span> writes
-            the cheque that turns the other two on.
+            Blank Collar VC writes the cheque, then gives you the knowledge
+            from <span className="font-bot text-ink">theblankcollar.com</span>{" "}
+            and configures{" "}
+            <span className="font-bot text-ink">blankcollar.ai</span> — our
+            agentic OS — for your company. We don&apos;t do the work for you.
+            We make sure you can.
           </motion.p>
         </div>
       </div>
@@ -334,7 +337,7 @@ function Stack() {
       <div className="absolute inset-0 -z-0" aria-hidden>
         <div className="absolute -right-1/3 top-0 h-[60vh] w-[60vh] rounded-full bg-accent/15 blur-[120px]" />
       </div>
-      <div className="relative z-10 px-6 py-24 md:px-10 md:py-40">
+      <div className="relative z-10 px-6 py-24 md:px-10 md:py-36">
         <div className="mx-auto max-w-6xl">
           <EyebrowDark n="02" label="The Stack" />
 
@@ -352,13 +355,13 @@ function Stack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.7, ease, delay: 0.2 }}
-            className="mt-8 max-w-2xl text-lg text-bone/70 leading-relaxed text-balance"
+            className="mt-6 max-w-2xl text-base text-bone/70 leading-relaxed md:text-lg text-balance"
           >
-            Built like an OS. Each layer makes the next one cheaper, faster, or
-            unnecessary.
+            Built like an OS. Capital makes the next layer possible. Knowledge
+            makes the layer above it useful. Agents make all of it scale.
           </motion.p>
 
-          <div className="mt-16">
+          <div className="mt-14">
             <StackDiagram />
           </div>
         </div>
@@ -367,41 +370,79 @@ function Stack() {
   );
 }
 
+function Toolkit() {
+  return (
+    <section id="toolkit" className="relative px-6 py-24 md:px-10 md:py-36">
+      <div className="mx-auto max-w-7xl">
+        <Eyebrow n="03" label="The First-Time Founder Toolkit" />
+
+        <h2 className="font-medium text-display-md text-balance">
+          <span className="block">
+            <SplitWords text="The hard things you" />
+          </span>
+          <span className="block text-ink/40">
+            <SplitWords text="don't have to figure out alone." delay={0.18} />
+          </span>
+        </h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.7, ease, delay: 0.2 }}
+          className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
+        >
+          Eight modules we co-build with you in the first weeks. We share what
+          we&apos;ve learned, then we wire it into your{" "}
+          <span className="font-bot text-ink">blankcollar.ai</span> agents so
+          it keeps compounding.
+        </motion.p>
+
+        <div className="mt-14">
+          <FounderToolkit />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Network() {
   return (
-    <section className="relative px-6 py-24 md:px-10 md:py-40">
+    <section className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="03" label="What it looks like in practice" />
+        <Eyebrow n="04" label="In practice" />
 
-        <div className="grid gap-16 md:grid-cols-12 md:items-center">
+        <div className="grid gap-14 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
             <h2 className="font-medium text-display-md text-balance">
               <span className="block">
                 <SplitWords text="You at the centre." />
               </span>
               <span className="block text-ink/40">
-                <SplitWords text="Operators around you." delay={0.12} />
+                <SplitWords text="Knowledge around you." delay={0.12} />
               </span>
               <span className="block text-ink/40">
-                <SplitWords text="Agents inside you." delay={0.24} />
+                <SplitWords text="Agents inside the OS." delay={0.24} />
               </span>
             </h2>
 
-            <div className="mt-8 space-y-4 text-ink/70 text-[17px] leading-relaxed">
+            <div className="mt-7 space-y-4 text-ink/70 text-[16px] leading-relaxed">
               <p className="text-balance">
-                Day one, you stop being a one-person band. Ten operator domains
-                cover the work humans should do. Five always-on agents handle
-                the rest.
+                Day one, you&apos;re no longer guessing. We share what works
+                across ten domains every founder eventually needs, then we
+                configure your agents on{" "}
+                <span className="font-bot text-ink">blankcollar.ai</span> so the
+                knowledge runs as automation.
               </p>
-              <ul className="mt-6 space-y-3">
+              <ul className="mt-5 space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="mt-2 inline-block h-1.5 w-1.5 rounded-full bg-ink" />
                   <span>
                     <span className="font-bot text-[13px] uppercase tracking-mono text-ink/60">
-                      Operators
+                      Knowledge
                     </span>{" "}
-                    — growth, sales, ops, finance, design, engineering, hiring,
-                    legal, brand, PR.
+                    — pitch deck, data room, business model, fundraising,
+                    hiring, sales, pricing, finance, legal, brand.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
@@ -410,8 +451,8 @@ function Network() {
                     <span className="font-bot text-[13px] uppercase tracking-mono text-ink/60">
                       Agents
                     </span>{" "}
-                    — research, outreach, ops, reporting, support. Always on,
-                    never off.
+                    — research, outreach, ops, reporting, support. Configured
+                    for your stack.
                   </span>
                 </li>
               </ul>
@@ -429,9 +470,9 @@ function Network() {
 
 function Process() {
   return (
-    <section id="process" className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-40">
+    <section id="process" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="04" label="Process" />
+        <Eyebrow n="05" label="Process" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -442,7 +483,7 @@ function Process() {
           </span>
         </h2>
 
-        <div className="mt-16">
+        <div className="mt-14">
           <ProcessFlow />
         </div>
       </div>
@@ -452,9 +493,9 @@ function Process() {
 
 function Compare() {
   return (
-    <section className="relative px-6 py-24 md:px-10 md:py-40">
+    <section className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="05" label="vs Traditional pre-seed" />
+        <Eyebrow n="06" label="vs Traditional pre-seed" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -470,14 +511,48 @@ function Compare() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
           transition={{ duration: 0.7, ease, delay: 0.2 }}
-          className="mt-8 max-w-2xl text-lg text-ink/70 leading-relaxed text-balance"
+          className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           The difference isn&apos;t cheque size. It&apos;s what arrives the day
           after.
         </motion.p>
 
-        <div className="mt-16">
+        <div className="mt-14">
           <ComparisonMatrix />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PortfolioSection() {
+  return (
+    <section id="portfolio" className="relative px-6 py-24 md:px-10 md:py-36">
+      <div className="mx-auto max-w-7xl">
+        <Eyebrow n="07" label="Portfolio" />
+
+        <h2 className="font-medium text-display-md text-balance">
+          <span className="block">
+            <SplitWords text="Founders we've helped" />
+          </span>
+          <span className="block text-ink/40">
+            <SplitWords text="scale from start to finish." delay={0.18} />
+          </span>
+        </h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.7, ease, delay: 0.2 }}
+          className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
+        >
+          Five Swiss / EU companies built on the same playbook: capital,
+          knowledge, and an agentic OS — all wired in from day one.
+        </motion.p>
+
+        <div className="mt-14">
+          <Portfolio />
         </div>
       </div>
     </section>
@@ -490,14 +565,14 @@ const terms = [
   { k: "Geography", v: "Global, remote-first" },
   { k: "Speed", v: "Decisions in 14 days" },
   { k: "Ownership", v: "Founder-friendly terms" },
-  { k: "Plus", v: "Operators + Agentic OS" },
+  { k: "Plus", v: "Knowledge + Agentic OS" },
 ];
 
 function Terms() {
   return (
-    <section id="terms" className="relative bg-ink text-bone px-6 py-24 md:px-10 md:py-40">
+    <section id="terms" className="relative bg-ink text-bone px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <EyebrowDark n="06" label="Terms" />
+        <EyebrowDark n="08" label="Terms" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -508,7 +583,7 @@ function Terms() {
           </span>
         </h2>
 
-        <div className="mt-16 divide-y divide-bone/10 border-y border-bone/10">
+        <div className="mt-14 divide-y divide-bone/10 border-y border-bone/10">
           {terms.map((row, i) => (
             <motion.div
               key={row.k}
@@ -548,20 +623,20 @@ function CTA() {
         />
       </div>
 
-      <div className="relative z-10 px-6 py-24 md:px-10 md:py-40">
+      <div className="relative z-10 px-6 py-24 md:px-10 md:py-36">
         <div className="mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.6, ease }}
-            className="mb-10 inline-flex items-center gap-2 rounded-full border border-ink/20 bg-bone px-3 py-1.5 eyebrow"
+            className="mb-8 inline-flex items-center gap-2 rounded-full border border-ink/20 bg-bone px-3 py-1.5 eyebrow"
           >
             <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink" />
             Now reviewing applications
           </motion.div>
 
-          <h2 className="font-medium text-display-xl text-balance">
+          <h2 className="font-medium text-display-lg text-balance">
             <span className="block">
               <SplitWords text="Building" />{" "}
               <span className="text-ink/40">
@@ -581,10 +656,10 @@ function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.7, ease, delay: 0.4 }}
-            className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-ink/70 text-balance"
+            className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
           >
             One paragraph, one link. If it&apos;s a fit, we&apos;ll move fast —
-            capital, operators, and the OS, ready to deploy.
+            capital, knowledge, and the OS, ready to deploy.
           </motion.p>
 
           <motion.div
@@ -592,7 +667,7 @@ function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 0.7, ease, delay: 0.55 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
+            className="mt-9 flex flex-wrap items-center justify-center gap-4"
           >
             <MagneticLink
               href="mailto:hey@theblankcollar.com?subject=Application%20%E2%80%94%20Blank%20Collar%20VC"
@@ -603,13 +678,11 @@ function CTA() {
               <span className="transition-transform group-hover:translate-x-0.5">→</span>
             </MagneticLink>
             <MagneticLink
-              href="https://www.theblankcollar.com"
-              target="_blank"
-              rel="noreferrer"
+              href="#portfolio"
               strength={0.2}
               className="inline-flex items-center gap-3 rounded-full border border-ink/20 px-7 py-4 font-bot text-[12px] uppercase tracking-mono hover:bg-ink/5"
             >
-              See the operators
+              See the portfolio
             </MagneticLink>
           </motion.div>
         </div>
@@ -627,68 +700,35 @@ function Footer() {
         <div className="md:col-span-4">
           <Logo />
           <p className="mt-4 text-sm text-ink/60 max-w-xs leading-relaxed">
-            The pre-seed fund of the Blank Collar family. Capital, operators, and
-            the agentic OS — in one cheque.
+            The pre-seed fund of the Blank Collar family. Capital, knowledge,
+            and an agentic OS — in one cheque.
           </p>
         </div>
 
         <div className="md:col-span-8 grid gap-8 grid-cols-2 sm:grid-cols-3">
           <div>
-            <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">
-              Family
-            </h4>
+            <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">Family</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <a
-                  href="https://www.theblankcollar.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-ink text-ink/75"
-                >
-                  theblankcollar.com
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.blankcollar.ai"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-ink text-ink/75"
-                >
-                  blankcollar.ai
-                </a>
-              </li>
-              <li>
-                <span className="text-ink font-medium">blankcollar.vc</span>
-              </li>
+              <li><a href="https://www.theblankcollar.com" target="_blank" rel="noreferrer" className="hover:text-ink text-ink/75">theblankcollar.com</a></li>
+              <li><a href="https://www.blankcollar.ai" target="_blank" rel="noreferrer" className="hover:text-ink text-ink/75">blankcollar.ai</a></li>
+              <li><span className="text-ink font-medium">blankcollar.vc</span></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">
-              Page
-            </h4>
+            <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">Page</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href="#manifesto" className="hover:text-ink text-ink/75">Manifesto</a></li>
               <li><a href="#stack" className="hover:text-ink text-ink/75">Stack</a></li>
-              <li><a href="#process" className="hover:text-ink text-ink/75">Process</a></li>
+              <li><a href="#toolkit" className="hover:text-ink text-ink/75">Toolkit</a></li>
+              <li><a href="#portfolio" className="hover:text-ink text-ink/75">Portfolio</a></li>
               <li><a href="#terms" className="hover:text-ink text-ink/75">Terms</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">
-              Contact
-            </h4>
+            <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">Contact</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li>
-                <a href="mailto:hey@theblankcollar.com" className="hover:text-ink text-ink/75">
-                  hey@theblankcollar.com
-                </a>
-              </li>
-              <li>
-                <a href="#apply" className="hover:text-ink text-ink/75">
-                  Apply →
-                </a>
-              </li>
+              <li><a href="mailto:hey@theblankcollar.com" className="hover:text-ink text-ink/75">hey@theblankcollar.com</a></li>
+              <li><a href="#apply" className="hover:text-ink text-ink/75">Apply →</a></li>
             </ul>
           </div>
         </div>
@@ -709,9 +749,11 @@ export default function Page() {
       <StatBand />
       <Manifesto />
       <Stack />
+      <Toolkit />
       <Network />
       <Process />
       <Compare />
+      <PortfolioSection />
       <Terms />
       <CTA />
       <Footer />

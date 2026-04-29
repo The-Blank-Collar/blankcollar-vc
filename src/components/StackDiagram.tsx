@@ -10,14 +10,14 @@ const layers = [
     name: "Agentic OS",
     site: "blankcollar.ai",
     voice: "bot",
-    description: "Always-on agents handle the work no founder should be doing manually.",
+    description: "We set up your agentic OS so the knowledge above runs as automation, not advice.",
   },
   {
     label: "L2",
-    name: "Operators",
+    name: "Knowledge",
     site: "theblankcollar.com",
     voice: "human",
-    description: "Embedded team — growth, ops, sales, finance, design, engineering.",
+    description: "Hands-on help on the things first-time founders shouldn't have to figure out alone.",
   },
   {
     label: "L1",
