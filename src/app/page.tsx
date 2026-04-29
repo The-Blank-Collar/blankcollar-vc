@@ -547,7 +547,8 @@ function PortfolioSection() {
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           Five Swiss / EU companies built on the same playbook: capital,
-          knowledge, and an agentic OS — all wired in from day one.
+          knowledge, and an agentic OS — all wired in from day one.{" "}
+          <span className="text-ink">One exit so far. Four still climbing.</span>
         </motion.p>
 
         <div className="mt-14">
