@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { CursorAura } from "@/components/CursorAura";
 
 const sans = Inter({
   subsets: ["latin"],
@@ -48,7 +50,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
-      <body className="grain font-sans bg-bone text-ink">{children}</body>
+      <body className="grain font-sans bg-bone text-ink">
+        <SmoothScroll>
+          <CursorAura />
+          {children}
+        </SmoothScroll>
+      </body>
     </html>
   );
 }
