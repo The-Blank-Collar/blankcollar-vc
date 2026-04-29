@@ -10,7 +10,16 @@ export type WorkedTogether =
   | "6m-to-2y"
   | "over-2y";
 
+export type TierId = "os-pass" | "full-stack" | "cheque";
+
+export const tierLabels: Record<TierId, string> = {
+  "os-pass": "The OS Pass",
+  "full-stack": "The Full Stack",
+  cheque: "The Cheque",
+};
+
 export type ApplicationData = {
+  tier: TierId;
   // Founder
   founderName: string;
   founderEmail: string;
@@ -45,6 +54,7 @@ export type ApplicationData = {
 };
 
 export const initialData: ApplicationData = {
+  tier: "full-stack",
   founderName: "",
   founderEmail: "",
   founderRole: "",

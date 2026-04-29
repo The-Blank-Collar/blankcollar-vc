@@ -17,6 +17,7 @@ import { FounderToolkit } from "@/components/FounderToolkit";
 import { Portfolio } from "@/components/Portfolio";
 import { FoundersSection } from "@/components/FoundersSection";
 import { NetworkSection } from "@/components/NetworkSection";
+import { InvestmentTiers } from "@/components/InvestmentTiers";
 import Link from "next/link";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -63,6 +64,7 @@ function Header() {
         <nav className="hidden items-center gap-7 font-bot text-[12px] uppercase tracking-mono lg:flex">
           <a href="#manifesto" className="hover:opacity-60 transition-opacity">Manifesto</a>
           <a href="#stack" className="hover:opacity-60 transition-opacity">Stack</a>
+          <a href="#tiers" className="hover:opacity-60 transition-opacity">Tiers</a>
           <a href="#toolkit" className="hover:opacity-60 transition-opacity">Toolkit</a>
           <a href="#portfolio" className="hover:opacity-60 transition-opacity">Portfolio</a>
           <a href="#terms" className="hover:opacity-60 transition-opacity">Terms</a>
@@ -142,12 +144,15 @@ function Hero() {
 
           <h1 className="font-medium text-display-xl text-balance max-w-[18ch]">
             <span className="block">
-              <SplitWords text="Capital is easy." />
+              <SplitWords text="AI changed what" />
+            </span>
+            <span className="block">
+              <SplitWords text="founders build." delay={0.12} />
             </span>
             <span className="block text-ink/40">
               <SplitWords
-                text="Building the company is the hard part."
-                delay={0.18}
+                text="We changed what VCs deliver."
+                delay={0.28}
                 stagger={0.05}
               />
             </span>
@@ -159,13 +164,14 @@ function Hero() {
             transition={{ duration: 0.7, ease, delay: 0.7 }}
             className="mt-7 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
           >
-            We&apos;re the pre-seed VC arm of Blank Collar. Up to{" "}
-            <span className="font-medium text-ink">$25K</span> in capital, plus
+            We&apos;re the pre-seed VC arm of Blank Collar — built for the AI
+            era, based in Switzerland. Up to{" "}
+            <span className="font-medium text-ink">CHF 50K</span> in capital,
             the knowledge from{" "}
-            <span className="font-bot text-ink">theblankcollar.com</span> and a
-            free, fully-configured{" "}
-            <span className="font-bot text-ink">blankcollar.ai</span> — our
-            agentic OS — set up <em className="not-italic underline decoration-accent decoration-2 underline-offset-4">for</em> you.
+            <span className="font-bot text-ink">theblankcollar.com</span>, and a
+            fully-configured{" "}
+            <span className="font-bot text-ink">blankcollar.ai</span>. Pick the
+            tier that fits where you&apos;re at.
           </motion.p>
 
           <motion.div
@@ -216,7 +222,7 @@ function Hero() {
 
 function Marquee() {
   const items = [
-    "Pre-seed cheques up to $25K",
+    "Pre-seed cheques up to CHF 50K",
     "Decisions in 14 days",
     "Knowledge from theblankcollar.com",
     "Free, configured seat on blankcollar.ai",
@@ -240,7 +246,7 @@ function Marquee() {
 
 function StatBand() {
   const stats = [
-    { label: "Cheque size", value: 25000, prefix: "$", suffix: "" },
+    { label: "Cheque size", value: 50000, prefix: "CHF ", suffix: "" },
     { label: "Decision time", value: 14, prefix: "", suffix: " days" },
     { label: "Toolkit modules", value: 8, prefix: "", suffix: "" },
     { label: "Always-on agents", value: 5, prefix: "", suffix: "" },
@@ -363,6 +369,40 @@ function Stack() {
           <div className="mt-14">
             <StackDiagram />
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Tiers() {
+  return (
+    <section id="tiers" className="relative px-6 py-24 md:px-10 md:py-36">
+      <div className="mx-auto max-w-7xl">
+        <Eyebrow n="02b" label="Tiers" />
+
+        <h2 className="font-medium text-display-md text-balance">
+          <span className="block">
+            <SplitWords text="One application." />
+          </span>
+          <span className="block text-ink/40">
+            <SplitWords text="Three ways to work together." delay={0.18} />
+          </span>
+        </h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-15%" }}
+          transition={{ duration: 0.7, ease, delay: 0.2 }}
+          className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
+        >
+          Different stages need different things. Pick the tier that matches
+          where you&apos;re actually at — capital, knowledge, OS, or all three.
+        </motion.p>
+
+        <div className="mt-14">
+          <InvestmentTiers />
         </div>
       </div>
     </section>
@@ -560,7 +600,7 @@ function PortfolioSection() {
 }
 
 const terms = [
-  { k: "Cheque", v: "Up to $25,000 USD" },
+  { k: "Cheque", v: "Up to CHF 50,000" },
   { k: "Stage", v: "Pre-seed / Day 0" },
   { k: "Geography", v: "Global, remote-first" },
   { k: "Speed", v: "Decisions in 14 days" },
@@ -748,6 +788,7 @@ export default function Page() {
       <Manifesto />
       <FoundersSection />
       <Stack />
+      <Tiers />
       <Toolkit />
       <Network />
       <Process />

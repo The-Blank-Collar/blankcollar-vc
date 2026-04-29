@@ -45,7 +45,16 @@ export async function POST(req: Request) {
       );
     }
 
+    const tierMap: Record<string, string> = {
+      "os-pass": "The OS Pass",
+      "full-stack": "The Full Stack",
+      cheque: "The Cheque",
+    };
+    const tierRaw = get("tier") || "full-stack";
+    const tier = tierMap[tierRaw] || tierRaw;
+
     const fields: Record<string, Field> = {
+      "Tier": tier,
       "Founder name": founderName,
       "Email": founderEmail,
       "Role": get("founderRole"),
@@ -75,7 +84,7 @@ export async function POST(req: Request) {
       <div style="font-family:Helvetica,Arial,sans-serif;background:#F4F1EA;padding:32px;">
         <div style="max-width:640px;margin:0 auto;background:white;border-radius:16px;overflow:hidden;border:1px solid #eee;">
           <div style="padding:28px 32px;background:#0E1320;color:#F4F1EA;">
-            <div style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:0.6;">New application</div>
+            <div style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:0.6;">New application · ${escape(tier)}</div>
             <div style="font-size:28px;font-weight:500;margin-top:6px;">${escape(companyName)}</div>
             <div style="font-size:14px;opacity:0.7;margin-top:4px;">${escape(founderName)} · ${escape(founderEmail)}</div>
           </div>
@@ -119,7 +128,7 @@ export async function POST(req: Request) {
       from: APPLY_FROM,
       to: APPLY_TO,
       replyTo: founderEmail,
-      subject: `Application — ${companyName}`,
+      subject: `Application — ${companyName} · ${tier}`,
       html,
       text,
       attachments,

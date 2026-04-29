@@ -12,8 +12,10 @@ import {
 import { Field, FileDrop, Input, RadioGroup, Textarea } from "./Inputs";
 import {
   type ApplicationData,
+  type TierId,
   initialData,
   stageLabels,
+  tierLabels,
   workedTogetherLabels,
 } from "./types";
 
@@ -345,7 +347,7 @@ const steps: StepConfig[] = [
       <div className="grid gap-5">
         <Field label="How much are you raising in this round" hint="Total round, not just our cheque.">
           <Input
-            placeholder="e.g. $250K"
+            placeholder="e.g. CHF 250K"
             value={data.raisingAmount}
             onChange={(e) => set("raisingAmount", e.target.value)}
             onEnterContinue={next}
@@ -469,14 +471,22 @@ export function ApplicationForm() {
   const [savedTick, setSavedTick] = useState(0);
   const formRef = useRef<HTMLDivElement>(null);
 
-  // Hydrate from localStorage
+  // Hydrate from localStorage + URL ?tier= param
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as Partial<ApplicationData>;
-        setData((prev) => ({ ...prev, ...parsed }));
-      }
+      const persisted = raw ? (JSON.parse(raw) as Partial<ApplicationData>) : {};
+      const params = new URLSearchParams(window.location.search);
+      const tierParam = params.get("tier");
+      const validTiers: TierId[] = ["os-pass", "full-stack", "cheque"];
+      const tierFromUrl = validTiers.includes(tierParam as TierId)
+        ? (tierParam as TierId)
+        : null;
+      setData((prev) => ({
+        ...prev,
+        ...persisted,
+        ...(tierFromUrl ? { tier: tierFromUrl } : {}),
+      }));
     } catch {
       // ignore
     }
@@ -592,6 +602,33 @@ export function ApplicationForm() {
 
   return (
     <div ref={formRef} className="relative">
+      {/* Tier chips — what tier are you applying for? */}
+      <div className="mx-auto mb-6 flex max-w-3xl flex-wrap items-center gap-2">
+        <span className="font-bot text-[11px] uppercase tracking-mono text-bone/55">
+          Applying for:
+        </span>
+        {(Object.entries(tierLabels) as [TierId, string][]).map(
+          ([id, label]) => {
+            const active = data.tier === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                onClick={() => set("tier", id)}
+                className={`rounded-full border px-3 py-1.5 font-bot text-[11px] uppercase tracking-mono transition-all ${
+                  active
+                    ? "border-accent bg-accent text-ink"
+                    : "border-bone/20 text-bone/65 hover:border-bone/40 hover:text-bone"
+                }`}
+              >
+                {active && "● "}
+                {label}
+              </button>
+            );
+          }
+        )}
+      </div>
+
       {/* Top progress + section indicator */}
       <div className="sticky top-0 z-30 -mx-6 mb-10 border-b border-bone/10 bg-ink/85 px-6 py-4 backdrop-blur md:-mx-10 md:px-10">
         <div className="mx-auto flex max-w-3xl items-center gap-6">

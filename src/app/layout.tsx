@@ -33,11 +33,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Blank Collar VC — Capital. Operators. Agentic OS.",
   description:
-    "A different kind of pre-seed VC. Up to $25K in capital, plus the operators and agentic OS to actually run and scale your business.",
+    "A different kind of pre-seed VC, built for the AI era. Up to CHF 50K, the knowledge to scale, and an agentic OS — choose the tier that fits your stage. Switzerland-based, global remit.",
   openGraph: {
     title: "Blank Collar VC",
     description:
-      "Pre-seed capital up to $25K, plus operators and an agentic OS to scale your startup.",
+      "Pre-seed for the AI era. Capital up to CHF 50K, knowledge, and a free agentic OS — pick the tier that fits.",
     url: siteUrl,
     siteName: "Blank Collar VC",
     type: "website",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blank Collar VC",
     description:
-      "Pre-seed capital up to $25K, plus operators and an agentic OS to scale your startup.",
+      "Pre-seed for the AI era. Capital up to CHF 50K, knowledge, and a free agentic OS — pick the tier that fits.",
   },
 };
 

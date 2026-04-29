@@ -86,30 +86,30 @@ export default function OG() {
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <div
             style={{
-              fontSize: 96,
+              fontSize: 92,
               fontWeight: 500,
               lineHeight: 0.96,
               letterSpacing: "-0.04em",
-              maxWidth: 1000,
+              maxWidth: 1080,
               display: "flex",
               flexDirection: "column",
             }}
           >
-            <span>Capital is easy.</span>
+            <span>AI changed what founders build.</span>
             <span style={{ color: "rgba(244, 241, 234, 0.45)" }}>
-              Building the company is the hard part.
+              We changed what VCs deliver.
             </span>
           </div>
           <div
             style={{
-              fontSize: 26,
+              fontSize: 24,
               color: "rgba(244, 241, 234, 0.7)",
-              maxWidth: 900,
+              maxWidth: 1000,
               lineHeight: 1.4,
               display: "flex",
             }}
           >
-            Up to $25K, plus the knowledge and agentic OS to actually run and scale.
+            Pre-seed for the AI era. Up to CHF 50K, the knowledge to scale, and a free agentic OS — pick the tier that fits.
           </div>
         </div>
 
