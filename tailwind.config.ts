@@ -5,14 +5,19 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "ui-serif", "Georgia", "serif"],
+        sans: [
+          '"Helvetica Neue"',
+          "Helvetica",
+          "var(--font-roboto)",
+          "Arial",
+          "sans-serif",
+        ],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
         ink: {
-          DEFAULT: "#0A0A0A",
-          soft: "#111111",
+          DEFAULT: "#0E1320",
+          soft: "#15192A",
         },
         bone: {
           DEFAULT: "#F4F1EA",
@@ -24,6 +29,12 @@ const config: Config = {
       },
       letterSpacing: {
         tightest: "-0.04em",
+        tighter2: "-0.025em",
+      },
+      fontSize: {
+        "display-xl": ["clamp(64px, 12vw, 200px)", { lineHeight: "0.92", letterSpacing: "-0.045em" }],
+        "display-lg": ["clamp(48px, 8vw, 128px)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
+        "display-md": ["clamp(36px, 5.5vw, 88px)", { lineHeight: "1.0", letterSpacing: "-0.035em" }],
       },
     },
   },

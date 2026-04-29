@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
-import { CursorAura } from "@/components/CursorAura";
 
-const sans = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
   display: "swap",
 });
 
-const display = Instrument_Serif({
+const robotoMono = Roboto_Mono({
   subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -49,12 +42,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable} ${mono.variable}`}>
-      <body className="grain font-sans bg-bone text-ink">
-        <SmoothScroll>
-          <CursorAura />
-          {children}
-        </SmoothScroll>
+    <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
+      <body className="font-sans bg-bone text-ink antialiased">
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
