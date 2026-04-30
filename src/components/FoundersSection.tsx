@@ -23,7 +23,7 @@ export function FoundersSection() {
           className="mb-12 flex items-center gap-3 eyebrow text-ink/60"
         >
           <span className="h-px w-8 bg-ink/30" />
-          02b — Behind the fund
+          02 — Behind the fund
         </motion.div>
 
         <div className="grid gap-12 md:grid-cols-12">

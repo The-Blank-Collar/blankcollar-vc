@@ -20,8 +20,8 @@ const steps = [
   {
     n: "03",
     label: "Capital wired",
-    body: "Up to CHF 50K, founder-friendly terms. SAFE or equivalent.",
-    detail: "≤ CHF 50K",
+    body: "Up to CHF 50'000, founder-friendly terms. SAFE or equivalent.",
+    detail: "≤ CHF 50'000",
   },
   {
     n: "04",

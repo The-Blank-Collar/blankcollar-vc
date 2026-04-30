@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const rows = [
-  { feature: "Cheque size", trad: "CHF 50K – 250K (often diluted)", us: "Up to CHF 50K, founder-friendly" },
+  { feature: "Cheque size", trad: "CHF 50'000 – 250'000 (often diluted)", us: "Up to CHF 50'000, founder-friendly" },
   { feature: "Decision time", trad: "Weeks of meetings", us: "14 days, max" },
   { feature: "After the wire", trad: "Quarterly check-ins", us: "Hands-on help on the hard things" },
   { feature: "Pitch deck & data room", trad: "“Send us when ready”", us: "Co-built with you, week one" },

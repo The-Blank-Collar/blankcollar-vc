@@ -24,7 +24,7 @@ const layers = [
     name: "Capital",
     site: "blankcollar.vc",
     voice: "human",
-    description: "Up to CHF 50K, pre-seed, founder-friendly terms.",
+    description: "Up to CHF 50'000, pre-seed, founder-friendly terms.",
     current: true,
   },
 ];

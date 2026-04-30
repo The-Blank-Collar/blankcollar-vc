@@ -78,7 +78,7 @@ export default function OG() {
               display: "flex",
             }}
           >
-            ● Pre-seed · Operator-led
+            ● Pre-Seed · AI-era VC
           </div>
         </div>
 
@@ -109,7 +109,7 @@ export default function OG() {
               display: "flex",
             }}
           >
-            Pre-seed for the AI era. Up to CHF 50K, the knowledge to scale, and a free agentic OS — pick the tier that fits.
+            Pre-seed for the AI era. Up to CHF 50'000, the knowledge to scale, and a free agentic OS — three ways we work.
           </div>
         </div>
 

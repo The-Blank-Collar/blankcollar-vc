@@ -9,6 +9,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { SplitWords } from "@/components/SplitWords";
 import { CountUp } from "@/components/CountUp";
+import { formatSwissNumber } from "@/lib/lang";
 import { StackDiagram } from "@/components/StackDiagram";
 import { ProcessFlow } from "@/components/ProcessFlow";
 import { ComparisonMatrix } from "@/components/ComparisonMatrix";
@@ -166,12 +167,11 @@ function Hero() {
           >
             We&apos;re the pre-seed VC arm of Blank Collar — built for the AI
             era, based in Switzerland. Up to{" "}
-            <span className="font-medium text-ink">CHF 50K</span> in capital,
-            the knowledge from{" "}
+            <span className="font-medium text-ink">CHF 50&apos;000</span> in
+            capital, the knowledge from{" "}
             <span className="font-bot text-ink">theblankcollar.com</span>, and a
             fully-configured{" "}
-            <span className="font-bot text-ink">blankcollar.ai</span>. Pick the
-            tier that fits where you&apos;re at.
+            <span className="font-bot text-ink">blankcollar.ai</span>.
           </motion.p>
 
           <motion.div
@@ -222,7 +222,7 @@ function Hero() {
 
 function Marquee() {
   const items = [
-    "Pre-seed cheques up to CHF 50K",
+    "Pre-seed cheques up to CHF 50'000",
     "Decisions in 14 days",
     "Knowledge from theblankcollar.com",
     "Free, configured seat on blankcollar.ai",
@@ -274,7 +274,7 @@ function StatBand() {
                 {s.label}
               </div>
               <div className="mt-3 text-4xl font-medium tracking-tighter md:text-5xl tabular">
-                <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} />
+                <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} format={formatSwissNumber} />
               </div>
             </motion.div>
           ))}
@@ -344,7 +344,7 @@ function Stack() {
       </div>
       <div className="relative z-10 px-6 py-24 md:px-10 md:py-36">
         <div className="mx-auto max-w-6xl">
-          <EyebrowDark n="02" label="The Stack" />
+          <EyebrowDark n="03" label="The Stack" />
 
           <h2 className="font-medium text-display-md text-balance">
             <span className="block">
@@ -379,7 +379,7 @@ function Tiers() {
   return (
     <section id="tiers" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="02b" label="How we work" />
+        <Eyebrow n="04" label="How we work" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -436,7 +436,7 @@ function Toolkit() {
   return (
     <section id="toolkit" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="03" label="The First-Time Founder Toolkit" />
+        <Eyebrow n="05" label="The First-Time Founder Toolkit" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -472,7 +472,7 @@ function Network() {
   return (
     <section className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="04" label="In practice" />
+        <Eyebrow n="06" label="In practice" />
 
         <div className="grid gap-14 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
@@ -534,7 +534,7 @@ function Process() {
   return (
     <section id="process" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="05" label="Process" />
+        <Eyebrow n="07" label="Process" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -557,7 +557,7 @@ function Compare() {
   return (
     <section className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="06" label="vs Traditional pre-seed" />
+        <Eyebrow n="08" label="vs Traditional pre-seed" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -591,7 +591,7 @@ function PortfolioSection() {
   return (
     <section id="portfolio" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <Eyebrow n="07" label="Portfolio" />
+        <Eyebrow n="09" label="Portfolio" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
@@ -623,7 +623,7 @@ function PortfolioSection() {
 }
 
 const terms = [
-  { k: "Cheque", v: "Up to CHF 50,000" },
+  { k: "Cheque", v: "Up to CHF 50'000" },
   { k: "Stage", v: "Pre-seed / Day 0" },
   { k: "Geography", v: "Global, remote-first" },
   { k: "Speed", v: "Decisions in 14 days" },
@@ -635,7 +635,7 @@ function Terms() {
   return (
     <section id="terms" className="relative bg-ink text-bone px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <EyebrowDark n="08" label="Terms" />
+        <EyebrowDark n="11" label="Terms" />
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">

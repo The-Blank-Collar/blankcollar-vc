@@ -346,7 +346,7 @@ const steps: StepConfig[] = [
       <div className="grid gap-5">
         <Field label="How much are you raising in this round" hint="Total round, not just our cheque.">
           <Input
-            placeholder="e.g. CHF 250K"
+            placeholder="e.g. CHF 250'000"
             value={data.raisingAmount}
             onChange={(e) => set("raisingAmount", e.target.value)}
             onEnterContinue={next}

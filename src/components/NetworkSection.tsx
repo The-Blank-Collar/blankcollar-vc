@@ -21,7 +21,7 @@ export function NetworkSection() {
           className="mb-12 flex items-center gap-3 eyebrow text-bone/60"
         >
           <span className="h-px w-8 bg-bone/30" />
-          07b — FYI
+          10 — FYI
         </motion.div>
 
         <div className="grid gap-14 md:grid-cols-12 md:items-center">
