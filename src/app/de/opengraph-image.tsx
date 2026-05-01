@@ -48,73 +48,49 @@ export default function OG() {
           }}
         />
 
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4, width: 40, height: 40 }}>
-              <div style={{ display: "flex", flex: 1, gap: 4 }}>
-                <div style={{ flex: 1, background: "#FA2BB8" }} />
-                <div style={{ flex: 1, background: "#E8FF5C" }} />
-              </div>
-              <div style={{ display: "flex", flex: 1, gap: 4 }}>
-                <div style={{ flex: 1, background: "#E8FF5C" }} />
-                <div style={{ flex: 1, background: "#FA2BB8" }} />
-              </div>
+        {/* Top: logo only */}
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4, width: 40, height: 40 }}>
+            <div style={{ display: "flex", flex: 1, gap: 4 }}>
+              <div style={{ flex: 1, background: "#FA2BB8" }} />
+              <div style={{ flex: 1, background: "#E8FF5C" }} />
             </div>
-            <div style={{ display: "flex", fontSize: 20, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "monospace" }}>
-              <span style={{ fontWeight: 500 }}>blankcollar</span>
-              <span style={{ color: "rgba(244, 241, 234, 0.5)" }}>&nbsp;/ vc</span>
+            <div style={{ display: "flex", flex: 1, gap: 4 }}>
+              <div style={{ flex: 1, background: "#E8FF5C" }} />
+              <div style={{ flex: 1, background: "#FA2BB8" }} />
             </div>
           </div>
-          <div
-            style={{
-              fontSize: 16,
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              fontFamily: "monospace",
-              color: "rgba(244, 241, 234, 0.5)",
-              display: "flex",
-            }}
-          >
-            ● Pre-Seed · KI-Ära VC
+          <div style={{ display: "flex", fontSize: 20, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "monospace" }}>
+            <span style={{ fontWeight: 500 }}>blankcollar</span>
+            <span style={{ color: "rgba(244, 241, 234, 0.5)" }}>&nbsp;/ vc</span>
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          <div
-            style={{
-              fontSize: 88,
-              fontWeight: 500,
-              lineHeight: 0.96,
-              letterSpacing: "-0.04em",
-              maxWidth: 1080,
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <span>KI hat verändert,</span>
-            <span>was Gründer bauen.</span>
-            <span style={{ color: "rgba(244, 241, 234, 0.45)" }}>
-              Wir haben verändert, was VCs liefern.
-            </span>
-          </div>
-          <div
-            style={{
-              fontSize: 24,
-              color: "rgba(244, 241, 234, 0.7)",
-              maxWidth: 1000,
-              lineHeight: 1.4,
-              display: "flex",
-            }}
-          >
-            Pre-Seed für die KI-Ära. Wissen + agentisches OS für jeden Gründer — und bis zu CHF 50&apos;000 Kapital, wenn es passt.
-          </div>
+        {/* Center: headline only */}
+        <div
+          style={{
+            fontSize: 92,
+            fontWeight: 500,
+            lineHeight: 0.96,
+            letterSpacing: "-0.04em",
+            maxWidth: 1080,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <span>KI hat verändert,</span>
+          <span>was Gründer bauen.</span>
+          <span style={{ color: "rgba(244, 241, 234, 0.45)" }}>
+            Wir haben verändert, was VCs liefern.
+          </span>
         </div>
 
+        {/* Bottom: domains */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            gap: 24,
             fontSize: 18,
             letterSpacing: "0.18em",
             textTransform: "uppercase",
@@ -122,14 +98,11 @@ export default function OG() {
             color: "rgba(244, 241, 234, 0.5)",
           }}
         >
-          <div style={{ display: "flex", gap: 24 }}>
-            <span>blankcollar.vc</span>
-            <span style={{ color: "rgba(244, 241, 234, 0.25)" }}>●</span>
-            <span>theblankcollar.com</span>
-            <span style={{ color: "rgba(244, 241, 234, 0.25)" }}>●</span>
-            <span>blankcollar.ai</span>
-          </div>
-          <div style={{ color: "#E8FF5C", display: "flex" }}>Bewerben →</div>
+          <span>blankcollar.vc</span>
+          <span style={{ color: "rgba(244, 241, 234, 0.25)" }}>●</span>
+          <span>theblankcollar.com</span>
+          <span style={{ color: "rgba(244, 241, 234, 0.25)" }}>●</span>
+          <span>blankcollar.ai</span>
         </div>
       </div>
     ),
