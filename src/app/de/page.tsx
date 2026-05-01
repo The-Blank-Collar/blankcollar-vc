@@ -1,9 +1,9 @@
 import { LangProvider } from "@/lib/lang";
 import { Site } from "@/components/Site";
 
-export default function Page() {
+export default function DePage() {
   return (
-    <LangProvider lang="en">
+    <LangProvider lang="de">
       <Site />
     </LangProvider>
   );

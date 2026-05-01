@@ -1,52 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const rows = [
-  { feature: "Cheque size", trad: "CHF 50'000 – 250'000 (often diluted)", us: "Up to CHF 50'000, founder-friendly" },
-  { feature: "Decision time", trad: "Weeks of meetings", us: "14 days, max" },
-  { feature: "After the wire", trad: "Quarterly check-ins", us: "Hands-on help on the hard things" },
-  { feature: "Pitch deck & data room", trad: "“Send us when ready”", us: "Co-built with you, week one" },
-  { feature: "Business model help", trad: "Intros to advisors", us: "Pricing, unit economics, moats" },
-  { feature: "AI / automation", trad: "“Have you tried ChatGPT?”", us: "We set up blankcollar.ai for you" },
-  { feature: "Hiring help", trad: "Intros to recruiters", us: "Playbooks, JDs, comp benchmarks" },
-  { feature: "Board involvement", trad: "Observer seat", us: "None at this stage" },
-  { feature: "Network", trad: "LP intros", us: "Knowledge + agents + portfolio" },
-];
-
 export function ComparisonMatrix() {
+  const t = useDict();
+  const rows = t.compare.rows;
+
   return (
     <div className="overflow-hidden rounded-3xl border border-ink/10">
-      <div className="grid grid-cols-3 border-b border-ink/10 bg-bone-soft/60">
+      <div className="hidden md:grid md:grid-cols-3 border-b border-ink/10 bg-bone-soft/60">
         <div className="font-bot text-[11px] uppercase tracking-mono text-ink/50 px-5 py-4 md:px-8 md:py-5">
-          Feature
+          {t.compare.headerFeature}
         </div>
         <div className="font-bot text-[11px] uppercase tracking-mono text-ink/50 px-5 py-4 md:px-8 md:py-5 border-l border-ink/10">
-          Traditional pre-seed
+          {t.compare.headerTrad}
         </div>
         <div className="font-bot text-[11px] uppercase tracking-mono text-ink px-5 py-4 md:px-8 md:py-5 border-l border-ink/10 bg-accent/30">
-          blankcollar.vc
+          {t.compare.headerUs}
         </div>
       </div>
+
       {rows.map((row, i) => (
         <motion.div
           key={row.feature}
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-5%" }}
+          viewport={{ once: true, amount: 0.05 }}
           transition={{ duration: 0.5, ease, delay: i * 0.04 }}
-          className="grid grid-cols-3 border-b border-ink/10 last:border-b-0 hover:bg-ink/[0.02] transition-colors"
+          className="border-b border-ink/10 last:border-b-0 transition-colors md:grid md:grid-cols-3 md:hover:bg-ink/[0.02]"
         >
-          <div className="px-5 py-5 md:px-8 md:py-6 text-[15px] md:text-base text-ink/80">
+          <div className="px-5 py-4 md:px-8 md:py-6 text-base font-medium text-ink md:font-normal md:text-[15px] md:text-ink/80">
             {row.feature}
           </div>
-          <div className="px-5 py-5 md:px-8 md:py-6 text-[15px] md:text-base text-ink/55 border-l border-ink/10 italic">
-            {row.trad}
+          <div className="px-5 pb-3 md:px-8 md:py-6 md:border-l md:border-ink/10 md:flex md:items-center">
+            <span className="md:hidden font-bot text-[10px] uppercase tracking-mono text-ink/45 mr-2">
+              {t.compare.inlineTradLabel}
+            </span>
+            <span className="text-[14px] md:text-[15px] text-ink/55 italic">{row.trad}</span>
           </div>
-          <div className="px-5 py-5 md:px-8 md:py-6 text-[15px] md:text-base text-ink border-l border-ink/10 bg-accent/[0.08] font-medium">
-            {row.us}
+          <div className="px-5 pb-4 md:px-8 md:py-6 md:border-l md:border-ink/10 md:bg-accent/[0.08] md:flex md:items-center">
+            <span className="md:hidden font-bot text-[10px] uppercase tracking-mono mr-2">
+              <span className="rounded bg-accent/40 px-1.5 py-0.5">blankcollar.vc</span>
+            </span>
+            <span className="text-[14px] md:text-[15px] md:text-base text-ink font-medium">{row.us}</span>
           </div>
         </motion.div>
       ))}

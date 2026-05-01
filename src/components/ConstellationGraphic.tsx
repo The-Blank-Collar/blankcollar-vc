@@ -1,33 +1,10 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const services = [
-  { angle: 0, label: "Pitch deck" },
-  { angle: 36, label: "Data room" },
-  { angle: 72, label: "Business model" },
-  { angle: 108, label: "Fundraising" },
-  { angle: 144, label: "Hiring" },
-  { angle: 180, label: "Sales" },
-  { angle: 216, label: "Pricing" },
-  { angle: 252, label: "Finance" },
-  { angle: 288, label: "Legal" },
-  { angle: 324, label: "Brand" },
-];
-
-const agents = [
-  { angle: 18, label: "agent.research" },
-  { angle: 90, label: "agent.outreach" },
-  { angle: 162, label: "agent.ops" },
-  { angle: 234, label: "agent.report" },
-  { angle: 306, label: "agent.support" },
-];
-
-// All animations are driven by variants on a single HTML parent so the
-// IntersectionObserver fires reliably (including on mobile, where
-// per-SVG-element whileInView can fail to trigger).
 const container: Variants = {
   hidden: {},
   show: {
@@ -42,20 +19,12 @@ const ring: Variants = {
 
 const line: Variants = {
   hidden: { pathLength: 0, opacity: 0 },
-  show: {
-    pathLength: 1,
-    opacity: 1,
-    transition: { duration: 0.6, ease },
-  },
+  show: { pathLength: 1, opacity: 1, transition: { duration: 0.6, ease } },
 };
 
 const node: Variants = {
   hidden: { scale: 0, opacity: 0 },
-  show: {
-    scale: 1,
-    opacity: 1,
-    transition: { duration: 0.5, ease },
-  },
+  show: { scale: 1, opacity: 1, transition: { duration: 0.5, ease } },
 };
 
 const center: Variants = {
@@ -64,10 +33,20 @@ const center: Variants = {
 };
 
 export function ConstellationGraphic() {
+  const t = useDict();
   const innerR = 130;
   const outerR = 230;
   const size = 540;
   const c = size / 2;
+
+  const services = t.network.knowledgeNodes.map((label, i) => ({
+    angle: (360 / t.network.knowledgeNodes.length) * i,
+    label,
+  }));
+  const agents = t.network.agentNodes.map((label, i) => ({
+    angle: (360 / t.network.agentNodes.length) * i + 18,
+    label,
+  }));
 
   return (
     <motion.div
@@ -82,7 +61,6 @@ export function ConstellationGraphic() {
         className="h-full w-full overflow-visible"
         aria-hidden
       >
-        {/* Outer ring (knowledge) */}
         <motion.circle
           variants={ring}
           cx={c}
@@ -93,7 +71,6 @@ export function ConstellationGraphic() {
           strokeOpacity={0.15}
           strokeDasharray="2 6"
         />
-        {/* Inner ring (agents) */}
         <motion.circle
           variants={ring}
           cx={c}
@@ -105,7 +82,6 @@ export function ConstellationGraphic() {
           strokeDasharray="3 5"
         />
 
-        {/* Connection lines from center to nodes */}
         {[...services, ...agents].map((n, i) => {
           const r = i < services.length ? outerR : innerR;
           const rad = (n.angle * Math.PI) / 180;
@@ -125,7 +101,6 @@ export function ConstellationGraphic() {
           );
         })}
 
-        {/* Center: Founder */}
         <motion.g variants={center}>
           <circle cx={c} cy={c} r={48} fill="currentColor" />
           <text
@@ -134,10 +109,10 @@ export function ConstellationGraphic() {
             textAnchor="middle"
             fontFamily="Helvetica Neue, Helvetica, sans-serif"
             fontWeight="500"
-            fontSize="14"
+            fontSize="13"
             fill="white"
           >
-            FOUNDER
+            {t.network.centerLabel}
           </text>
           <text
             x={c}
@@ -148,11 +123,10 @@ export function ConstellationGraphic() {
             fill="rgba(232, 255, 92, 0.85)"
             letterSpacing="0.15em"
           >
-            ● YOU
+            {t.network.centerSub}
           </text>
         </motion.g>
 
-        {/* Inner ring nodes — agents */}
         {agents.map((a) => {
           const rad = (a.angle * Math.PI) / 180;
           const x = c + Math.cos(rad) * innerR;
@@ -176,7 +150,6 @@ export function ConstellationGraphic() {
           );
         })}
 
-        {/* Outer ring nodes — knowledge domains */}
         {services.map((s) => {
           const rad = (s.angle * Math.PI) / 180;
           const x = c + Math.cos(rad) * outerR;
@@ -200,15 +173,14 @@ export function ConstellationGraphic() {
         })}
       </svg>
 
-      {/* Legend */}
       <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 font-bot text-[11px] uppercase tracking-mono text-ink/55">
         <span className="flex items-center gap-2">
           <span className="inline-block h-2 w-2 rounded-full bg-ink" />
-          Knowledge we share (human)
+          {t.network.legendKnowledge}
         </span>
         <span className="flex items-center gap-2">
           <span className="inline-block h-2 w-2 rounded-full bg-accent ring-1 ring-ink/30" />
-          Agents we set up (bot)
+          {t.network.legendAgents}
         </span>
       </div>
     </motion.div>

@@ -1,9 +1,9 @@
 import { LangProvider } from "@/lib/lang";
 import { ApplyContent } from "@/components/ApplyContent";
 
-export default function ApplyPage() {
+export default function DeApplyPage() {
   return (
-    <LangProvider lang="en">
+    <LangProvider lang="de">
       <ApplyContent />
     </LangProvider>
   );

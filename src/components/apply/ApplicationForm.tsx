@@ -11,6 +11,7 @@ import {
 } from "react";
 import { Field, FileDrop, Input, Textarea } from "./Inputs";
 import { CardGroup, type CardOption } from "./CardGroup";
+import { useDict } from "@/lib/lang";
 import {
   type ApplicationData,
   type BiggestRisk,
@@ -632,6 +633,7 @@ const stepWithinSection = (i: number): number => {
 // ----- Main component -----------------------------------------------------
 
 export function ApplicationForm() {
+  const t = useDict();
   const [step, setStep] = useState(0);
   const [data, setData] = useState<ApplicationData>(initialData);
   const [pitchDeckFile, setPitchDeckFile] = useState<File | null>(null);
@@ -775,6 +777,11 @@ export function ApplicationForm() {
     );
   }
 
+  const sectionDisplay = (id: string): string => {
+    const labels = t.apply.sectionsLabels;
+    return labels[id as keyof typeof labels] || id;
+  };
+
   return (
     <div ref={formRef} className="relative">
       {/* Top progress + section indicator */}
@@ -783,13 +790,13 @@ export function ApplicationForm() {
           <div className="flex-1">
             <div className="mb-2 flex items-center justify-between font-bot text-[11px] uppercase tracking-mono text-bone/60">
               <span>
-                {currentSection.label}
+                {sectionDisplay(currentSection.id)}
                 {currentSection.steps > 1 && (
                   <span className="text-bone/35"> · {currentStepInSection + 1}/{currentSection.steps}</span>
                 )}
               </span>
               <span className="tabular">
-                Step {step + 1} of {totalScreens}
+                {t.apply.stepOf} {step + 1} {t.apply.of} {totalScreens}
               </span>
             </div>
             <div className="h-1 overflow-hidden rounded-full bg-bone/10">
@@ -838,7 +845,7 @@ export function ApplicationForm() {
                   disabled={step === 0}
                   className="font-bot text-[12px] uppercase tracking-mono text-bone/60 transition-colors hover:text-bone disabled:opacity-30"
                 >
-                  ← Back
+                  ← {t.common.back}
                 </button>
                 <div className="flex items-center gap-4">
                   {error && (
@@ -849,12 +856,12 @@ export function ApplicationForm() {
                     onClick={next}
                     className="rounded-full bg-accent px-7 py-3 font-bot text-[12px] uppercase tracking-mono text-ink transition-colors hover:bg-accent/85"
                   >
-                    Continue →
+                    {t.common.continue} →
                   </button>
                 </div>
               </div>
               <div className="mt-3 text-right font-bot text-[10px] uppercase tracking-mono text-bone/35">
-                Press <kbd className="rounded border border-bone/15 px-1.5 py-0.5">Enter</kbd> to continue
+                {t.common.pressEnter} <kbd className="rounded border border-bone/15 px-1.5 py-0.5">Enter</kbd> {t.common.enterToContinue}
               </div>
             </motion.div>
           )}
@@ -954,6 +961,7 @@ function ReviewStep({
   submitting,
   submitError,
 }: ReviewProps) {
+  const t = useDict();
   return (
     <motion.div
       key="review"
@@ -963,14 +971,12 @@ function ReviewStep({
       transition={{ duration: 0.4, ease }}
     >
       <h1 className="mb-3 text-3xl font-medium tracking-tighter text-bone md:text-4xl">
-        Look it over.
+        {t.apply.review.title}
       </h1>
-      <p className="mb-10 text-bone/65">
-        Last chance to edit anything. Add your pitch deck if you have one.
-      </p>
+      <p className="mb-10 text-bone/65">{t.apply.review.sub}</p>
 
       <div className="mb-10 grid gap-5">
-        <Field label="Pitch deck (file upload)" optional>
+        <Field label={t.apply.review.uploadLabel} optional>
           <FileDrop file={pitchDeckFile} onFile={setPitchDeckFile} />
         </Field>
       </div>
@@ -1019,7 +1025,7 @@ function ReviewStep({
           onClick={back}
           className="font-bot text-[12px] uppercase tracking-mono text-bone/60 transition-colors hover:text-bone"
         >
-          ← Back
+          ← {t.common.back}
         </button>
         <div className="flex items-center gap-4">
           {submitError && (
@@ -1031,7 +1037,7 @@ function ReviewStep({
             disabled={submitting}
             className="rounded-full bg-accent px-7 py-3.5 font-bot text-[12px] uppercase tracking-mono text-ink transition-colors hover:bg-accent/85 disabled:opacity-50"
           >
-            {submitting ? "Sending…" : "Submit application →"}
+            {submitting ? t.common.sending : t.apply.review.submit}
           </button>
         </div>
       </div>
@@ -1042,12 +1048,13 @@ function ReviewStep({
 // ----- Saved dot + Feedback bubble ----------------------------------------
 
 function SavedDot({ tick }: { tick: number }) {
+  const t = useDict();
   const [pulse, setPulse] = useState(false);
   useEffect(() => {
     if (tick === 0) return;
     setPulse(true);
-    const t = setTimeout(() => setPulse(false), 600);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setPulse(false), 600);
+    return () => clearTimeout(timer);
   }, [tick]);
   return (
     <div className="hidden items-center gap-2 font-bot text-[10px] uppercase tracking-mono text-bone/45 sm:flex">
@@ -1055,7 +1062,7 @@ function SavedDot({ tick }: { tick: number }) {
         animate={pulse ? { scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] } : {}}
         className="block h-1.5 w-1.5 rounded-full bg-accent"
       />
-      Saved
+      {t.common.saved}
     </div>
   );
 }
@@ -1097,6 +1104,7 @@ function Confirmation({
   companyName: string;
   founderEmail: string;
 }) {
+  const t = useDict();
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -1106,35 +1114,21 @@ function Confirmation({
     >
       <div className="mb-10 flex items-center gap-3 font-bot text-[11px] uppercase tracking-mono text-accent">
         <span className="dot-pulse h-1.5 w-1.5 rounded-full bg-accent" />
-        Application received
+        {t.apply.confirm.received}
       </div>
       <h1 className="text-4xl font-medium tracking-tighter text-bone md:text-6xl">
-        Thanks, {founderName.split(" ")[0] || "founder"}.
+        {t.apply.confirm.thanks(founderName.split(" ")[0] || "")}
       </h1>
       <p className="mt-6 max-w-2xl text-lg text-bone/75 leading-relaxed">
-        We&apos;ve got your application for <strong>{companyName || "your company"}</strong>.
-        A confirmation has been sent to{" "}
-        <span className="font-bot text-accent">{founderEmail}</span>.
+        {t.apply.confirm.bodyPre}
+        <strong>{companyName || "your company"}</strong>
+        {t.apply.confirm.bodyMid}
+        <span className="font-bot text-accent">{founderEmail}</span>
+        {t.apply.confirm.bodyEnd}
       </p>
 
       <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-bone/10 bg-bone/10 md:grid-cols-3">
-        {[
-          {
-            n: "Day 1–3",
-            label: "Read",
-            body: "We read every application. No deck templates, no bots scoring you.",
-          },
-          {
-            n: "Day 3–10",
-            label: "Conversation",
-            body: "If there's signal, we'll book a 30-min call. Camera optional.",
-          },
-          {
-            n: "Day 14",
-            label: "Decision",
-            body: "Yes / no / honest reason. If yes, paperwork starts the next morning.",
-          },
-        ].map((s, i) => (
+        {t.apply.confirm.timeline.map((s, i) => (
           <motion.div
             key={s.n}
             initial={{ opacity: 0, y: 16 }}
@@ -1156,54 +1150,28 @@ function Confirmation({
       </div>
 
       <div className="mt-12 grid gap-4 md:grid-cols-3">
-        <a
-          href="https://www.theblankcollar.com"
-          target="_blank"
-          rel="noreferrer"
-          className="group flex flex-col rounded-2xl border border-bone/15 p-5 transition-colors hover:bg-bone/[0.04]"
-        >
-          <div className="font-bot text-[11px] uppercase tracking-mono text-bone/50">
-            While you wait — 01
-          </div>
-          <div className="mt-2 text-lg font-medium text-bone">theblankcollar.com</div>
-          <p className="mt-1 text-[13px] text-bone/60">
-            See the knowledge layer in action.
-          </p>
-        </a>
-        <a
-          href="https://www.blankcollar.ai"
-          target="_blank"
-          rel="noreferrer"
-          className="group flex flex-col rounded-2xl border border-bone/15 p-5 transition-colors hover:bg-bone/[0.04]"
-        >
-          <div className="font-bot text-[11px] uppercase tracking-mono text-bone/50">
-            While you wait — 02
-          </div>
-          <div className="mt-2 text-lg font-medium text-bone">blankcollar.ai</div>
-          <p className="mt-1 text-[13px] text-bone/60">
-            Browse the agentic OS we&apos;ll set up for you.
-          </p>
-        </a>
-        <a
-          href="/#portfolio"
-          className="group flex flex-col rounded-2xl border border-bone/15 p-5 transition-colors hover:bg-bone/[0.04]"
-        >
-          <div className="font-bot text-[11px] uppercase tracking-mono text-bone/50">
-            While you wait — 03
-          </div>
-          <div className="mt-2 text-lg font-medium text-bone">Portfolio</div>
-          <p className="mt-1 text-[13px] text-bone/60">
-            Founders we&apos;ve already helped.
-          </p>
-        </a>
+        {t.apply.confirm.whileItems.map((item, i) => (
+          <a
+            key={item.title}
+            href={item.href}
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel="noreferrer"
+            className="group flex flex-col rounded-2xl border border-bone/15 p-5 transition-colors hover:bg-bone/[0.04]"
+          >
+            <div className="font-bot text-[11px] uppercase tracking-mono text-bone/50">
+              {t.apply.confirm.whileYouWait}{String(i + 1).padStart(2, "0")}
+            </div>
+            <div className="mt-2 text-lg font-medium text-bone">{item.title}</div>
+            <p className="mt-1 text-[13px] text-bone/60">{item.body}</p>
+          </a>
+        ))}
       </div>
 
       <div className="mt-12 rounded-2xl border border-bone/10 bg-bone/[0.03] p-5 text-[13.5px] leading-relaxed text-bone/65">
         <span className="font-bot text-[10px] uppercase tracking-mono text-accent">
           agent.review ●
-        </span>{" "}
-        If anything urgent comes up, just reply to the confirmation email. It
-        comes from a real human inbox.
+        </span>
+        {t.apply.confirm.replyNote}
       </div>
     </motion.div>
   );

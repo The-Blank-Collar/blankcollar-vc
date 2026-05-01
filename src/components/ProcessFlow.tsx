@@ -1,44 +1,14 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const steps = [
-  {
-    n: "01",
-    label: "Apply",
-    body: "Send us a paragraph and a link. No deck required, no warm intro needed.",
-    detail: "~5 min",
-  },
-  {
-    n: "02",
-    label: "Decision",
-    body: "We respond in 14 days max. Yes, no, or honest reason why.",
-    detail: "≤ 14 days",
-  },
-  {
-    n: "03",
-    label: "Capital wired",
-    body: "Up to CHF 50'000, founder-friendly terms. SAFE or equivalent.",
-    detail: "≤ CHF 50'000",
-  },
-  {
-    n: "04",
-    label: "Knowledge transfer",
-    body: "We sit with you on the hard stuff — pitch deck, data room, business model, hiring.",
-    detail: "Week 1+",
-  },
-  {
-    n: "05",
-    label: "OS configured",
-    body: "We set up blankcollar.ai for you. Your agents, your memory, codifying our knowledge.",
-    detail: "Free, forever",
-  },
-];
-
 export function ProcessFlow() {
   const reduce = useReducedMotion();
+  const t = useDict();
+  const steps = t.process.steps;
 
   return (
     <div className="relative">
@@ -54,7 +24,7 @@ export function ProcessFlow() {
           >
             <div className="flex items-center justify-between">
               <span className="font-bot text-[11px] uppercase tracking-mono text-ink/50">
-                Step {step.n}
+                {t.process.stepLabel} {step.n}
               </span>
               <span className="font-bot text-[11px] uppercase tracking-mono text-ink/40 tabular">
                 {step.detail}

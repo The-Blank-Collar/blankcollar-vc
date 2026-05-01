@@ -1,46 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
-
-type Tier = {
-  id: string;
-  name: string;
-  audience: string;
-  capital: string;
-  features: string[];
-  emphasis?: boolean;
-};
-
-const tiers: Tier[] = [
-  {
-    id: "access",
-    name: "The Access",
-    audience: "For founders who already have capital",
-    capital: "Knowledge + OS",
-    features: [
-      "Full access to theblankcollar.com playbooks",
-      "Configured seat on blankcollar.ai — your agentic OS",
-      "Pitch deck, data room, business model — co-built",
-      "Warm intros to seed / Series A when ready",
-    ],
-  },
-  {
-    id: "full-stack",
-    name: "The Full Stack",
-    audience: "For founders who need the lift",
-    capital: "Up to CHF 50'000 + everything in The Access",
-    features: [
-      "Up to CHF 50'000 on a founder-friendly SAFE",
-      "Full access to theblankcollar.com playbooks",
-      "Configured seat on blankcollar.ai — your agentic OS",
-      "Pitch deck, data room, business model — co-built",
-      "Warm intros to seed / Series A when ready",
-    ],
-    emphasis: true,
-  },
-];
 
 function CheckGlyph() {
   return (
@@ -59,6 +22,9 @@ function CheckGlyph() {
 }
 
 export function InvestmentTiers() {
+  const t = useDict();
+  const tiers = t.tiers.cards;
+
   return (
     <div className="grid gap-5 md:grid-cols-2">
       {tiers.map((tier, i) => (
@@ -74,12 +40,6 @@ export function InvestmentTiers() {
               : "border-ink/12 bg-bone-soft/40"
           }`}
         >
-          {tier.emphasis && (
-            <div className="absolute -top-3 left-7 rounded-full bg-accent px-2.5 py-1 font-bot text-[10px] uppercase tracking-mono text-ink">
-              Most common
-            </div>
-          )}
-
           <div className="mb-2 font-bot text-[11px] uppercase tracking-mono text-ink/55">
             {tier.audience}
           </div>

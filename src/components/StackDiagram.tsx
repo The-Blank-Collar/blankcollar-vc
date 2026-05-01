@@ -1,36 +1,15 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const layers = [
-  {
-    label: "L3",
-    name: "Agentic OS",
-    site: "blankcollar.ai",
-    voice: "bot",
-    description: "We set up your agentic OS so the knowledge above runs as automation, not advice.",
-  },
-  {
-    label: "L2",
-    name: "Knowledge",
-    site: "theblankcollar.com",
-    voice: "human",
-    description: "Hands-on help on the things first-time founders shouldn't have to figure out alone.",
-  },
-  {
-    label: "L1",
-    name: "Capital",
-    site: "blankcollar.vc",
-    voice: "human",
-    description: "Up to CHF 50'000, pre-seed, founder-friendly terms.",
-    current: true,
-  },
-];
-
 export function StackDiagram() {
   const reduce = useReducedMotion();
+  const t = useDict();
+  const layers = t.stack.layers;
+
   return (
     <div className="relative">
       <div className="grid gap-3">
@@ -58,7 +37,7 @@ export function StackDiagram() {
                 </span>
                 {layer.current && (
                   <span className="font-bot text-[10px] uppercase tracking-mono text-accent">
-                    ● You are here
+                    {t.stack.youAreHere}
                   </span>
                 )}
               </div>
@@ -81,7 +60,7 @@ export function StackDiagram() {
         className="mt-8 flex items-center gap-3 font-bot text-[11px] uppercase tracking-mono text-bone/50"
       >
         <span className="h-px flex-1 bg-bone/20" />
-        Together = a complete startup
+        {t.stack.together}
         <span className="h-px flex-1 bg-bone/20" />
       </motion.div>
     </div>

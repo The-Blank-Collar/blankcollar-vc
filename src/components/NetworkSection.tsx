@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { NetworkGraphic } from "./NetworkGraphic";
+import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 export function NetworkSection() {
+  const t = useDict();
+
   return (
     <section className="relative bg-ink text-bone px-6 py-24 md:px-10 md:py-36">
       <div className="absolute inset-0 -z-0" aria-hidden>
@@ -21,33 +24,24 @@ export function NetworkSection() {
           className="mb-12 flex items-center gap-3 eyebrow text-bone/60"
         >
           <span className="h-px w-8 bg-bone/30" />
-          10 — FYI
+          {t.netSection.eyebrow}
         </motion.div>
 
         <div className="grid gap-14 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
             <h2 className="font-medium text-display-md text-balance">
-              <span className="block">We know a lot</span>
-              <span className="block text-bone/50">of investors.</span>
+              <span className="block">{t.netSection.h1}</span>
+              <span className="block text-bone/50">{t.netSection.h2}</span>
             </h2>
             <p className="mt-7 max-w-md text-base leading-relaxed text-bone/70 md:text-lg text-balance">
-              Not a sales pitch — just useful to know. After years of building
-              and exiting our own startups, we&apos;ve kept the contacts: seed
-              funds, Series A, family offices, the right angels.
+              {t.netSection.p1}
             </p>
             <p className="mt-4 max-w-md text-base leading-relaxed text-bone/70 md:text-lg text-balance">
-              We don&apos;t co-invest, and we&apos;re not selling a
-              &quot;network.&quot; But when you&apos;re ready to raise the next
-              round, we&apos;ll make warm intros to the right ones — directly,
-              not via a portal.
+              {t.netSection.p2}
             </p>
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-bone/15 bg-bone/10 sm:grid-cols-3">
-              {[
-                { n: "Direct", label: "Relationships, not a portal" },
-                { n: "Pre-seed → B", label: "Across follow-on stages" },
-                { n: "Warm only", label: "We make the intro, not you" },
-              ].map((s, i) => (
+              {t.netSection.stats.map((s, i) => (
                 <motion.div
                   key={s.label}
                   initial={{ opacity: 0, y: 12 }}
