@@ -27,7 +27,7 @@ export function ComparisonMatrix() {
           Traditional pre-seed
         </div>
         <div className="font-bot text-[11px] uppercase tracking-mono text-ink px-5 py-4 md:px-8 md:py-5 border-l border-ink/10 bg-accent/30">
-          Blank Collar VC
+          blankcollar.vc
         </div>
       </div>
       {rows.map((row, i) => (

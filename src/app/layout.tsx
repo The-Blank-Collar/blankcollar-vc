@@ -31,22 +31,22 @@ const siteUrl = (() => {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Blank Collar VC — Capital. Knowledge. Agentic OS.",
+  title: "blankcollar.vc — Capital. Knowledge. Agentic OS.",
   description:
-    "A different kind of pre-seed VC, built for the AI era. Up to CHF 50'000, the knowledge to scale, and an agentic OS — three ways we work, we pick the right fit. Switzerland-based, global remit.",
+    "A different kind of pre-seed VC, built for the AI era. Knowledge from theblankcollar.com + an agentic OS for every founder we back — and up to CHF 50'000 in capital when the stage fits. Switzerland-based, global remit.",
   openGraph: {
-    title: "Blank Collar VC",
+    title: "blankcollar.vc",
     description:
-      "Pre-seed for the AI era. Capital up to CHF 50'000, knowledge, and a free agentic OS — we pick the right fit.",
+      "Pre-seed for the AI era. Knowledge + agentic OS for every founder we back — and up to CHF 50'000 when it fits.",
     url: siteUrl,
-    siteName: "Blank Collar VC",
+    siteName: "blankcollar.vc",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blank Collar VC",
+    title: "blankcollar.vc",
     description:
-      "Pre-seed for the AI era. Capital up to CHF 50'000, knowledge, and a free agentic OS — we pick the right fit.",
+      "Pre-seed for the AI era. Knowledge + agentic OS for every founder we back — and up to CHF 50'000 when it fits.",
   },
 };
 

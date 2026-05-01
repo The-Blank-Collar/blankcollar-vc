@@ -33,9 +33,9 @@ function Logo({ onDark = false }: { onDark?: boolean }) {
         <span className="block h-2 w-2 bg-pink" />
       </span>
       <span>
-        <span className="font-medium">Blank Collar</span>
+        <span className="font-medium">blankcollar</span>
         <span className={`${onDark ? "text-bone/50" : "text-ink/50"}`}>
-          {" "}/ VC
+          {" "}/ vc
         </span>
       </span>
     </div>
@@ -140,7 +140,7 @@ function Hero() {
             className="mb-7 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-bone-soft/70 px-3 py-1.5 eyebrow backdrop-blur"
           >
             <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink" />
-            The Blank Collar Family · Pre-seed
+            The blankcollar family · Pre-Seed
           </motion.div>
 
           <h1 className="font-medium text-display-xl text-balance max-w-[18ch]">
@@ -165,7 +165,7 @@ function Hero() {
             transition={{ duration: 0.7, ease, delay: 0.7 }}
             className="mt-7 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
           >
-            We&apos;re the pre-seed VC arm of Blank Collar — built for the AI
+            We&apos;re the pre-seed VC arm of blankcollar — built for the AI
             era, based in Switzerland. Up to{" "}
             <span className="font-medium text-ink">CHF 50&apos;000</span> in
             capital, the knowledge from{" "}
@@ -323,7 +323,7 @@ function Manifesto() {
             transition={{ duration: 0.7, ease, delay: 0.12 }}
             className="md:col-span-6 md:col-start-7 text-lg leading-relaxed text-ink/75 md:text-xl text-balance"
           >
-            Blank Collar VC writes the cheque, then gives you the knowledge
+            blankcollar.vc writes the cheque, then gives you the knowledge
             from <span className="font-bot text-ink">theblankcollar.com</span>{" "}
             and configures{" "}
             <span className="font-bot text-ink">blankcollar.ai</span> — our
@@ -383,10 +383,10 @@ function Tiers() {
 
         <h2 className="font-medium text-display-md text-balance">
           <span className="block">
-            <SplitWords text="One application." />
+            <SplitWords text="Two ways we work." />
           </span>
           <span className="block text-ink/40">
-            <SplitWords text="We pick the right fit." delay={0.18} />
+            <SplitWords text="We pick the fit." delay={0.18} />
           </span>
         </h2>
 
@@ -397,10 +397,10 @@ function Tiers() {
           transition={{ duration: 0.7, ease, delay: 0.2 }}
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
-          Different stages need different things. We work with founders in one
-          of three ways, depending on where they actually are. Once we&apos;ve
-          read your application, we&apos;ll come back with the fit that makes
-          sense for you.
+          Every founder we back gets the knowledge from theblankcollar.com and
+          a configured seat on blankcollar.ai. Whether we also write the
+          cheque — up to CHF 50&apos;000 — depends on your stage. We decide
+          which fit makes sense once we&apos;ve read your application.
         </motion.p>
 
         <div className="mt-14">
@@ -761,7 +761,7 @@ function Footer() {
         <div className="md:col-span-4">
           <Logo />
           <p className="mt-4 text-sm text-ink/60 max-w-xs leading-relaxed">
-            The pre-seed fund of the Blank Collar family. Capital, knowledge,
+            The pre-seed fund of the blankcollar family. Capital, knowledge,
             and an agentic OS — in one cheque.
           </p>
         </div>
@@ -795,7 +795,7 @@ function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl items-center justify-between border-t border-ink/10 pt-6 font-bot text-[11px] uppercase tracking-mono text-ink/50">
-        <span>© {year ?? ""} Blank Collar VC</span>
+        <span>© {year ?? ""} blankcollar.vc</span>
         <span>Work is for bots. Life is for humans.</span>
       </div>
     </footer>

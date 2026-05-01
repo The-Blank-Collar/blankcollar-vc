@@ -1,4 +1,4 @@
-# Blank Collar VC — One-pager
+# blankcollar.vc — One-pager
 
 A different kind of pre-seed VC: capital + operators + agentic OS.
 
@@ -34,7 +34,7 @@ The production domain is **www.blankcollar.vc**.
 |---|---|---|
 | `RESEND_API_KEY` | Yes (in production) | API key from [resend.com](https://resend.com). Without it, the form runs in mock mode and just logs submissions. |
 | `APPLY_TO_EMAIL` | No | Where applications are sent. Defaults to `hey@theblankcollar.com`. |
-| `APPLY_FROM_EMAIL` | No | The "from" address. Defaults to `Blank Collar VC <onboarding@resend.dev>`. Once you verify a domain in Resend, set this to e.g. `apply@blankcollar.vc`. |
+| `APPLY_FROM_EMAIL` | No | The "from" address. Defaults to `blankcollar.vc <onboarding@resend.dev>`. Once you verify a domain in Resend, set this to e.g. `apply@blankcollar.vc`. |
 
 Add these in **Vercel → Project → Settings → Environment Variables**.
 

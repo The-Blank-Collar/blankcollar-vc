@@ -138,7 +138,7 @@ export function NetworkGraphic() {
           </motion.g>
         ))}
 
-        {/* Centerpiece: BLANK COLLAR (pre-seed) */}
+        {/* Centerpiece: BLANKCOLLAR (pre-seed) */}
         <motion.g variants={center}>
           <circle cx={c} cy={c} r={32} fill="rgb(232, 255, 92)" />
           <circle

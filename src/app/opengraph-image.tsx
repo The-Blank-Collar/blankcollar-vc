@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Blank Collar VC — Capital. Knowledge. Agentic OS.";
+export const alt = "blankcollar.vc — Capital. Knowledge. Agentic OS.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -64,8 +64,8 @@ export default function OG() {
               </div>
             </div>
             <div style={{ display: "flex", fontSize: 20, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "monospace" }}>
-              <span style={{ fontWeight: 500 }}>Blank Collar</span>
-              <span style={{ color: "rgba(244, 241, 234, 0.5)" }}>&nbsp;/ VC</span>
+              <span style={{ fontWeight: 500 }}>blankcollar</span>
+              <span style={{ color: "rgba(244, 241, 234, 0.5)" }}>&nbsp;/ vc</span>
             </div>
           </div>
           <div
@@ -109,7 +109,7 @@ export default function OG() {
               display: "flex",
             }}
           >
-            Pre-seed for the AI era. Up to CHF 50'000, the knowledge to scale, and a free agentic OS — three ways we work.
+            Pre-seed for the AI era. Knowledge + agentic OS for every founder — and up to CHF 50'000 in capital when it fits.
           </div>
         </div>
 

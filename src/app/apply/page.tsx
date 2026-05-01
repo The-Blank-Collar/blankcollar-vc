@@ -22,8 +22,8 @@ export default function ApplyPage() {
                 <span className="block h-2 w-2 bg-pink" />
               </span>
               <span>
-                <span className="font-medium">Blank Collar</span>
-                <span className="text-bone/50">{" "}/ VC</span>
+                <span className="font-medium">blankcollar</span>
+                <span className="text-bone/50">{" "}/ vc</span>
               </span>
             </Link>
             <Link
@@ -57,7 +57,7 @@ export default function ApplyPage() {
 
         <footer className="border-t border-bone/10 px-6 py-8 md:px-10">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 font-bot text-[11px] uppercase tracking-mono text-bone/45">
-            <span>© Blank Collar VC</span>
+            <span>© blankcollar.vc</span>
             <span>Work is for bots. Life is for humans.</span>
           </div>
         </footer>

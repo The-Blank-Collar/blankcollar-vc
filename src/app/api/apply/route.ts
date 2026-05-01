@@ -4,7 +4,7 @@ export const runtime = "nodejs";
 export const maxDuration = 30;
 
 const APPLY_TO = process.env.APPLY_TO_EMAIL || "hey@theblankcollar.com";
-const APPLY_FROM = process.env.APPLY_FROM_EMAIL || "Blank Collar VC <onboarding@resend.dev>";
+const APPLY_FROM = process.env.APPLY_FROM_EMAIL || "blankcollar.vc <onboarding@resend.dev>";
 
 type Field = string | undefined;
 
@@ -54,27 +54,32 @@ export async function POST(req: Request) {
     const tier = tierMap[tierRaw] || tierRaw;
 
     const fields: Record<string, Field> = {
-      "Tier": tier,
+      "Tier (hint)": tier,
       "Founder name": founderName,
       "Email": founderEmail,
       "Role": get("founderRole"),
       "Location": get("founderLocation"),
       "LinkedIn": get("founderLinkedin"),
+      "Superpower": get("superpowers"),
       "Team": get("teamDescription"),
       "Worked together": get("workedTogether"),
       "Company": companyName,
       "Website": get("companyWebsite"),
       "Stage": get("companyStage"),
+      "Sector": get("sector"),
       "One-liner": get("oneLiner"),
       "Problem": get("problem"),
       "Customer": get("customer"),
       "Solution": get("solution"),
       "Differentiator": get("differentiator"),
-      "Customer interviews": get("customerInterviews"),
+      "Why now": get("whyNow"),
+      "Customer interviews": get("interviewRange"),
       "Traction": get("traction"),
+      "Biggest risk": get("biggestRisk"),
       "Raising": get("raisingAmount"),
       "Use of funds": get("useOfFunds"),
-      "Why Blank Collar": get("whyUs"),
+      "Help fit (founder's read)": get("helpFit"),
+      "Why blankcollar": get("whyUs"),
       "Pitch deck link": get("pitchDeckLink"),
       "Product link": get("productLink"),
       "Anything else": get("somethingElse"),

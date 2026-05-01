@@ -10,6 +10,39 @@ export type WorkedTogether =
   | "6m-to-2y"
   | "over-2y";
 
+export type Sector =
+  | "ai-ml"
+  | "fintech"
+  | "healthtech"
+  | "climate"
+  | "devtools"
+  | "consumer"
+  | "b2b-saas"
+  | "other";
+
+export type Superpower =
+  | "story"
+  | "tech"
+  | "sales"
+  | "ops"
+  | "vision"
+  | "network";
+
+export type InterviewRange =
+  | "none"
+  | "1-10"
+  | "10-50"
+  | "50-plus";
+
+export type BiggestRisk =
+  | "demand"
+  | "build"
+  | "funding"
+  | "team"
+  | "other";
+
+export type HelpFit = "access" | "full-stack";
+
 export type TierId = "os-pass" | "full-stack" | "cheque";
 
 export const tierLabels: Record<TierId, string> = {
@@ -26,6 +59,7 @@ export type ApplicationData = {
   founderRole: string;
   founderLocation: string;
   founderLinkedin: string;
+  superpowers: Superpower[];
   // Team
   teamDescription: string;
   workedTogether: WorkedTogether | "";
@@ -33,18 +67,22 @@ export type ApplicationData = {
   companyName: string;
   companyWebsite: string;
   companyStage: Stage | "";
+  sector: Sector | "";
   oneLiner: string;
-  // Problem & solution
+  // Vision
   problem: string;
   customer: string;
   solution: string;
   differentiator: string;
+  whyNow: string;
   // Traction
-  customerInterviews: string;
+  interviewRange: InterviewRange | "";
   traction: string;
+  biggestRisk: BiggestRisk | "";
   // Ask
   raisingAmount: string;
   useOfFunds: string;
+  helpFit: HelpFit | "";
   whyUs: string;
   // Materials
   pitchDeckLink: string;
@@ -60,20 +98,25 @@ export const initialData: ApplicationData = {
   founderRole: "",
   founderLocation: "",
   founderLinkedin: "",
+  superpowers: [],
   teamDescription: "",
   workedTogether: "",
   companyName: "",
   companyWebsite: "",
   companyStage: "",
+  sector: "",
   oneLiner: "",
   problem: "",
   customer: "",
   solution: "",
   differentiator: "",
-  customerInterviews: "",
+  whyNow: "",
+  interviewRange: "",
   traction: "",
+  biggestRisk: "",
   raisingAmount: "",
   useOfFunds: "",
+  helpFit: "",
   whyUs: "",
   pitchDeckLink: "",
   productLink: "",
@@ -89,7 +132,47 @@ export const stageLabels: Record<Stage, string> = {
 
 export const workedTogetherLabels: Record<WorkedTogether, string> = {
   "first-time": "First time working together",
-  "less-than-6m": "< 6 months",
+  "less-than-6m": "Less than 6 months",
   "6m-to-2y": "6 months – 2 years",
   "over-2y": "2+ years",
+};
+
+export const sectorLabels: Record<Sector, string> = {
+  "ai-ml": "AI / ML",
+  fintech: "Fintech",
+  healthtech: "Healthtech",
+  climate: "Climate / Sustainability",
+  devtools: "Dev Tools",
+  consumer: "Consumer",
+  "b2b-saas": "B2B SaaS",
+  other: "Other",
+};
+
+export const superpowerLabels: Record<Superpower, string> = {
+  story: "Storytelling",
+  tech: "Engineering",
+  sales: "Sales & GTM",
+  ops: "Operations",
+  vision: "Vision & Strategy",
+  network: "Network",
+};
+
+export const interviewRangeLabels: Record<InterviewRange, string> = {
+  none: "Haven't started",
+  "1-10": "1 – 10",
+  "10-50": "10 – 50",
+  "50-plus": "50+",
+};
+
+export const biggestRiskLabels: Record<BiggestRisk, string> = {
+  demand: "Customers won't buy",
+  build: "Building it is hard",
+  funding: "Out of money before traction",
+  team: "Team / hiring",
+  other: "Something else",
+};
+
+export const helpFitLabels: Record<HelpFit, string> = {
+  access: "We just need access",
+  "full-stack": "We need the full stack",
 };

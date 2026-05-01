@@ -34,7 +34,7 @@ export function FoundersSection() {
             </h2>
             <div className="mt-7 space-y-4 text-base leading-relaxed text-ink/75 md:text-lg">
               <p className="text-balance">
-                Blank Collar VC is run by founders who built, scaled, and exited
+                blankcollar.vc is run by founders who built, scaled, and exited
                 their own startups. We sat through the pitch reviews, lost the
                 term sheets, hired the wrong first three engineers, and finally
                 figured out what actually moves the needle.
