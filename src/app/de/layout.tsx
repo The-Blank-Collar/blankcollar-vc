@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
 
+const deDescription =
+  "Pre-Seed-VC für die KI-Ära. Wissen + agentisches OS für jeden Gründer, plus bis zu CHF 50'000 Kapital. Mit Sitz in der Schweiz, global tätig.";
+
 export const metadata: Metadata = {
   title: "blankcollar.vc — Kapital. Wissen. Agentic OS.",
-  description:
-    "Ein anderer Pre-Seed-VC, gebaut für die KI-Ära. Wissen von theblankcollar.com + ein agentisches OS für jeden Gründer, den wir unterstützen — und bis zu CHF 50'000 Kapital, wenn die Phase passt. Mit Sitz in der Schweiz, global tätig.",
+  description: deDescription,
+  alternates: {
+    canonical: "/de",
+    languages: {
+      en: "/",
+      de: "/de",
+      "x-default": "/",
+    },
+  },
   openGraph: {
-    title: "blankcollar.vc",
-    description:
-      "Pre-Seed für die KI-Ära. Wissen + agentisches OS für jeden Gründer — und bis zu CHF 50'000, wenn es passt.",
+    title: "blankcollar.vc — Pre-Seed für die KI-Ära",
+    description: deDescription,
     locale: "de_CH",
+    alternateLocale: ["en_US"],
   },
   twitter: {
-    title: "blankcollar.vc",
-    description:
-      "Pre-Seed für die KI-Ära. Wissen + agentisches OS für jeden Gründer — und bis zu CHF 50'000, wenn es passt.",
+    title: "blankcollar.vc — Pre-Seed für die KI-Ära",
+    description: deDescription,
   },
 };
 

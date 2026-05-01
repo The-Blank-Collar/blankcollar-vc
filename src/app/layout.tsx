@@ -29,24 +29,99 @@ const siteUrl = (() => {
   return "http://localhost:3000";
 })();
 
+const enDescription =
+  "Pre-seed VC for the AI era. Knowledge + agentic OS for every founder we back, plus up to CHF 50'000 in capital. Switzerland-based, global.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "blankcollar.vc — Capital. Knowledge. Agentic OS.",
-  description:
-    "A different kind of pre-seed VC, built for the AI era. Knowledge from theblankcollar.com + an agentic OS for every founder we back — and up to CHF 50'000 in capital when the stage fits. Switzerland-based, global remit.",
+  title: {
+    default: "blankcollar.vc — Capital. Knowledge. Agentic OS.",
+    template: "%s · blankcollar.vc",
+  },
+  description: enDescription,
+  applicationName: "blankcollar.vc",
+  keywords: [
+    "pre-seed VC",
+    "AI VC",
+    "Switzerland VC",
+    "agentic OS",
+    "startup investment",
+    "founder fund",
+    "blankcollar",
+    "theblankcollar",
+    "pre-seed Switzerland",
+    "CHF 50000",
+  ],
+  authors: [{ name: "blankcollar.vc" }],
+  creator: "blankcollar.vc",
+  publisher: "blankcollar.vc",
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/",
+      de: "/de",
+      "x-default": "/",
+    },
+  },
   openGraph: {
-    title: "blankcollar.vc",
-    description:
-      "Pre-seed for the AI era. Knowledge + agentic OS for every founder we back — and up to CHF 50'000 when it fits.",
+    title: "blankcollar.vc — Pre-seed for the AI era",
+    description: enDescription,
     url: siteUrl,
     siteName: "blankcollar.vc",
     type: "website",
+    locale: "en_US",
+    alternateLocale: ["de_CH"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "blankcollar.vc",
-    description:
-      "Pre-seed for the AI era. Knowledge + agentic OS for every founder we back — and up to CHF 50'000 when it fits.",
+    title: "blankcollar.vc — Pre-seed for the AI era",
+    description: enDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  category: "venture capital",
+};
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "blankcollar.vc",
+  alternateName: ["blankcollar VC", "Blank Collar VC"],
+  url: siteUrl,
+  logo: `${siteUrl}/icon`,
+  description: enDescription,
+  slogan: "Capital. Knowledge. Agentic OS.",
+  foundingLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "CH",
+    },
+  },
+  areaServed: "Worldwide",
+  sameAs: [
+    "https://www.theblankcollar.com",
+    "https://www.blankcollar.ai",
+  ],
+  knowsAbout: [
+    "Pre-seed venture capital",
+    "AI-native startups",
+    "Agentic OS",
+    "Founder enablement",
+  ],
+  parentOrganization: {
+    "@type": "Organization",
+    name: "blankcollar",
+    url: "https://www.theblankcollar.com",
   },
 };
 
@@ -55,6 +130,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+      </head>
       <body className="font-sans bg-bone text-ink antialiased">
         <SmoothScroll>{children}</SmoothScroll>
       </body>
