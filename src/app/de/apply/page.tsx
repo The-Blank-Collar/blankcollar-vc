@@ -4,7 +4,9 @@ import { ApplyContent } from "@/components/ApplyContent";
 export default function DeApplyPage() {
   return (
     <LangProvider lang="de">
-      <ApplyContent />
+      <div lang="de">
+        <ApplyContent />
+      </div>
     </LangProvider>
   );
 }

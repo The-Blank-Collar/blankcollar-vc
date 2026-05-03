@@ -4,7 +4,9 @@ import { Site } from "@/components/Site";
 export default function DePage() {
   return (
     <LangProvider lang="de">
-      <Site />
+      <div lang="de">
+        <Site />
+      </div>
     </LangProvider>
   );
 }

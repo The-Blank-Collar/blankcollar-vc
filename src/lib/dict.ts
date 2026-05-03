@@ -20,6 +20,8 @@ const en = {
     sending: "Sending…",
     submit: "Submit application",
     backToSite: "← Back to site",
+    skipToContent: "Skip to content",
+    progressLabel: "Application progress",
   },
   header: {
     manifesto: "Manifesto",
@@ -433,6 +435,8 @@ const de: typeof en = {
     sending: "Wird gesendet…",
     submit: "Bewerbung absenden",
     backToSite: "← Zurück zur Seite",
+    skipToContent: "Zum Inhalt springen",
+    progressLabel: "Fortschritt der Bewerbung",
   },
   header: {
     manifesto: "Manifest",

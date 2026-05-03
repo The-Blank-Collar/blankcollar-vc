@@ -711,7 +711,14 @@ export function ApplicationForm() {
                 {t.apply.stepOf} {step + 1} {t.apply.of} {totalScreens}
               </span>
             </div>
-            <div className="h-1 overflow-hidden rounded-full bg-bone/10">
+            <div
+              className="h-1 overflow-hidden rounded-full bg-bone/10"
+              role="progressbar"
+              aria-label={t.common.progressLabel}
+              aria-valuenow={Math.round(overallProgress)}
+              aria-valuemin={0}
+              aria-valuemax={100}
+            >
               <motion.div
                 className="h-full bg-accent"
                 animate={{ width: `${overallProgress}%` }}

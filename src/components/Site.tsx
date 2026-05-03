@@ -790,24 +790,30 @@ function Footer() {
 }
 
 export function Site() {
+  const t = useDict();
   return (
-    <main className="relative">
+    <>
+      <a href="#main" className="skip-link">
+        {t.common.skipToContent}
+      </a>
       <Header />
-      <Hero />
-      <StatBand />
-      <Manifesto />
-      <FoundersSection />
-      <Stack />
-      <Tiers />
-      <Toolkit />
-      <Network />
-      <Process />
-      <Compare />
-      <PortfolioSection />
-      <NetworkSection />
-      <Terms />
-      <CTA />
+      <main id="main" className="relative">
+        <Hero />
+        <StatBand />
+        <Manifesto />
+        <FoundersSection />
+        <Stack />
+        <Tiers />
+        <Toolkit />
+        <Network />
+        <Process />
+        <Compare />
+        <PortfolioSection />
+        <NetworkSection />
+        <Terms />
+        <CTA />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
