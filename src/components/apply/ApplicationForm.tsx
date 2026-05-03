@@ -11,7 +11,7 @@ import {
 } from "react";
 import { Field, FileDrop, Input, Textarea } from "./Inputs";
 import { CardGroup, type CardOption } from "./CardGroup";
-import { useDict } from "@/lib/lang";
+import { useDict, useLang } from "@/lib/lang";
 import type { Dict } from "@/lib/dict";
 import {
   type ApplicationData,
@@ -545,6 +545,7 @@ function buildSteps(t: Dict): StepConfig[] {
 
 export function ApplicationForm() {
   const t = useDict();
+  const lang = useLang();
   const steps = useMemo(() => buildSteps(t), [t]);
   const [step, setStep] = useState(0);
   const [data, setData] = useState<ApplicationData>(initialData);
@@ -634,6 +635,7 @@ export function ApplicationForm() {
     setSubmitError(null);
     try {
       const fd = new FormData();
+      fd.append("lang", lang);
       Object.entries(data).forEach(([k, val]) => {
         if (Array.isArray(val)) {
           if (val.length > 0) fd.append(k, val.join(", "));
@@ -666,7 +668,7 @@ export function ApplicationForm() {
     } finally {
       setSubmitting(false);
     }
-  }, [data, pitchDeckFile]);
+  }, [data, pitchDeckFile, lang]);
 
   const ctx: StepContext = useMemo(
     () => ({ data, set, next, back, go }),
