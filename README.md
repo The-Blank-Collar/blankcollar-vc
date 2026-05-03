@@ -122,6 +122,55 @@ After deploy, submit `/sitemap.xml` to
 [Google Search Console](https://search.google.com/search-console) to
 get indexed faster.
 
+## Image strategy
+
+The site ships **zero raster image files** by design — every visual is
+either inline SVG or a dynamically-generated PNG (favicons + OG cards).
+This keeps the bundle small and the social-card content always in sync
+with the copy.
+
+### When you add raster images later
+
+Always use Next.js's `<Image>` component:
+
+```tsx
+import Image from "next/image";
+
+<Image
+  src="/portfolio/numarics-logo.png"
+  alt="Numarics"
+  width={120}
+  height={40}
+  priority={false}    // true for above-the-fold logos only
+/>
+```
+
+Next will automatically:
+
+- Serve **AVIF** to browsers that support it (~30–50% smaller than WebP)
+- Fall back to **WebP**, then the original format
+- Generate responsive `srcset` based on `deviceSizes` in `next.config.ts`
+- Cache optimised variants for 1 year (`minimumCacheTTL`)
+
+### When pulling from external sources
+
+Add the host to `next.config.ts → images.remotePatterns` first:
+
+```ts
+images: {
+  remotePatterns: [
+    { protocol: "https", hostname: "cdn.example.com", pathname: "/**" },
+  ],
+}
+```
+
+### Generated assets are pre-cached
+
+`/icon`, `/apple-icon`, `/opengraph-image`, `/twitter-image`, `/de/opengraph-image`,
+`/de/twitter-image` are all built statically (verified in `next build` output)
+and served with `Cache-Control: public, max-age=31536000, immutable`. The cache-
+busting hash on the URL means content changes still propagate correctly.
+
 ## Accessibility
 
 - Keyboard skip-to-content link
