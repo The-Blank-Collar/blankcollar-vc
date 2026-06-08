@@ -759,9 +759,11 @@ function Footer() {
           <div>
             <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">{t.footer.family}</h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><a href="https://www.theblankcollar.com" target="_blank" rel="noreferrer" className="hover:text-ink text-ink/75">theblankcollar.com</a></li>
-              <li><a href="https://www.blankcollar.ai" target="_blank" rel="noreferrer" className="hover:text-ink text-ink/75">blankcollar.ai</a></li>
+              <li><a href="https://www.theblankcollar.com" target="_blank" rel="me noopener" className="hover:text-ink text-ink/75">theblankcollar.com</a></li>
+              <li><a href="https://www.blankcollar.ai" target="_blank" rel="me noopener" className="hover:text-ink text-ink/75">blankcollar.ai</a></li>
+              <li><a href="https://www.blankcollar.university" target="_blank" rel="me noopener" className="hover:text-ink text-ink/75">blankcollar.university</a></li>
               <li><span className="text-ink font-medium">blankcollar.vc</span></li>
+              <li><a href="https://www.kristiankabashi.com" target="_blank" rel="me author noopener" className="hover:text-ink text-ink/75">Kristian Kabashi</a></li>
             </ul>
           </div>
           <div>

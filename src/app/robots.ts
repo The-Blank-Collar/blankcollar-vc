@@ -1,12 +1,8 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = (() => {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL)
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-  return "http://localhost:3000";
-})();
+// Canonical host for the entity-merge rollout. Hardcoded to www so the robots
+// host/sitemap directives are stable regardless of the deploy URL.
+const BASE = "https://www.blankcollar.vc";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -16,8 +12,26 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
+      {
+        userAgent: [
+          "GPTBot",
+          "ChatGPT-User",
+          "OAI-SearchBot",
+          "ClaudeBot",
+          "Claude-Web",
+          "anthropic-ai",
+          "PerplexityBot",
+          "Perplexity-User",
+          "Google-Extended",
+          "Applebot-Extended",
+          "CCBot",
+          "Bingbot",
+          "DuckDuckBot",
+        ],
+        allow: "/",
+      },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    sitemap: `${BASE}/sitemap.xml`,
+    host: BASE,
   };
 }

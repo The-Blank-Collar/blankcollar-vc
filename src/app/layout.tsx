@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import { siteSchemaJson } from "@/lib/siteSchema";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -91,40 +92,6 @@ export const metadata: Metadata = {
   category: "venture capital",
 };
 
-const orgJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "blankcollar.vc",
-  alternateName: ["blankcollar VC", "Blank Collar VC"],
-  url: siteUrl,
-  logo: `${siteUrl}/icon`,
-  description: enDescription,
-  slogan: "Capital. Knowledge. Agentic OS.",
-  foundingLocation: {
-    "@type": "Place",
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "CH",
-    },
-  },
-  areaServed: "Worldwide",
-  sameAs: [
-    "https://www.theblankcollar.com",
-    "https://www.blankcollar.ai",
-  ],
-  knowsAbout: [
-    "Pre-seed venture capital",
-    "AI-native startups",
-    "Agentic OS",
-    "Founder enablement",
-  ],
-  parentOrganization: {
-    "@type": "Organization",
-    name: "blankcollar",
-    url: "https://www.theblankcollar.com",
-  },
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -133,7 +100,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: siteSchemaJson }}
         />
       </head>
       <body className="font-sans bg-bone text-ink antialiased">
