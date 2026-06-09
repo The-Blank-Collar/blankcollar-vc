@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -83,7 +83,7 @@ export function FounderToolkit() {
   return (
     <div className="grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item, i) => (
-        <motion.div
+        <m.div
           key={item.label}
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -98,7 +98,7 @@ export function FounderToolkit() {
             {item.label}
           </h3>
           <p className="text-[14px] leading-relaxed text-ink/65">{item.body}</p>
-        </motion.div>
+        </m.div>
       ))}
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -31,7 +31,7 @@ export function Portfolio() {
   return (
     <div className="overflow-hidden rounded-3xl border border-ink/10 divide-y divide-ink/10">
       {companies.map((c, i) => (
-        <motion.a
+        <m.a
           key={c.name}
           href={c.url}
           target="_blank"
@@ -68,7 +68,7 @@ export function Portfolio() {
             <span>{c.origin}</span>
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </div>
-        </motion.a>
+        </m.a>
       ))}
     </div>
   );

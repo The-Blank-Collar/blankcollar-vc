@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -28,7 +28,7 @@ export function InvestmentTiers() {
   return (
     <div className="grid gap-5 md:grid-cols-2">
       {tiers.map((tier, i) => (
-        <motion.div
+        <m.div
           key={tier.id}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export function InvestmentTiers() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </m.div>
       ))}
     </div>
   );

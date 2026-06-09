@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { m, useReducedMotion, type Variants } from "framer-motion";
 import { useId } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -40,7 +40,7 @@ export function SplitWords({
   };
 
   const inner = (
-    <motion.span
+    <m.span
       key={id}
       variants={container}
       initial="hidden"
@@ -55,13 +55,13 @@ export function SplitWords({
           aria-hidden
           className="inline-block overflow-hidden align-bottom pb-[0.06em]"
         >
-          <motion.span variants={child} className="inline-block">
+          <m.span variants={child} className="inline-block">
             {w}
             {i < words.length - 1 ? " " : ""}
-          </motion.span>
+          </m.span>
         </span>
       ))}
-    </motion.span>
+    </m.span>
   );
 
   if (Tag === "span") return inner;

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -49,7 +49,7 @@ export function ConstellationGraphic() {
   }));
 
   return (
-    <motion.div
+    <m.div
       variants={container}
       initial="hidden"
       whileInView="show"
@@ -61,7 +61,7 @@ export function ConstellationGraphic() {
         className="h-full w-full overflow-visible"
         aria-hidden
       >
-        <motion.circle
+        <m.circle
           variants={ring}
           cx={c}
           cy={c}
@@ -71,7 +71,7 @@ export function ConstellationGraphic() {
           strokeOpacity={0.15}
           strokeDasharray="2 6"
         />
-        <motion.circle
+        <m.circle
           variants={ring}
           cx={c}
           cy={c}
@@ -88,7 +88,7 @@ export function ConstellationGraphic() {
           const x = c + Math.cos(rad) * r;
           const y = c + Math.sin(rad) * r;
           return (
-            <motion.line
+            <m.line
               key={`line-${n.label}`}
               variants={line}
               x1={c}
@@ -101,7 +101,7 @@ export function ConstellationGraphic() {
           );
         })}
 
-        <motion.g variants={center}>
+        <m.g variants={center}>
           <circle cx={c} cy={c} r={48} fill="currentColor" />
           <text
             x={c}
@@ -125,14 +125,14 @@ export function ConstellationGraphic() {
           >
             {t.network.centerSub}
           </text>
-        </motion.g>
+        </m.g>
 
         {agents.map((a) => {
           const rad = (a.angle * Math.PI) / 180;
           const x = c + Math.cos(rad) * innerR;
           const y = c + Math.sin(rad) * innerR;
           return (
-            <motion.g key={a.label} variants={node}>
+            <m.g key={a.label} variants={node}>
               <circle cx={x} cy={y} r={5} fill="rgb(232, 255, 92)" />
               <text
                 x={x}
@@ -146,7 +146,7 @@ export function ConstellationGraphic() {
               >
                 {a.label}
               </text>
-            </motion.g>
+            </m.g>
           );
         })}
 
@@ -155,7 +155,7 @@ export function ConstellationGraphic() {
           const x = c + Math.cos(rad) * outerR;
           const y = c + Math.sin(rad) * outerR;
           return (
-            <motion.g key={s.label} variants={node}>
+            <m.g key={s.label} variants={node}>
               <circle cx={x} cy={y} r={6} fill="currentColor" opacity={0.85} />
               <text
                 x={x}
@@ -168,7 +168,7 @@ export function ConstellationGraphic() {
               >
                 {s.label}
               </text>
-            </motion.g>
+            </m.g>
           );
         })}
       </svg>
@@ -183,6 +183,6 @@ export function ConstellationGraphic() {
           {t.network.legendAgents}
         </span>
       </div>
-    </motion.div>
+    </m.div>
   );
 }

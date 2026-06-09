@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -11,7 +11,7 @@ export function FoundersSection() {
   return (
     <section className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -20,7 +20,7 @@ export function FoundersSection() {
         >
           <span className="h-px w-8 bg-ink/30" />
           {t.founders.eyebrow}
-        </motion.div>
+        </m.div>
 
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
@@ -38,9 +38,9 @@ export function FoundersSection() {
             <div className="relative">
               <div className="absolute left-3 top-3 bottom-3 w-px bg-ink/15" aria-hidden />
               <div className="space-y-7">
-                {t.founders.milestones.map((m, i) => (
-                  <motion.div
-                    key={m.stage}
+                {t.founders.milestones.map((milestone, i) => (
+                  <m.div
+                    key={milestone.stage}
                     initial={{ opacity: 0, x: 16 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: "-10%" }}
@@ -56,12 +56,12 @@ export function FoundersSection() {
                       aria-hidden
                     />
                     <div className="font-bot text-[11px] uppercase tracking-mono text-ink/55">
-                      {m.stage}
+                      {milestone.stage}
                     </div>
                     <p className="mt-1.5 text-[15px] leading-relaxed text-ink/80 md:text-base">
-                      {m.body}
+                      {milestone.body}
                     </p>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
             </div>

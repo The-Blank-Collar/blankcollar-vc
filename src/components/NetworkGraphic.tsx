@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -58,7 +58,7 @@ export function NetworkGraphic() {
   );
 
   return (
-    <motion.div
+    <m.div
       variants={container}
       initial="hidden"
       whileInView="show"
@@ -72,7 +72,7 @@ export function NetworkGraphic() {
       >
         {/* Concentric rings */}
         {tiers.map((tier) => (
-          <motion.circle
+          <m.circle
             key={`ring-${tier.label}`}
             variants={ring}
             cx={c}
@@ -87,7 +87,7 @@ export function NetworkGraphic() {
 
         {/* Connection lines from center to every node */}
         {nodes.map((n, i) => (
-          <motion.line
+          <m.line
             key={`l-${i}`}
             variants={lineV}
             x1={c}
@@ -102,7 +102,7 @@ export function NetworkGraphic() {
 
         {/* Outer-ring nodes first, then inner */}
         {nodes.map((n, i) => (
-          <motion.circle
+          <m.circle
             key={`n-${i}`}
             variants={nodeV}
             cx={n.x}
@@ -115,7 +115,7 @@ export function NetworkGraphic() {
 
         {/* Tier labels at the top of each ring (angle 270 = -y) */}
         {tiers.map((tier) => (
-          <motion.g key={`tl-${tier.label}`} variants={label}>
+          <m.g key={`tl-${tier.label}`} variants={label}>
             {/* Background gap on the dashed ring so the label reads cleanly */}
             <rect
               x={c - 50}
@@ -135,11 +135,11 @@ export function NetworkGraphic() {
             >
               {tier.label.toUpperCase()}
             </text>
-          </motion.g>
+          </m.g>
         ))}
 
         {/* Centerpiece: BLANKCOLLAR (pre-seed) */}
-        <motion.g variants={center}>
+        <m.g variants={center}>
           <circle cx={c} cy={c} r={32} fill="rgb(232, 255, 92)" />
           <circle
             cx={c}
@@ -161,10 +161,10 @@ export function NetworkGraphic() {
           >
             BC.VC
           </text>
-        </motion.g>
+        </m.g>
 
         {/* "PRE-SEED" label below the centerpiece */}
-        <motion.g variants={label}>
+        <m.g variants={label}>
           <text
             x={c}
             y={c + 60}
@@ -176,8 +176,8 @@ export function NetworkGraphic() {
           >
             ● PRE-SEED · YOU
           </text>
-        </motion.g>
+        </m.g>
       </svg>
-    </motion.div>
+    </m.div>
   );
 }

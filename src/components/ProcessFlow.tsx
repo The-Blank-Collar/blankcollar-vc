@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -14,7 +14,7 @@ export function ProcessFlow() {
     <div className="relative">
       <div className="grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:grid-cols-5">
         {steps.map((step, i) => (
-          <motion.div
+          <m.div
             key={step.n}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export function ProcessFlow() {
             </h3>
             <p className="text-ink/70 text-[15px] leading-relaxed">{step.body}</p>
             {i < steps.length - 1 && (
-              <motion.div
+              <m.div
                 aria-hidden
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
@@ -48,7 +48,7 @@ export function ProcessFlow() {
                 className="absolute right-0 top-1/2 hidden h-px w-6 origin-left bg-ink/30 md:block"
               />
             )}
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </div>

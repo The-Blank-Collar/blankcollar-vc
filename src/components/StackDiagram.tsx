@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { m, useReducedMotion } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -14,7 +14,7 @@ export function StackDiagram() {
     <div className="relative">
       <div className="grid gap-3">
         {layers.map((layer, i) => (
-          <motion.div
+          <m.div
             key={layer.label}
             initial={{ opacity: 0, x: reduce ? 0 : -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -48,11 +48,11 @@ export function StackDiagram() {
             <div className="hidden md:block font-bot text-[11px] uppercase tracking-mono text-bone/40">
               {layer.voice === "bot" ? "01010" : "human"}
             </div>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -62,7 +62,7 @@ export function StackDiagram() {
         <span className="h-px flex-1 bg-bone/20" />
         {t.stack.together}
         <span className="h-px flex-1 bg-bone/20" />
-      </motion.div>
+      </m.div>
     </div>
   );
 }

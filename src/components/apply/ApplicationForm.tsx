@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import {
   type ReactNode,
   useCallback,
@@ -719,7 +719,7 @@ export function ApplicationForm() {
               aria-valuemin={0}
               aria-valuemax={100}
             >
-              <motion.div
+              <m.div
                 className="h-full bg-accent"
                 animate={{ width: `${overallProgress}%` }}
                 transition={{ duration: 0.5, ease }}
@@ -745,7 +745,7 @@ export function ApplicationForm() {
               submitError={submitError}
             />
           ) : (
-            <motion.div
+            <m.div
               key={`step-${step}`}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -782,7 +782,7 @@ export function ApplicationForm() {
               <div className="mt-3 text-right font-bot text-[10px] uppercase tracking-mono text-bone/35">
                 {t.common.pressEnter} <kbd className="rounded border border-bone/15 px-1.5 py-0.5">Enter</kbd> {t.common.enterToContinue}
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
@@ -894,7 +894,7 @@ function ReviewStep({
   ];
 
   return (
-    <motion.div
+    <m.div
       key="review"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
@@ -963,7 +963,7 @@ function ReviewStep({
           </button>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -980,7 +980,7 @@ function SavedDot({ tick }: { tick: number }) {
   }, [tick]);
   return (
     <div className="hidden items-center gap-2 font-bot text-[10px] uppercase tracking-mono text-bone/45 sm:flex">
-      <motion.span
+      <m.span
         animate={pulse ? { scale: [1, 1.4, 1], opacity: [0.5, 1, 0.5] } : {}}
         className="block h-1.5 w-1.5 rounded-full bg-accent"
       />
@@ -991,7 +991,7 @@ function SavedDot({ tick }: { tick: number }) {
 
 function FeedbackBubble({ text }: { text: string }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease, delay: 0.3 }}
@@ -1011,7 +1011,7 @@ function FeedbackBubble({ text }: { text: string }) {
         </span>
         <span className="ml-2">{text}</span>
       </div>
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -1028,7 +1028,7 @@ function Confirmation({
 }) {
   const t = useDict();
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease }}
@@ -1051,7 +1051,7 @@ function Confirmation({
 
       <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-bone/10 bg-bone/10 md:grid-cols-3">
         {t.apply.confirm.timeline.map((s, i) => (
-          <motion.div
+          <m.div
             key={s.n}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1067,7 +1067,7 @@ function Confirmation({
             <p className="mt-3 text-[14px] leading-relaxed text-bone/65">
               {s.body}
             </p>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
@@ -1095,6 +1095,6 @@ function Confirmation({
         </span>
         {t.apply.confirm.replyNote}
       </div>
-    </motion.div>
+    </m.div>
   );
 }

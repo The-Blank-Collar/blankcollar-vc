@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { NetworkGraphic } from "./NetworkGraphic";
 import { useDict } from "@/lib/lang";
 
@@ -16,7 +16,7 @@ export function NetworkSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -25,7 +25,7 @@ export function NetworkSection() {
         >
           <span className="h-px w-8 bg-bone/30" />
           {t.netSection.eyebrow}
-        </motion.div>
+        </m.div>
 
         <div className="grid gap-14 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
@@ -42,7 +42,7 @@ export function NetworkSection() {
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-bone/15 bg-bone/10 sm:grid-cols-3">
               {t.netSection.stats.map((s, i) => (
-                <motion.div
+                <m.div
                   key={s.label}
                   initial={{ opacity: 0, y: 12 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ export function NetworkSection() {
                   <div className="mt-1 font-bot text-[10px] uppercase tracking-mono text-bone/55">
                     {s.label}
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

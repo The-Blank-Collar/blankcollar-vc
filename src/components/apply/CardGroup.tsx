@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { ReactNode } from "react";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -69,7 +69,7 @@ export function CardGroup<T extends string>(props: Props<T>) {
       {options.map((opt, i) => {
         const selected = isSelected(opt.value);
         return (
-          <motion.button
+          <m.button
             key={opt.value}
             type="button"
             onClick={() => toggle(opt.value)}
@@ -118,7 +118,7 @@ export function CardGroup<T extends string>(props: Props<T>) {
                 />
               </svg>
             </span>
-          </motion.button>
+          </m.button>
         );
       })}
     </div>

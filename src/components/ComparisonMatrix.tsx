@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useDict } from "@/lib/lang";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -24,7 +24,7 @@ export function ComparisonMatrix() {
       </div>
 
       {rows.map((row, i) => (
-        <motion.div
+        <m.div
           key={row.feature}
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export function ComparisonMatrix() {
             </span>
             <span className="text-[14px] md:text-[15px] md:text-base text-ink font-medium">{row.us}</span>
           </div>
-        </motion.div>
+        </m.div>
       ))}
     </div>
   );

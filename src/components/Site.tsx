@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  motion,
+  m,
   useScroll,
   useTransform,
   useReducedMotion,
@@ -60,7 +60,7 @@ function Header() {
   useEffect(() => scrollY.on("change", (v) => setScrolled(v > 24)), [scrollY]);
 
   return (
-    <motion.header
+    <m.header
       initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease, delay: 0.1 }}
@@ -69,7 +69,7 @@ function Header() {
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 md:px-6 md:py-3 ${
           scrolled
-            ? "border-ink/10 bg-bone/85 backdrop-blur-xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+            ? "border-ink/10 bg-bone/90 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
             : "border-transparent bg-transparent"
         }`}
       >
@@ -92,13 +92,13 @@ function Header() {
           </Link>
         </div>
       </div>
-    </motion.header>
+    </m.header>
   );
 }
 
 function Eyebrow({ text }: { text: string }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-15%" }}
@@ -107,13 +107,13 @@ function Eyebrow({ text }: { text: string }) {
     >
       <span className="h-px w-8 bg-ink/30" />
       {text}
-    </motion.div>
+    </m.div>
   );
 }
 
 function EyebrowDark({ text }: { text: string }) {
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-15%" }}
@@ -122,7 +122,7 @@ function EyebrowDark({ text }: { text: string }) {
     >
       <span className="h-px w-8 bg-bone/30" />
       {text}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -140,14 +140,14 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative flex min-h-[100svh] flex-col overflow-hidden">
-      <motion.div
+      <m.div
         style={{ y: yMesh, opacity: opacityMesh }}
         className="gradient-mesh absolute inset-0 -z-10"
         aria-hidden
       />
       <div className="relative z-10 flex flex-1 items-center px-6 pt-24 md:px-10 md:pt-28">
         <div className="mx-auto w-full max-w-7xl">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease, delay: 0.05 }}
@@ -155,7 +155,7 @@ function Hero() {
           >
             <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink" />
             {t.hero.eyebrow}
-          </motion.div>
+          </m.div>
 
           <h1 className="font-medium text-display-xl text-balance max-w-[18ch]">
             <span className="block">
@@ -169,7 +169,7 @@ function Hero() {
             </span>
           </h1>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.7 }}
@@ -182,9 +182,9 @@ function Hero() {
             {t.hero.sub3}
             <span className="font-bot text-ink">blankcollar.ai</span>
             {t.hero.sub4}
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease, delay: 0.85 }}
@@ -203,9 +203,9 @@ function Hero() {
             >
               {t.hero.secondaryCta}
             </a>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, ease, delay: 1.1 }}
@@ -221,7 +221,7 @@ function Hero() {
             <span>Alletta</span>
             <span aria-hidden className="text-ink/25">●</span>
             <span>Visorway</span>
-          </motion.div>
+          </m.div>
         </div>
       </div>
       <Marquee />
@@ -258,7 +258,7 @@ function StatBand() {
   return (
     <section className="relative px-6 py-16 md:px-10 md:py-20">
       <div className="mx-auto max-w-7xl">
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -266,7 +266,7 @@ function StatBand() {
           className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:grid-cols-4"
         >
           {stats.map((s, i) => (
-            <motion.div
+            <m.div
               key={s.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -280,9 +280,9 @@ function StatBand() {
               <div className="mt-3 text-4xl font-medium tracking-tighter md:text-5xl tabular">
                 <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} format={formatSwissNumber} />
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -308,7 +308,7 @@ function Manifesto() {
         </h2>
 
         <div className="mt-14 grid gap-10 md:grid-cols-12">
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -316,9 +316,9 @@ function Manifesto() {
             className="md:col-span-6 md:col-start-1 text-lg leading-relaxed text-ink/75 md:text-xl text-balance"
           >
             {t.manifesto.p1a}
-          </motion.p>
+          </m.p>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -330,7 +330,7 @@ function Manifesto() {
             {t.manifesto.p2b}
             <span className="font-bot text-ink">blankcollar.ai</span>
             {t.manifesto.p2c}
-          </motion.p>
+          </m.p>
         </div>
       </div>
     </section>
@@ -357,7 +357,7 @@ function Stack() {
             </span>
           </h2>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -365,7 +365,7 @@ function Stack() {
             className="mt-6 max-w-2xl text-base text-bone/70 leading-relaxed md:text-lg text-balance"
           >
             {t.stack.sub}
-          </motion.p>
+          </m.p>
 
           <div className="mt-14">
             <StackDiagram />
@@ -393,7 +393,7 @@ function Tiers() {
           </span>
         </h2>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -401,13 +401,13 @@ function Tiers() {
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.tiers.sub1}
-        </motion.p>
+        </m.p>
 
         <div className="mt-14">
           <InvestmentTiers />
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -422,7 +422,7 @@ function Tiers() {
             {t.tiers.ctaLink}
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -444,7 +444,7 @@ function Toolkit() {
           </span>
         </h2>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -454,7 +454,7 @@ function Toolkit() {
           {t.toolkit.sub1}
           <span className="font-bot text-ink">blankcollar.ai</span>
           {t.toolkit.sub2}
-        </motion.p>
+        </m.p>
 
         <div className="mt-14">
           <FounderToolkit />
@@ -563,7 +563,7 @@ function Compare() {
           </span>
         </h2>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -571,7 +571,7 @@ function Compare() {
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.compare.sub}
-        </motion.p>
+        </m.p>
 
         <div className="mt-14">
           <ComparisonMatrix />
@@ -597,7 +597,7 @@ function PortfolioSection() {
           </span>
         </h2>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-15%" }}
@@ -606,7 +606,7 @@ function PortfolioSection() {
         >
           {t.portfolio.sub1}
           <span className="text-ink">{t.portfolio.sub2}</span>
-        </motion.p>
+        </m.p>
 
         <div className="mt-14">
           <Portfolio />
@@ -634,7 +634,7 @@ function Terms() {
 
         <div className="mt-14 divide-y divide-bone/10 border-y border-bone/10">
           {t.terms.rows.map((row, i) => (
-            <motion.div
+            <m.div
               key={row.k}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -648,7 +648,7 @@ function Terms() {
               <span className="col-span-8 md:col-span-9 text-2xl font-medium tracking-tighter md:text-4xl">
                 {row.v}
               </span>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
@@ -662,21 +662,16 @@ function CTA() {
   return (
     <section id="apply" className="relative overflow-hidden bg-bone-soft">
       <div aria-hidden className="absolute inset-0">
-        <motion.div
-          className="absolute -left-1/4 top-1/3 h-[60vh] w-[60vh] rounded-full bg-accent/40 blur-[120px]"
-          animate={{ x: [0, 60, 0], y: [0, -40, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -right-1/4 bottom-0 h-[55vh] w-[55vh] rounded-full bg-ink/15 blur-[120px]"
-          animate={{ x: [0, -50, 0], y: [0, 30, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Static glow — these used to animate x/y on an infinite loop, which
+            kept the compositor re-blurring two huge layers every frame and
+            janked scrolling (badly on mobile). The look is identical at rest. */}
+        <div className="absolute -left-1/4 top-1/3 h-[60vh] w-[60vh] rounded-full bg-accent/40 blur-[120px]" />
+        <div className="absolute -right-1/4 bottom-0 h-[55vh] w-[55vh] rounded-full bg-ink/15 blur-[120px]" />
       </div>
 
       <div className="relative z-10 px-6 py-24 md:px-10 md:py-36">
         <div className="mx-auto max-w-5xl text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -685,7 +680,7 @@ function CTA() {
           >
             <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink" />
             {t.cta.badge}
-          </motion.div>
+          </m.div>
 
           <h2 className="font-medium text-display-lg text-balance">
             <span className="block">
@@ -702,7 +697,7 @@ function CTA() {
             </span>
           </h2>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -710,9 +705,9 @@ function CTA() {
             className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
           >
             {t.cta.sub}
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-15%" }}
@@ -732,7 +727,7 @@ function CTA() {
             >
               {t.cta.secondary}
             </a>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

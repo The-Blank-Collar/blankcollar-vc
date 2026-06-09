@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { m, useMotionValue, useSpring } from "framer-motion";
 import {
   forwardRef,
   useRef,
@@ -45,7 +45,7 @@ export const MagneticLink = forwardRef<HTMLAnchorElement, Props>(
     };
 
     return (
-      <motion.a
+      <m.a
         ref={ref}
         style={{ x: sx, y: sy }}
         onMouseMove={handleMove}
@@ -54,7 +54,7 @@ export const MagneticLink = forwardRef<HTMLAnchorElement, Props>(
         {...rest}
       >
         {children}
-      </motion.a>
+      </m.a>
     );
   }
 );

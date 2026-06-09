@@ -5,6 +5,12 @@ const ONE_YEAR = 60 * 60 * 24 * 365;
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
+  // Tree-shake framer-motion's barrel so importing `m`/hooks doesn't pull in
+  // the full `motion` component graph.
+  experimental: {
+    optimizePackageImports: ["framer-motion"],
+  },
+
   images: {
     // Modern formats first — AVIF (~30-50% smaller than WebP), WebP fallback,
     // browsers that support neither get the original.
