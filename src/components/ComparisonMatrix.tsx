@@ -1,9 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 export function ComparisonMatrix() {
   const t = useDict();
@@ -24,12 +22,12 @@ export function ComparisonMatrix() {
       </div>
 
       {rows.map((row, i) => (
-        <m.div
+        <Reveal
+          as="div"
           key={row.feature}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.5, ease, delay: i * 0.04 }}
+          y={16}
+          delay={i * 0.04}
+          duration={0.5}
           className="border-b border-ink/10 last:border-b-0 transition-colors md:grid md:grid-cols-3 md:hover:bg-ink/[0.02]"
         >
           <div className="px-5 py-4 md:px-8 md:py-6 text-base font-medium text-ink md:font-normal md:text-[15px] md:text-ink/80">
@@ -47,7 +45,7 @@ export function ComparisonMatrix() {
             </span>
             <span className="text-[14px] md:text-[15px] md:text-base text-ink font-medium">{row.us}</span>
           </div>
-        </m.div>
+        </Reveal>
       ))}
     </div>
   );

@@ -1,8 +1,6 @@
 "use client";
 
-import { m, type Variants } from "framer-motion";
-
-const ease = [0.22, 1, 0.36, 1] as const;
+import { Reveal } from "@/components/Reveal";
 
 type Tier = { label: string; n: number; radius: number };
 
@@ -11,36 +9,6 @@ const tiers: Tier[] = [
   { label: "Series A", n: 12, radius: 200 },
   { label: "Series B+", n: 6, radius: 270 },
 ];
-
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.02, delayChildren: 0.1 } },
-};
-
-const ring: Variants = {
-  hidden: { pathLength: 0, opacity: 0 },
-  show: { pathLength: 1, opacity: 1, transition: { duration: 1.2, ease } },
-};
-
-const lineV: Variants = {
-  hidden: { pathLength: 0, opacity: 0 },
-  show: { pathLength: 1, opacity: 1, transition: { duration: 0.5, ease } },
-};
-
-const nodeV: Variants = {
-  hidden: { scale: 0, opacity: 0 },
-  show: { scale: 1, opacity: 1, transition: { duration: 0.45, ease } },
-};
-
-const center: Variants = {
-  hidden: { scale: 0, opacity: 0 },
-  show: { scale: 1, opacity: 1, transition: { duration: 0.6, ease } },
-};
-
-const label: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 0.5, transition: { duration: 0.5, ease, delay: 0.4 } },
-};
 
 export function NetworkGraphic() {
   const size = 600;
@@ -58,11 +26,10 @@ export function NetworkGraphic() {
   );
 
   return (
-    <m.div
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.15 }}
+    <Reveal
+      as="div"
+      y={20}
+      duration={0.8}
       className="relative mx-auto w-full max-w-[600px] aspect-square"
     >
       <svg
@@ -72,9 +39,8 @@ export function NetworkGraphic() {
       >
         {/* Concentric rings */}
         {tiers.map((tier) => (
-          <m.circle
+          <circle
             key={`ring-${tier.label}`}
-            variants={ring}
             cx={c}
             cy={c}
             r={tier.radius}
@@ -87,9 +53,8 @@ export function NetworkGraphic() {
 
         {/* Connection lines from center to every node */}
         {nodes.map((n, i) => (
-          <m.line
+          <line
             key={`l-${i}`}
-            variants={lineV}
             x1={c}
             y1={c}
             x2={n.x}
@@ -102,9 +67,8 @@ export function NetworkGraphic() {
 
         {/* Outer-ring nodes first, then inner */}
         {nodes.map((n, i) => (
-          <m.circle
+          <circle
             key={`n-${i}`}
-            variants={nodeV}
             cx={n.x}
             cy={n.y}
             r={n.tierIndex === 0 ? 6 : n.tierIndex === 1 ? 5 : 4}
@@ -115,7 +79,7 @@ export function NetworkGraphic() {
 
         {/* Tier labels at the top of each ring (angle 270 = -y) */}
         {tiers.map((tier) => (
-          <m.g key={`tl-${tier.label}`} variants={label}>
+          <g key={`tl-${tier.label}`} opacity={0.5}>
             {/* Background gap on the dashed ring so the label reads cleanly */}
             <rect
               x={c - 50}
@@ -135,11 +99,11 @@ export function NetworkGraphic() {
             >
               {tier.label.toUpperCase()}
             </text>
-          </m.g>
+          </g>
         ))}
 
         {/* Centerpiece: BLANKCOLLAR (pre-seed) */}
-        <m.g variants={center}>
+        <g>
           <circle cx={c} cy={c} r={32} fill="rgb(232, 255, 92)" />
           <circle
             cx={c}
@@ -161,10 +125,10 @@ export function NetworkGraphic() {
           >
             BC.VC
           </text>
-        </m.g>
+        </g>
 
         {/* "PRE-SEED" label below the centerpiece */}
-        <m.g variants={label}>
+        <g opacity={0.5}>
           <text
             x={c}
             y={c + 60}
@@ -176,8 +140,8 @@ export function NetworkGraphic() {
           >
             ● PRE-SEED · YOU
           </text>
-        </m.g>
+        </g>
       </svg>
-    </m.div>
+    </Reveal>
   );
 }

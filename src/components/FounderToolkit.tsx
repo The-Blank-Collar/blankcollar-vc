@@ -1,9 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 const glyphs = [
   // Pitch deck — slide stack
@@ -83,12 +81,12 @@ export function FounderToolkit() {
   return (
     <div className="grid gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item, i) => (
-        <m.div
+        <Reveal
+          as="div"
           key={item.label}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.05 }}
-          transition={{ duration: 0.6, ease, delay: i * 0.04 }}
+          y={16}
+          delay={i * 0.04}
+          duration={0.6}
           className="group flex flex-col gap-3 bg-bone p-6 transition-colors hover:bg-bone-soft md:p-7"
         >
           <div className="text-ink/70 transition-colors group-hover:text-ink">
@@ -98,7 +96,7 @@ export function FounderToolkit() {
             {item.label}
           </h3>
           <p className="text-[14px] leading-relaxed text-ink/65">{item.body}</p>
-        </m.div>
+        </Reveal>
       ))}
     </div>
   );

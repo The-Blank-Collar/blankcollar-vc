@@ -1,12 +1,9 @@
 "use client";
 
-import { m, useReducedMotion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
 
-const ease = [0.22, 1, 0.36, 1] as const;
-
 export function StackDiagram() {
-  const reduce = useReducedMotion();
   const t = useDict();
   const layers = t.stack.layers;
 
@@ -14,12 +11,11 @@ export function StackDiagram() {
     <div className="relative">
       <div className="grid gap-3">
         {layers.map((layer, i) => (
-          <m.div
+          <Reveal
+            as="div"
             key={layer.label}
-            initial={{ opacity: 0, x: reduce ? 0 : -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.7, ease, delay: i * 0.12 }}
+            x={-40}
+            delay={i * 0.12}
             className={`relative flex items-center gap-6 rounded-2xl border px-6 py-6 md:px-10 md:py-8 ${
               layer.current
                 ? "border-accent/60 bg-accent/15"
@@ -48,21 +44,21 @@ export function StackDiagram() {
             <div className="hidden md:block font-bot text-[11px] uppercase tracking-mono text-bone/40">
               {layer.voice === "bot" ? "01010" : "human"}
             </div>
-          </m.div>
+          </Reveal>
         ))}
       </div>
 
-      <m.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease, delay: 0.5 }}
+      <Reveal
+        as="div"
+        y={20}
+        delay={0.5}
+        duration={0.6}
         className="mt-8 flex items-center gap-3 font-bot text-[11px] uppercase tracking-mono text-bone/50"
       >
         <span className="h-px flex-1 bg-bone/20" />
         {t.stack.together}
         <span className="h-px flex-1 bg-bone/20" />
-      </m.div>
+      </Reveal>
     </div>
   );
 }

@@ -1,9 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 type Status = "exited" | "active";
 
@@ -31,15 +29,15 @@ export function Portfolio() {
   return (
     <div className="overflow-hidden rounded-3xl border border-ink/10 divide-y divide-ink/10">
       {companies.map((c, i) => (
-        <m.a
+        <Reveal
+          as="a"
           key={c.name}
           href={c.url}
           target="_blank"
           rel="noreferrer"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6, ease, delay: i * 0.05 }}
+          y={16}
+          delay={i * 0.05}
+          duration={0.6}
           className={`group flex flex-col gap-3 px-5 py-6 transition-colors hover:bg-bone-soft md:grid md:grid-cols-12 md:items-baseline md:gap-6 md:px-8 md:py-8 ${
             c.status === "exited" ? "bg-pink/[0.04]" : ""
           }`}
@@ -68,7 +66,7 @@ export function Portfolio() {
             <span>{c.origin}</span>
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </div>
-        </m.a>
+        </Reveal>
       ))}
     </div>
   );

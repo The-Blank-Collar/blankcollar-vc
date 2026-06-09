@@ -1,9 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 function CheckGlyph() {
   return (
@@ -28,12 +26,11 @@ export function InvestmentTiers() {
   return (
     <div className="grid gap-5 md:grid-cols-2">
       {tiers.map((tier, i) => (
-        <m.div
+        <Reveal
+          as="div"
           key={tier.id}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.7, ease, delay: i * 0.1 }}
+          y={24}
+          delay={i * 0.1}
           className={`relative flex flex-col rounded-3xl border p-7 md:p-9 ${
             tier.emphasis
               ? "border-accent bg-bone shadow-[0_24px_60px_-20px_rgba(232,255,92,0.55)]"
@@ -63,7 +60,7 @@ export function InvestmentTiers() {
               </li>
             ))}
           </ul>
-        </m.div>
+        </Reveal>
       ))}
     </div>
   );

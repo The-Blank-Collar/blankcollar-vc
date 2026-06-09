@@ -1,6 +1,5 @@
 "use client";
 
-import { LazyMotion, domAnimation } from "framer-motion";
 import { ReactLenis } from "lenis/react";
 import { useEffect, useState, type ReactNode } from "react";
 
@@ -18,7 +17,9 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     setSmooth(fine && !reduced);
   }, []);
 
-  const content = smooth ? (
+  if (!smooth) return <>{children}</>;
+
+  return (
     <ReactLenis
       root
       options={{
@@ -32,17 +33,5 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     >
       {children}
     </ReactLenis>
-  ) : (
-    children
-  );
-
-  // LazyMotion ships only the `domAnimation` feature set (animations, exit,
-  // gestures, whileInView) instead of the full `motion` bundle, which also
-  // drags in the layout-projection + drag engine we never use. Every animated
-  // component uses the lightweight `m` component under this provider.
-  return (
-    <LazyMotion features={domAnimation} strict>
-      {content}
-    </LazyMotion>
   );
 }

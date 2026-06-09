@@ -1,15 +1,10 @@
 "use client";
 
-import {
-  m,
-  useScroll,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { SplitWords } from "@/components/SplitWords";
 import { CountUp } from "@/components/CountUp";
+import { Reveal, useRevealObserver } from "@/components/Reveal";
 import { formatSwissNumber, useDict, useLang } from "@/lib/lang";
 import { StackDiagram } from "@/components/StackDiagram";
 import { ProcessFlow } from "@/components/ProcessFlow";
@@ -21,8 +16,6 @@ import { FoundersSection } from "@/components/FoundersSection";
 import { NetworkSection } from "@/components/NetworkSection";
 import { InvestmentTiers } from "@/components/InvestmentTiers";
 import { LangSwitch } from "@/components/LangSwitch";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 function useLocalizedHref(path: string): string {
   const lang = useLang();
@@ -55,16 +48,20 @@ function Logo({ onDark = false }: { onDark?: boolean }) {
 function Header() {
   const t = useDict();
   const applyHref = useLocalizedHref("/apply");
-  const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
-  useEffect(() => scrollY.on("change", (v) => setScrolled(v > 24)), [scrollY]);
+
+  // Plain passive scroll listener — no motion library, no per-frame React work.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <m.header
-      initial={{ y: -16, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease, delay: 0.1 }}
-      className="fixed top-0 left-0 right-0 z-40 px-3 pt-3 md:px-6 md:pt-5"
+    <header
+      className="enter-down fixed top-0 left-0 right-0 z-40 px-3 pt-3 md:px-6 md:pt-5"
+      style={{ "--ed": "0.1s" } as CSSProperties}
     >
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 md:px-6 md:py-3 ${
@@ -92,88 +89,91 @@ function Header() {
           </Link>
         </div>
       </div>
-    </m.header>
+    </header>
   );
 }
 
 function Eyebrow({ text }: { text: string }) {
   return (
-    <m.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-15%" }}
-      transition={{ duration: 0.6, ease }}
-      className="mb-12 flex items-center gap-3 eyebrow text-ink/60"
-    >
+    <Reveal as="div" y={10} duration={0.6} className="mb-12 flex items-center gap-3 eyebrow text-ink/60">
       <span className="h-px w-8 bg-ink/30" />
       {text}
-    </m.div>
+    </Reveal>
   );
 }
 
 function EyebrowDark({ text }: { text: string }) {
   return (
-    <m.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-15%" }}
-      transition={{ duration: 0.6, ease }}
-      className="mb-12 flex items-center gap-3 eyebrow text-bone/60"
-    >
+    <Reveal as="div" y={10} duration={0.6} className="mb-12 flex items-center gap-3 eyebrow text-bone/60">
       <span className="h-px w-8 bg-bone/30" />
       {text}
-    </m.div>
+    </Reveal>
   );
 }
 
 function Hero() {
   const t = useDict();
   const applyHref = useLocalizedHref("/apply");
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const yMesh = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 160]);
-  const opacityMesh = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const heroRef = useRef<HTMLElement>(null);
+  const meshRef = useRef<HTMLDivElement>(null);
+
+  // Lightweight parallax on the gradient mesh — desktop pointer only. On touch
+  // the mesh stays static (native scroll stays buttery, no per-frame work).
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const hero = heroRef.current;
+    const mesh = meshRef.current;
+    if (!hero || !mesh) return;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const rect = hero.getBoundingClientRect();
+      const h = rect.height || 1;
+      const p = Math.min(Math.max(-rect.top / h, 0), 1);
+      mesh.style.transform = `translate3d(0, ${p * 160}px, 0)`;
+      mesh.style.opacity = String(1 - p);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
-    <section ref={ref} className="relative flex min-h-[100svh] flex-col overflow-hidden">
-      <m.div
-        style={{ y: yMesh, opacity: opacityMesh }}
-        className="gradient-mesh absolute inset-0 -z-10"
-        aria-hidden
-      />
+    <section ref={heroRef} className="relative flex min-h-[100svh] flex-col overflow-hidden">
+      <div ref={meshRef} className="gradient-mesh absolute inset-0 -z-10" aria-hidden />
       <div className="relative z-10 flex flex-1 items-center px-6 pt-24 md:px-10 md:pt-28">
         <div className="mx-auto w-full max-w-7xl">
-          <m.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease, delay: 0.05 }}
-            className="mb-7 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-bone-soft/70 px-3 py-1.5 eyebrow backdrop-blur"
+          <div
+            className="enter mb-7 inline-flex items-center gap-2 rounded-full border border-ink/15 bg-bone-soft/70 px-3 py-1.5 eyebrow backdrop-blur"
+            style={{ "--ed": "0.05s" } as CSSProperties}
           >
             <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink" />
             {t.hero.eyebrow}
-          </m.div>
+          </div>
 
           <h1 className="font-medium text-display-xl text-balance max-w-[18ch]">
             <span className="block">
-              <SplitWords text={t.hero.h1a} />
+              <SplitWords text={t.hero.h1a} immediate />
             </span>
             <span className="block">
-              <SplitWords text={t.hero.h1b} delay={0.12} />
+              <SplitWords text={t.hero.h1b} delay={0.12} immediate />
             </span>
             <span className="block text-ink/40">
-              <SplitWords text={t.hero.h2} delay={0.28} stagger={0.05} />
+              <SplitWords text={t.hero.h2} delay={0.28} stagger={0.05} immediate />
             </span>
           </h1>
 
-          <m.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.7 }}
-            className="mt-7 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
+          <p
+            className="enter mt-7 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
+            style={{ "--ed": "0.7s" } as CSSProperties}
           >
             {t.hero.sub1}
             <span className="font-medium text-ink">{t.hero.subAmount}</span>
@@ -182,13 +182,11 @@ function Hero() {
             {t.hero.sub3}
             <span className="font-bot text-ink">blankcollar.ai</span>
             {t.hero.sub4}
-          </m.p>
+          </p>
 
-          <m.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease, delay: 0.85 }}
-            className="mt-8 flex flex-wrap items-center gap-3"
+          <div
+            className="enter mt-8 flex flex-wrap items-center gap-3"
+            style={{ "--ed": "0.85s" } as CSSProperties}
           >
             <Link
               href={applyHref}
@@ -203,13 +201,11 @@ function Hero() {
             >
               {t.hero.secondaryCta}
             </a>
-          </m.div>
+          </div>
 
-          <m.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, ease, delay: 1.1 }}
-            className="mt-12 hidden items-center gap-6 font-bot text-[11px] uppercase tracking-mono text-ink/50 md:flex"
+          <div
+            className="enter mt-12 hidden items-center gap-6 font-bot text-[11px] uppercase tracking-mono text-ink/50 md:flex"
+            style={{ "--ed": "1.1s" } as CSSProperties}
           >
             <span>{t.hero.backedLabel}</span>
             <span>Numarics</span>
@@ -221,7 +217,7 @@ function Hero() {
             <span>Alletta</span>
             <span aria-hidden className="text-ink/25">●</span>
             <span>Visorway</span>
-          </m.div>
+          </div>
         </div>
       </div>
       <Marquee />
@@ -258,20 +254,13 @@ function StatBand() {
   return (
     <section className="relative px-6 py-16 md:px-10 md:py-20">
       <div className="mx-auto max-w-7xl">
-        <m.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.6, ease }}
-          className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:grid-cols-4"
-        >
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:grid-cols-4">
           {stats.map((s, i) => (
-            <m.div
+            <Reveal
+              as="div"
               key={s.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-15%" }}
-              transition={{ duration: 0.7, ease, delay: i * 0.06 }}
+              y={20}
+              delay={i * 0.06}
               className="bg-bone p-6 md:p-8"
             >
               <div className="font-bot text-[11px] uppercase tracking-mono text-ink/55">
@@ -280,9 +269,9 @@ function StatBand() {
               <div className="mt-3 text-4xl font-medium tracking-tighter md:text-5xl tabular">
                 <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} format={formatSwissNumber} />
               </div>
-            </m.div>
+            </Reveal>
           ))}
-        </m.div>
+        </div>
       </div>
     </section>
   );
@@ -308,21 +297,18 @@ function Manifesto() {
         </h2>
 
         <div className="mt-14 grid gap-10 md:grid-cols-12">
-          <m.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.7, ease }}
+          <Reveal
+            as="p"
+            y={24}
             className="md:col-span-6 md:col-start-1 text-lg leading-relaxed text-ink/75 md:text-xl text-balance"
           >
             {t.manifesto.p1a}
-          </m.p>
+          </Reveal>
 
-          <m.p
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.7, ease, delay: 0.12 }}
+          <Reveal
+            as="p"
+            y={24}
+            delay={0.12}
             className="md:col-span-6 md:col-start-7 text-lg leading-relaxed text-ink/75 md:text-xl text-balance"
           >
             {t.manifesto.p2a}
@@ -330,7 +316,7 @@ function Manifesto() {
             {t.manifesto.p2b}
             <span className="font-bot text-ink">blankcollar.ai</span>
             {t.manifesto.p2c}
-          </m.p>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -357,15 +343,14 @@ function Stack() {
             </span>
           </h2>
 
-          <m.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.7, ease, delay: 0.2 }}
+          <Reveal
+            as="p"
+            y={16}
+            delay={0.2}
             className="mt-6 max-w-2xl text-base text-bone/70 leading-relaxed md:text-lg text-balance"
           >
             {t.stack.sub}
-          </m.p>
+          </Reveal>
 
           <div className="mt-14">
             <StackDiagram />
@@ -393,25 +378,23 @@ function Tiers() {
           </span>
         </h2>
 
-        <m.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.7, ease, delay: 0.2 }}
+        <Reveal
+          as="p"
+          y={16}
+          delay={0.2}
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.tiers.sub1}
-        </m.p>
+        </Reveal>
 
         <div className="mt-14">
           <InvestmentTiers />
         </div>
 
-        <m.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.7, ease, delay: 0.3 }}
+        <Reveal
+          as="div"
+          y={16}
+          delay={0.3}
           className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-bone-soft/50 px-6 py-5"
         >
           <div className="text-[15px] text-ink/75 max-w-xl">{t.tiers.ctaBody}</div>
@@ -422,7 +405,7 @@ function Tiers() {
             {t.tiers.ctaLink}
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
-        </m.div>
+        </Reveal>
       </div>
     </section>
   );
@@ -444,17 +427,16 @@ function Toolkit() {
           </span>
         </h2>
 
-        <m.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.7, ease, delay: 0.2 }}
+        <Reveal
+          as="p"
+          y={16}
+          delay={0.2}
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.toolkit.sub1}
           <span className="font-bot text-ink">blankcollar.ai</span>
           {t.toolkit.sub2}
-        </m.p>
+        </Reveal>
 
         <div className="mt-14">
           <FounderToolkit />
@@ -563,15 +545,14 @@ function Compare() {
           </span>
         </h2>
 
-        <m.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.7, ease, delay: 0.2 }}
+        <Reveal
+          as="p"
+          y={16}
+          delay={0.2}
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.compare.sub}
-        </m.p>
+        </Reveal>
 
         <div className="mt-14">
           <ComparisonMatrix />
@@ -597,16 +578,15 @@ function PortfolioSection() {
           </span>
         </h2>
 
-        <m.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.7, ease, delay: 0.2 }}
+        <Reveal
+          as="p"
+          y={16}
+          delay={0.2}
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.portfolio.sub1}
           <span className="text-ink">{t.portfolio.sub2}</span>
-        </m.p>
+        </Reveal>
 
         <div className="mt-14">
           <Portfolio />
@@ -634,12 +614,12 @@ function Terms() {
 
         <div className="mt-14 divide-y divide-bone/10 border-y border-bone/10">
           {t.terms.rows.map((row, i) => (
-            <m.div
+            <Reveal
+              as="div"
               key={row.k}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.6, ease, delay: i * 0.04 }}
+              y={16}
+              delay={i * 0.04}
+              duration={0.6}
               className="grid grid-cols-12 items-baseline gap-4 py-6 transition-colors hover:bg-bone/[0.03] md:py-8"
             >
               <span className="col-span-4 md:col-span-3 font-bot text-[11px] uppercase tracking-mono text-bone/50">
@@ -648,7 +628,7 @@ function Terms() {
               <span className="col-span-8 md:col-span-9 text-2xl font-medium tracking-tighter md:text-4xl">
                 {row.v}
               </span>
-            </m.div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -671,16 +651,15 @@ function CTA() {
 
       <div className="relative z-10 px-6 py-24 md:px-10 md:py-36">
         <div className="mx-auto max-w-5xl text-center">
-          <m.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.6, ease }}
+          <Reveal
+            as="div"
+            y={12}
+            duration={0.6}
             className="mb-8 inline-flex items-center gap-2 rounded-full border border-ink/20 bg-bone px-3 py-1.5 eyebrow"
           >
             <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink" />
             {t.cta.badge}
-          </m.div>
+          </Reveal>
 
           <h2 className="font-medium text-display-lg text-balance">
             <span className="block">
@@ -697,21 +676,19 @@ function CTA() {
             </span>
           </h2>
 
-          <m.p
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.7, ease, delay: 0.4 }}
+          <Reveal
+            as="p"
+            y={16}
+            delay={0.4}
             className="mx-auto mt-7 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg text-balance"
           >
             {t.cta.sub}
-          </m.p>
+          </Reveal>
 
-          <m.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={{ duration: 0.7, ease, delay: 0.55 }}
+          <Reveal
+            as="div"
+            y={16}
+            delay={0.55}
             className="mt-9 flex flex-wrap items-center justify-center gap-4"
           >
             <Link
@@ -727,7 +704,7 @@ function CTA() {
             >
               {t.cta.secondary}
             </a>
-          </m.div>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -788,6 +765,8 @@ function Footer() {
 
 export function Site() {
   const t = useDict();
+  // One shared IntersectionObserver drives every scroll reveal on the page.
+  useRevealObserver();
   return (
     <>
       <a href="#main" className="skip-link">

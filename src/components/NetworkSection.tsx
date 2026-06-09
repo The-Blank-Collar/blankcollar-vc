@@ -1,10 +1,8 @@
 "use client";
 
-import { m } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { NetworkGraphic } from "./NetworkGraphic";
 import { useDict } from "@/lib/lang";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 export function NetworkSection() {
   const t = useDict();
@@ -16,16 +14,15 @@ export function NetworkSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <m.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.6, ease }}
+        <Reveal
+          as="div"
+          y={10}
+          duration={0.6}
           className="mb-12 flex items-center gap-3 eyebrow text-bone/60"
         >
           <span className="h-px w-8 bg-bone/30" />
           {t.netSection.eyebrow}
-        </m.div>
+        </Reveal>
 
         <div className="grid gap-14 md:grid-cols-12 md:items-center">
           <div className="md:col-span-5">
@@ -42,12 +39,12 @@ export function NetworkSection() {
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-bone/15 bg-bone/10 sm:grid-cols-3">
               {t.netSection.stats.map((s, i) => (
-                <m.div
+                <Reveal
+                  as="div"
                   key={s.label}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-15%" }}
-                  transition={{ duration: 0.6, ease, delay: i * 0.06 }}
+                  y={12}
+                  delay={i * 0.06}
+                  duration={0.6}
                   className="bg-ink p-4"
                 >
                   <div className="text-xl font-medium tracking-tighter text-bone md:text-2xl">
@@ -56,7 +53,7 @@ export function NetworkSection() {
                   <div className="mt-1 font-bot text-[10px] uppercase tracking-mono text-bone/55">
                     {s.label}
                   </div>
-                </m.div>
+                </Reveal>
               ))}
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { LazyMotion, domAnimation } from "framer-motion";
 import { ApplicationForm } from "@/components/apply/ApplicationForm";
 import { LangSwitchDark } from "@/components/LangSwitch";
 import { useDict, useLang } from "@/lib/lang";
@@ -62,7 +63,11 @@ export function ApplyContent() {
           </div>
 
           <div className="mt-12">
-            <ApplicationForm />
+            {/* framer-motion is scoped to this route (the multi-step form's
+                AnimatePresence) so the homepage never loads it. */}
+            <LazyMotion features={domAnimation} strict>
+              <ApplicationForm />
+            </LazyMotion>
           </div>
         </div>
 

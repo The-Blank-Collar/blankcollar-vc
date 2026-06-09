@@ -1,70 +1,56 @@
-"use client";
+import type { CSSProperties } from "react";
 
-import { m, useReducedMotion, type Variants } from "framer-motion";
-import { useId } from "react";
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
+/**
+ * Word-by-word rising reveal, done entirely in CSS (see globals.css
+ * .reveal-words). Each word is clipped and translated up, staggered via a
+ * per-word `--i` index. No motion library — this used to create one motion
+ * component per word (~89 across the page), which dominated hydration cost.
+ *
+ * `immediate` plays the reveal on load (above-the-fold hero text, so the LCP
+ * paints without waiting for JS). Otherwise the shared IntersectionObserver
+ * (useRevealObserver) triggers it when the heading scrolls into view.
+ */
 export function SplitWords({
   text,
   className,
   delay = 0,
   stagger = 0.06,
   duration = 0.85,
-  as: Tag = "span",
+  immediate = false,
 }: {
   text: string;
   className?: string;
   delay?: number;
   stagger?: number;
   duration?: number;
-  as?: "span" | "h1" | "h2" | "h3" | "p" | "div";
+  immediate?: boolean;
 }) {
-  const id = useId();
-  const reduce = useReducedMotion();
   const words = text.split(" ");
+  const trigger = immediate
+    ? { "data-revealed": "" }
+    : { "data-reveal-words": "" };
 
-  const container: Variants = {
-    hidden: {},
-    show: {
-      transition: { staggerChildren: reduce ? 0 : stagger, delayChildren: delay },
-    },
-  };
-  const child: Variants = {
-    hidden: { y: reduce ? 0 : "115%", opacity: reduce ? 0 : 1 },
-    show: {
-      y: "0%",
-      opacity: 1,
-      transition: { duration: reduce ? 0.4 : duration, ease },
-    },
-  };
-
-  const inner = (
-    <m.span
-      key={id}
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-10%" }}
-      className={className}
+  return (
+    <span
+      className={`reveal-words${className ? ` ${className}` : ""}`}
+      {...trigger}
+      style={
+        {
+          "--rwd": `${delay}s`,
+          "--rws": `${stagger}s`,
+          "--rw-dur": `${duration}s`,
+        } as CSSProperties
+      }
       aria-label={text}
     >
       {words.map((w, i) => (
-        <span
-          key={i}
-          aria-hidden
-          className="inline-block overflow-hidden align-bottom pb-[0.06em]"
-        >
-          <m.span variants={child} className="inline-block">
+        <span key={i} aria-hidden className="rw" style={{ "--i": i } as CSSProperties}>
+          <span>
             {w}
-            {i < words.length - 1 ? " " : ""}
-          </m.span>
+            {i < words.length - 1 ? " " : ""}
+          </span>
         </span>
       ))}
-    </m.span>
+    </span>
   );
-
-  if (Tag === "span") return inner;
-  const Wrapper = Tag as "div";
-  return <Wrapper className={className}>{inner}</Wrapper>;
 }

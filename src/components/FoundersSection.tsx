@@ -1,9 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 export function FoundersSection() {
   const t = useDict();
@@ -11,16 +9,15 @@ export function FoundersSection() {
   return (
     <section className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
-        <m.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.6, ease }}
+        <Reveal
+          as="div"
+          y={10}
+          duration={0.6}
           className="mb-12 flex items-center gap-3 eyebrow text-ink/60"
         >
           <span className="h-px w-8 bg-ink/30" />
           {t.founders.eyebrow}
-        </m.div>
+        </Reveal>
 
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-6">
@@ -39,12 +36,12 @@ export function FoundersSection() {
               <div className="absolute left-3 top-3 bottom-3 w-px bg-ink/15" aria-hidden />
               <div className="space-y-7">
                 {t.founders.milestones.map((milestone, i) => (
-                  <m.div
+                  <Reveal
+                    as="div"
                     key={milestone.stage}
-                    initial={{ opacity: 0, x: 16 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 0.6, ease, delay: i * 0.1 }}
+                    x={16}
+                    delay={i * 0.1}
+                    duration={0.6}
                     className="relative pl-10"
                   >
                     <span
@@ -61,7 +58,7 @@ export function FoundersSection() {
                     <p className="mt-1.5 text-[15px] leading-relaxed text-ink/80 md:text-base">
                       {milestone.body}
                     </p>
-                  </m.div>
+                  </Reveal>
                 ))}
               </div>
             </div>

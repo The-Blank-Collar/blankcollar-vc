@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "framer-motion";
 
 export function CountUp({
   to,
@@ -19,22 +18,43 @@ export function CountUp({
   format?: (n: number) => string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-10%" });
   const [val, setVal] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-    const start = performance.now();
-    let raf = 0;
-    const step = (now: number) => {
-      const t = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setVal(Math.round(eased * to));
-      if (t < 1) raf = requestAnimationFrame(step);
+    const el = ref.current;
+    if (!el) return;
+
+    const run = () => {
+      const start = performance.now();
+      let raf = 0;
+      const step = (now: number) => {
+        const t = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        setVal(Math.round(eased * to));
+        if (t < 1) raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+      return () => cancelAnimationFrame(raf);
     };
-    raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, to, duration]);
+
+    if (!("IntersectionObserver" in window)) return run();
+
+    let cleanup: (() => void) | undefined;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          io.disconnect();
+          cleanup = run();
+        }
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cleanup?.();
+    };
+  }, [to, duration]);
 
   return (
     <span ref={ref} className={className}>
