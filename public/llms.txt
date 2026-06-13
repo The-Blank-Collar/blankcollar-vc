@@ -1,6 +1,6 @@
 # blankcollar.ventures
 
-> blankcollar.ventures is the venture arm of The Blank Collar. We don't write the cheque — we make
+> blankcollar.ventures is the ventures arm of The Blank Collar. We don't write the cheque — we make
 > founders fundable for the AI era and connect them to the capital. Our "investment" is four things:
 > the knowledge from theblankcollar.com, upskilling on blankcollar.university, AI operations
 > (a configured agentic OS) on blankcollar.ai, and warm intros to the VCs we work with. We open the
@@ -9,7 +9,7 @@
 blankcollar.ventures is part of The Blank Collar — the post-AI worker practice. "Work is for bots. Life is for humans."
 Coined in 2016 and founded in 2018 by Kristian Kabashi (Zürich, Switzerland). The Blank Collar is the
 umbrella brand; its ventures are blankcollar.ai (the AI operating system), blankcollar.university (the
-school), and blankcollar.ventures (the founder + venture platform).
+school), and blankcollar.ventures (the founder + ventures platform).
 
 ## Key facts
 - Founder: Kristian Kabashi — https://www.kristiankabashi.com

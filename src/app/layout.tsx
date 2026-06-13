@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   description: enDescription,
   applicationName: "blankcollar.ventures",
   keywords: [
-    "venture platform",
+    "ventures platform",
     "AI-era founders",
     "founder enablement",
     "AI operations",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  category: "venture platform",
+  category: "ventures platform",
 };
 
 export default function RootLayout({

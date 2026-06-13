@@ -17,7 +17,7 @@ const VC_ORG_ID = "https://www.blankcollar.ventures/#org";
 const VC_WEBSITE_ID = "https://www.blankcollar.ventures/#website";
 
 const vcDescription =
-  "blankcollar.ventures is the venture arm of The Blank Collar. We make founders fundable for the AI era — the knowledge from theblankcollar.com, upskilling on blankcollar.university, AI operations on blankcollar.ai, and warm intros to the VCs we work with. We don't write the cheque; we open the doors. Switzerland-based, global.";
+  "blankcollar.ventures is the ventures arm of The Blank Collar. We make founders fundable for the AI era — the knowledge from theblankcollar.com, upskilling on blankcollar.university, AI operations on blankcollar.ai, and warm intros to the VCs we work with. We don't write the cheque; we open the doors. Switzerland-based, global.";
 
 // Person sameAs — Kristian (personal + shared @theblankcollar handles). §1 verbatim.
 const personSameAs = [
