@@ -28,7 +28,7 @@ function useLocalizedHref(path: string): string {
 function Logo({ onDark = false }: { onDark?: boolean }) {
   const homeHref = useLocalizedHref("/");
   return (
-    <Link href={homeHref} className="flex items-center gap-2.5 font-bot text-[12px] uppercase tracking-mono">
+    <Link href={homeHref} className="flex shrink-0 items-center gap-2.5 whitespace-nowrap font-bot text-[12px] uppercase tracking-mono">
       <span className="grid grid-cols-2 gap-0.5" aria-hidden>
         <span className="block h-2 w-2 bg-pink" />
         <span className="block h-2 w-2 bg-accent" />
@@ -80,10 +80,12 @@ function Header() {
           <a href="#terms" className="hover:opacity-60 transition-opacity">{t.header.terms}</a>
         </nav>
         <div className="flex items-center gap-3">
-          <LangSwitch basePath="/" />
+          <div className="hidden lg:flex">
+            <LangSwitch basePath="/" />
+          </div>
           <Link
             href={applyHref}
-            className="rounded-full bg-ink px-4 py-2 font-bot text-[12px] uppercase tracking-mono text-bone hover:bg-ink/85 transition-colors"
+            className="shrink-0 whitespace-nowrap rounded-full bg-ink px-4 py-2 font-bot text-[12px] uppercase tracking-mono text-bone hover:bg-ink/85 transition-colors"
           >
             {t.common.applyArrow}
           </Link>
@@ -759,7 +761,16 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-12 flex max-w-7xl items-center justify-between border-t border-ink/10 pt-6 font-bot text-[11px] uppercase tracking-mono text-ink/50">
+
+      {/* Language switch lives in the footer on mobile (header keeps it on desktop). */}
+      <div className="mx-auto mt-10 max-w-7xl lg:hidden">
+        <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">{t.footer.language}</h4>
+        <div className="mt-3 -ml-2">
+          <LangSwitch basePath="/" />
+        </div>
+      </div>
+
+      <div className="mx-auto mt-12 flex max-w-7xl flex-col items-start gap-3 border-t border-ink/10 pt-6 font-bot text-[11px] uppercase tracking-mono text-ink/50 sm:flex-row sm:items-center sm:justify-between">
         <span>© {year ?? ""} blankcollar.ventures</span>
         <span>{t.footer.motto}</span>
       </div>

@@ -11,28 +11,14 @@
   --pink: #fa2bb8;
 }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
 html,
 body {
   background: var(--bone);
   color: var(--ink);
   font-family: "Helvetica Neue", Helvetica, var(--font-roboto), Arial, sans-serif;
+  /* Guard against accidental horizontal scroll on mobile. `clip` (not `hidden`)
+     keeps <html> as the scroll root so sticky + scroll timelines still work. */
+  overflow-x: clip;
 }
 
 ::selection {
