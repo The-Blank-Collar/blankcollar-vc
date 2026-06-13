@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { siteSchemaJson } from "@/lib/siteSchema";
 
 const deDescription =
-  "blankcollar.ventures macht Gründer fundable für die KI-Ära — Wissen, AI-Operations, Upskilling und warme Intros zu den VCs, mit denen wir arbeiten. Wir schreiben den Cheque nicht; wir öffnen die Türen. Mit Sitz in der Schweiz, global tätig.";
+  "blankcollar.ventures backt AI-Startups und hilft ihnen zu gewinnen — das Blank Collar Framework, unsere Operator-Erfahrung aus Bauen, Skalieren und Verkaufen, plus AI-Operations und Upskilling. Für Gründer und die VCs, mit denen wir arbeiten. Finanzierung ist ein Outcome, nicht das Angebot. Mit Sitz in der Schweiz, global tätig.";
 
 export const metadata: Metadata = {
-  title: "blankcollar.ventures — Wissen. AI. Zugang.",
+  title: "blankcollar.ventures — Wir helfen AI-Startups zu gewinnen.",
   description: deDescription,
   alternates: {
     canonical: "/de",
@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "blankcollar.ventures — Mach dein Startup fundable",
+    title: "blankcollar.ventures — Wir helfen AI-Startups zu gewinnen",
     description: deDescription,
     locale: "de_CH",
     alternateLocale: ["en_US"],
   },
   twitter: {
-    title: "blankcollar.ventures — Mach dein Startup fundable",
+    title: "blankcollar.ventures — Wir helfen AI-Startups zu gewinnen",
     description: deDescription,
   },
 };

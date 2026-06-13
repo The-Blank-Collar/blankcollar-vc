@@ -162,6 +162,78 @@ function renderFounderEmail(lang: Lang, founderName: string, companyName: string
 </html>`;
 }
 
+// VC / fund intake — a fund brings us a portfolio (or pipeline) AI company.
+// Lighter than the founder application: just the fund, the company, and why.
+async function handleVcSubmission(
+  get: (k: string) => Field,
+  lang: Lang
+): Promise<Response> {
+  const fundName = get("fundName");
+  const yourName = get("yourName");
+  const email = get("email");
+  const company = get("company");
+
+  if (!fundName || !yourName || !email || !company) {
+    return Response.json({ ok: false, error: "Missing required fields" }, { status: 400 });
+  }
+
+  const fields: Record<string, Field> = {
+    Submission: "VC / fund — bring a company",
+    Lang: lang,
+    Fund: fundName,
+    Contact: yourName,
+    Email: email,
+    Relationship: get("relationship"),
+    Company: company,
+    Founder: get("founder"),
+    "Why this one": get("why"),
+  };
+
+  const internalHtml = `
+    <div style="font-family:Helvetica,Arial,sans-serif;background:#F4F1EA;padding:32px;">
+      <div style="max-width:640px;margin:0 auto;background:white;border-radius:16px;overflow:hidden;border:1px solid #eee;">
+        <div style="padding:28px 32px;background:#0E1320;color:#F4F1EA;">
+          <div style="font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;opacity:0.6;">VC intro · ${escape(lang)}</div>
+          <div style="font-size:28px;font-weight:500;margin-top:6px;">${escape(company)}</div>
+          <div style="font-size:14px;opacity:0.7;margin-top:4px;">${escape(fundName)} · ${escape(yourName)} · ${escape(email)}</div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;">
+          ${Object.entries(fields).map(([k, v]) => row(k, v)).join("")}
+        </table>
+        <div style="padding:20px 32px;background:#FAFAF7;font-family:ui-monospace,monospace;font-size:11px;color:#666;letter-spacing:0.06em;">
+          Sent via blankcollar.ventures/apply?kind=vc · ${new Date().toISOString()}
+        </div>
+      </div>
+    </div>`;
+
+  const internalText = Object.entries(fields)
+    .filter(([, v]) => !!v)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join("\n\n");
+
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.warn("[apply:vc] RESEND_API_KEY not set — running in mock mode");
+    console.log("[apply:vc] would send INTERNAL:", { to: APPLY_TO, fund: fundName, company });
+    return Response.json({ ok: true, mock: true });
+  }
+
+  const resend = new Resend(apiKey);
+  const sent = await resend.emails.send({
+    from: APPLY_FROM,
+    to: APPLY_TO,
+    replyTo: email,
+    subject: `VC intro — ${company} (via ${fundName})`,
+    html: internalHtml,
+    text: internalText,
+  });
+  if (sent.error) {
+    console.error("[apply:vc] resend error:", sent.error);
+    return Response.json({ ok: false, error: "Email service rejected the request" }, { status: 502 });
+  }
+  return Response.json({ ok: true });
+}
+
 export async function POST(req: Request) {
   try {
     const formData = await req.formData();
@@ -176,6 +248,11 @@ export async function POST(req: Request) {
     const companyName = get("companyName");
     const langRaw = get("lang");
     const lang: Lang = langRaw === "de" ? "de" : "en";
+
+    // Funds use the lighter VC intake (kind=vc).
+    if (get("kind") === "vc") {
+      return await handleVcSubmission(get, lang);
+    }
 
     if (!founderName || !founderEmail || !companyName) {
       return Response.json(

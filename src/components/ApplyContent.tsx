@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { ApplicationForm } from "@/components/apply/ApplicationForm";
+import { VcForm } from "@/components/apply/VcForm";
 import { LangSwitchDark } from "@/components/LangSwitch";
 import { useDict, useLang } from "@/lib/lang";
 
@@ -10,6 +12,14 @@ export function ApplyContent() {
   const t = useDict();
   const lang = useLang();
   const homeHref = lang === "de" ? "/de" : "/";
+  const [audience, setAudience] = useState<"founder" | "vc">("founder");
+
+  // Funds can land straight on the VC intake via /apply?kind=vc.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("kind") === "vc") {
+      setAudience("vc");
+    }
+  }, []);
 
   return (
     <main className="relative min-h-screen bg-ink text-bone">
@@ -50,24 +60,49 @@ export function ApplyContent() {
 
         <div className="px-6 py-14 md:px-10 md:py-20">
           <div className="mx-auto max-w-3xl">
-            <div className="mb-2 flex items-center gap-3 font-bot text-[11px] uppercase tracking-mono text-accent">
+            <div className="mb-6 flex items-center gap-3 font-bot text-[11px] uppercase tracking-mono text-accent">
               <span className="dot-pulse h-1.5 w-1.5 rounded-full bg-accent" />
               {t.apply.eyebrow}
             </div>
-            <h1 className="text-4xl font-medium tracking-tighter md:text-6xl">
-              {t.apply.title}
-            </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-bone/70">
-              {t.apply.sub}
-            </p>
+
+            {/* Audience toggle — founders apply directly; funds bring us a company */}
+            <div className="inline-flex rounded-full border border-bone/15 bg-bone/[0.03] p-1">
+              {(["founder", "vc"] as const).map((a) => (
+                <button
+                  key={a}
+                  type="button"
+                  onClick={() => setAudience(a)}
+                  className={`rounded-full px-4 py-2 font-bot text-[11px] uppercase tracking-mono transition-colors ${
+                    audience === a ? "bg-accent text-ink" : "text-bone/55 hover:text-bone"
+                  }`}
+                >
+                  {a === "founder" ? t.apply.audience.founder : t.apply.audience.vc}
+                </button>
+              ))}
+            </div>
+
+            {audience === "founder" && (
+              <>
+                <h1 className="mt-7 text-4xl font-medium tracking-tighter md:text-6xl">
+                  {t.apply.title}
+                </h1>
+                <p className="mt-5 max-w-xl text-lg leading-relaxed text-bone/70">
+                  {t.apply.sub}
+                </p>
+              </>
+            )}
           </div>
 
           <div className="mt-12">
             {/* framer-motion is scoped to this route (the multi-step form's
                 AnimatePresence) so the homepage never loads it. */}
-            <LazyMotion features={domAnimation} strict>
-              <ApplicationForm />
-            </LazyMotion>
+            {audience === "founder" ? (
+              <LazyMotion features={domAnimation} strict>
+                <ApplicationForm />
+              </LazyMotion>
+            ) : (
+              <VcForm />
+            )}
           </div>
         </div>
 

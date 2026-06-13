@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "blankcollar.ventures — Knowledge. AI. Access.";
+export const alt = "blankcollar.ventures — We help AI startups win.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -80,7 +80,7 @@ export default function OG() {
         >
           <span>AI changed what founders build.</span>
           <span style={{ color: "rgba(244, 241, 234, 0.45)" }}>
-            We change how they get funded.
+            We help them win.
           </span>
         </div>
 

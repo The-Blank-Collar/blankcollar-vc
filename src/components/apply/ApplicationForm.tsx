@@ -472,27 +472,21 @@ function buildSteps(t: Dict): StepConfig[] {
       ),
       validate: (d) => (!d.biggestRisk ? v.risk : null),
     },
-    // 11 — Ask: amount + use
+    // 11 — Fit: funding (optional — funding is an outcome, not a requirement)
     {
       section: "ask",
       title: t.apply.steps.ask,
       feedback: fb.ask,
       render: ({ data, set, next }) => (
         <div className="grid gap-5">
-          <Field label={f.raisingAmount.label} hint={f.raisingAmount.hint}>
+          <Field label={f.raisingAmount.label} hint={f.raisingAmount.hint} optional>
             <Input placeholder={f.raisingAmount.placeholder} value={data.raisingAmount} onChange={(e) => set("raisingAmount", e.target.value)} onEnterContinue={next} autoFocus />
           </Field>
-          <Field label={f.useOfFunds.label} hint={f.useOfFunds.hint}>
+          <Field label={f.useOfFunds.label} hint={f.useOfFunds.hint} optional>
             <Textarea rows={4} value={data.useOfFunds} onChange={(e) => set("useOfFunds", e.target.value)} onEnterContinue={next} maxChars={500} />
           </Field>
         </div>
       ),
-      validate: (d) =>
-        !d.raisingAmount.trim()
-          ? v.raisingAmount
-          : !d.useOfFunds.trim()
-          ? v.useOfFunds
-          : null,
     },
 
     // 12 — Materials: help fit + why us
