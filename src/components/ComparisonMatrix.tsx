@@ -41,7 +41,7 @@ export function ComparisonMatrix() {
           </div>
           <div className="px-5 pb-4 md:px-8 md:py-6 md:border-l md:border-ink/10 md:bg-accent/[0.08] md:flex md:items-center">
             <span className="md:hidden font-bot text-[10px] uppercase tracking-mono mr-2">
-              <span className="rounded bg-accent/40 px-1.5 py-0.5">blankcollar.vc</span>
+              <span className="rounded bg-accent/40 px-1.5 py-0.5">blankcollar.ventures</span>
             </span>
             <span className="text-[14px] md:text-[15px] md:text-base text-ink font-medium">{row.us}</span>
           </div>

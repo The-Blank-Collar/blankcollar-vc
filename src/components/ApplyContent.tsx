@@ -33,7 +33,7 @@ export function ApplyContent() {
               </span>
               <span>
                 <span className="font-medium">blankcollar</span>
-                <span className="text-bone/50">{" "}/ vc</span>
+                <span className="text-bone/50">{" "}/ ventures</span>
               </span>
             </Link>
             <div className="flex items-center gap-3">
@@ -73,7 +73,7 @@ export function ApplyContent() {
 
         <footer className="border-t border-bone/10 px-6 py-8 md:px-10">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 font-bot text-[11px] uppercase tracking-mono text-bone/45">
-            <span>© blankcollar.vc</span>
+            <span>© blankcollar.ventures</span>
             <span>{t.footer.motto}</span>
           </div>
         </footer>

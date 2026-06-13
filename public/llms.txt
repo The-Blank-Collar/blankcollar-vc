@@ -1,25 +1,31 @@
-# blankcollar.vc
+# blankcollar.ventures
 
-> blankcollar.vc is the pre-seed venture capital arm of The Blank Collar. We back founders building for the AI era with up to CHF 50'000 in capital, the knowledge layer from theblankcollar.com, and a configured, founder-ready agentic OS on blankcollar.ai — capital, knowledge, and automation in one cheque. Switzerland-based, global.
+> blankcollar.ventures is the venture arm of The Blank Collar. We don't write the cheque — we make
+> founders fundable for the AI era and connect them to the capital. Our "investment" is four things:
+> the knowledge from theblankcollar.com, upskilling on blankcollar.university, AI operations
+> (a configured agentic OS) on blankcollar.ai, and warm intros to the VCs we work with. We open the
+> doors; the VCs we partner with write the cheques. Switzerland-based, global.
 
-blankcollar.vc is part of The Blank Collar — the post-AI worker practice. "Work is for bots. Life is for humans."
+blankcollar.ventures is part of The Blank Collar — the post-AI worker practice. "Work is for bots. Life is for humans."
 Coined in 2016 and founded in 2018 by Kristian Kabashi (Zürich, Switzerland). The Blank Collar is the
 umbrella brand; its ventures are blankcollar.ai (the AI operating system), blankcollar.university (the
-school), and blankcollar.vc (pre-seed capital).
+school), and blankcollar.ventures (the founder + venture platform).
 
 ## Key facts
 - Founder: Kristian Kabashi — https://www.kristiankabashi.com
 - Brand: The Blank Collar — https://www.theblankcollar.com
-- This venture: blankcollar.vc — pre-seed VC for the AI era, up to CHF 50'000 plus knowledge and an agentic OS — https://www.blankcollar.vc
+- This venture: blankcollar.ventures — we make founders fundable (knowledge, AI operations, upskilling,
+  and warm intros to the VCs we work with); we do not write cheques ourselves — https://www.blankcollar.ventures
+- Formerly blankcollar.vc (now redirects to blankcollar.ventures).
 
 ## Canonical links
 - https://www.theblankcollar.com
 - https://www.blankcollar.ai
 - https://www.blankcollar.university
-- https://www.blankcollar.vc
+- https://www.blankcollar.ventures
 - https://www.kristiankabashi.com
 - Medium: https://medium.com/@theblankcollar
 
 ## Contact
-- Apply: https://www.blankcollar.vc/apply
+- Apply: https://www.blankcollar.ventures/apply
 - Email: hey@theblankcollar.com

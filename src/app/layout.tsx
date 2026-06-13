@@ -31,31 +31,31 @@ const siteUrl = (() => {
 })();
 
 const enDescription =
-  "Pre-seed VC for the AI era. Knowledge + agentic OS for every founder we back, plus up to CHF 50'000 in capital. Switzerland-based, global.";
+  "blankcollar.ventures makes founders fundable for the AI era — knowledge, AI operations, upskilling, and warm intros to the VCs we work with. We don't write the cheque; we open the doors. Switzerland-based, global.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "blankcollar.vc — Capital. Knowledge. Agentic OS.",
-    template: "%s · blankcollar.vc",
+    default: "blankcollar.ventures — Knowledge. AI. Access.",
+    template: "%s · blankcollar.ventures",
   },
   description: enDescription,
-  applicationName: "blankcollar.vc",
+  applicationName: "blankcollar.ventures",
   keywords: [
-    "pre-seed VC",
-    "AI VC",
-    "Switzerland VC",
+    "venture platform",
+    "AI-era founders",
+    "founder enablement",
+    "AI operations",
+    "VC access Switzerland",
+    "startup fundraising help",
     "agentic OS",
-    "startup investment",
-    "founder fund",
     "blankcollar",
     "theblankcollar",
     "pre-seed Switzerland",
-    "CHF 50000",
   ],
-  authors: [{ name: "blankcollar.vc" }],
-  creator: "blankcollar.vc",
-  publisher: "blankcollar.vc",
+  authors: [{ name: "blankcollar.ventures" }],
+  creator: "blankcollar.ventures",
+  publisher: "blankcollar.ventures",
   alternates: {
     canonical: "/",
     languages: {
@@ -65,17 +65,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "blankcollar.vc — Pre-seed for the AI era",
+    title: "blankcollar.ventures — Make your startup fundable",
     description: enDescription,
     url: siteUrl,
-    siteName: "blankcollar.vc",
+    siteName: "blankcollar.ventures",
     type: "website",
     locale: "en_US",
     alternateLocale: ["de_CH"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "blankcollar.vc — Pre-seed for the AI era",
+    title: "blankcollar.ventures — Make your startup fundable",
     description: enDescription,
   },
   robots: {
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  category: "venture capital",
+  category: "venture platform",
 };
 
 export default function RootLayout({

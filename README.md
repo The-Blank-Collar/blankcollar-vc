@@ -1,7 +1,7 @@
-# blankcollar.vc — One-pager
+# blankcollar.ventures — One-pager
 
 The pre-seed VC arm of blankcollar — built for the AI era.
-This is the marketing site at **www.blankcollar.vc**, hosted on Vercel.
+This is the marketing site at **www.blankcollar.ventures**, hosted on Vercel.
 
 ## Stack
 
@@ -39,7 +39,7 @@ Routes:
 ## Deploy
 
 Vercel auto-deploys every push to `main`. The production domain is
-**www.blankcollar.vc**.
+**www.blankcollar.ventures**.
 
 ### Environment variables
 
@@ -49,8 +49,8 @@ Add these in **Vercel → Project → Settings → Environment Variables**:
 |---|---|---|
 | `RESEND_API_KEY` | Yes (in production) | API key from [resend.com](https://resend.com). Without it, the form runs in mock mode and just logs submissions. |
 | `APPLY_TO_EMAIL` | No | Where applications are sent. Defaults to `hey@theblankcollar.com`. |
-| `APPLY_FROM_EMAIL` | No | The "from" address. Defaults to `blankcollar.vc <onboarding@resend.dev>` (Resend's shared sandbox domain). Once you verify your own domain in Resend, set this to `blankcollar.vc <apply@blankcollar.vc>`. |
-| `NEXT_PUBLIC_SITE_URL` | No | Forces canonical / OG URLs to a specific origin (e.g. `https://www.blankcollar.vc`). Auto-resolves from `VERCEL_PROJECT_PRODUCTION_URL` / `VERCEL_URL` if absent. |
+| `APPLY_FROM_EMAIL` | No | The "from" address. Defaults to `blankcollar.ventures <onboarding@resend.dev>` (Resend's shared sandbox domain). Once you verify your own domain in Resend, set this to `blankcollar.ventures <apply@blankcollar.ventures>`. |
+| `NEXT_PUBLIC_SITE_URL` | No | Forces canonical / OG URLs to a specific origin (e.g. `https://www.blankcollar.ventures`). Auto-resolves from `VERCEL_PROJECT_PRODUCTION_URL` / `VERCEL_URL` if absent. |
 
 ## Setting up Resend (one-time, ~10 minutes)
 
@@ -74,20 +74,20 @@ That's enough to get the form working — emails will go out from
 ### 2. Verify your own domain (recommended)
 
 Sending from `onboarding@resend.dev` works but looks unprofessional in
-inboxes. Verify `blankcollar.vc` so you can send from
-`apply@blankcollar.vc`.
+inboxes. Verify `blankcollar.ventures` so you can send from
+`apply@blankcollar.ventures`.
 
-1. In Resend → **Domains** → **Add Domain** → enter `blankcollar.vc`
+1. In Resend → **Domains** → **Add Domain** → enter `blankcollar.ventures`
 2. Resend gives you 3 DNS records to add. They look like:
-   - **MX** record on `send.blankcollar.vc` → `feedback-smtp.eu-west-1.amazonses.com`
-   - **TXT** record on `send.blankcollar.vc` → SPF (`v=spf1 include:amazonses.com ~all`)
-   - **TXT** record on `resend._domainkey.blankcollar.vc` → DKIM public key
+   - **MX** record on `send.blankcollar.ventures` → `feedback-smtp.eu-west-1.amazonses.com`
+   - **TXT** record on `send.blankcollar.ventures` → SPF (`v=spf1 include:amazonses.com ~all`)
+   - **TXT** record on `resend._domainkey.blankcollar.ventures` → DKIM public key
 3. Add all three in your DNS provider (Vercel DNS if you've moved the
    nameservers there, otherwise Squarespace)
 4. Wait 5–30 minutes, then click **Verify DNS Records** in Resend
 5. Once green, set `APPLY_FROM_EMAIL` in Vercel to:
    ```
-   blankcollar.vc <apply@blankcollar.vc>
+   blankcollar.ventures <apply@blankcollar.ventures>
    ```
 6. Redeploy — done. Both emails now come from the verified domain
 
@@ -96,7 +96,7 @@ inboxes. Verify `blankcollar.vc` so you can send from
 After domain verification, add a DMARC record to protect against
 spoofing:
 
-- **TXT** on `_dmarc.blankcollar.vc` → `v=DMARC1; p=quarantine; rua=mailto:dmarc@blankcollar.vc`
+- **TXT** on `_dmarc.blankcollar.ventures` → `v=DMARC1; p=quarantine; rua=mailto:dmarc@blankcollar.ventures`
 
 Start with `p=quarantine`, monitor for a few weeks via the rua reports,
 then move to `p=reject` once you're confident.

@@ -38,7 +38,7 @@ function Logo({ onDark = false }: { onDark?: boolean }) {
       <span>
         <span className="font-medium">blankcollar</span>
         <span className={`${onDark ? "text-bone/50" : "text-ink/50"}`}>
-          {" "}/ vc
+          {" "}/ ventures
         </span>
       </span>
     </Link>
@@ -176,11 +176,11 @@ function Hero() {
             style={{ "--ed": "0.7s" } as CSSProperties}
           >
             {t.hero.sub1}
-            <span className="font-medium text-ink">{t.hero.subAmount}</span>
-            {t.hero.sub2}
             <span className="font-bot text-ink">theblankcollar.com</span>
-            {t.hero.sub3}
+            {t.hero.sub2}
             <span className="font-bot text-ink">blankcollar.ai</span>
+            {t.hero.sub3}
+            <span className="font-bot text-ink">blankcollar.university</span>
             {t.hero.sub4}
           </p>
 
@@ -246,7 +246,7 @@ function Marquee() {
 function StatBand() {
   const t = useDict();
   const stats = [
-    { label: t.stats.cheque, value: 50000, prefix: "CHF ", suffix: "" },
+    { label: t.stats.domains, value: 10, prefix: "", suffix: "" },
     { label: t.stats.decision, value: 14, prefix: "", suffix: useLang() === "de" ? " Tage" : " days" },
     { label: t.stats.toolkit, value: 8, prefix: "", suffix: "" },
     { label: t.stats.agents, value: 5, prefix: "", suffix: "" },
@@ -314,8 +314,10 @@ function Manifesto() {
             {t.manifesto.p2a}
             <span className="font-bot text-ink">theblankcollar.com</span>
             {t.manifesto.p2b}
-            <span className="font-bot text-ink">blankcollar.ai</span>
+            <span className="font-bot text-ink">blankcollar.university</span>
             {t.manifesto.p2c}
+            <span className="font-bot text-ink">blankcollar.ai</span>
+            {t.manifesto.p2d}
           </Reveal>
         </div>
       </div>
@@ -434,8 +436,10 @@ function Toolkit() {
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.toolkit.sub1}
-          <span className="font-bot text-ink">blankcollar.ai</span>
+          <span className="font-bot text-ink">blankcollar.university</span>
           {t.toolkit.sub2}
+          <span className="font-bot text-ink">blankcollar.ai</span>
+          {t.toolkit.sub3}
         </Reveal>
 
         <div className="mt-14">
@@ -734,7 +738,7 @@ function Footer() {
               <li><a href="https://www.theblankcollar.com" target="_blank" rel="me noopener" className="hover:text-ink text-ink/75">theblankcollar.com</a></li>
               <li><a href="https://www.blankcollar.ai" target="_blank" rel="me noopener" className="hover:text-ink text-ink/75">blankcollar.ai</a></li>
               <li><a href="https://www.blankcollar.university" target="_blank" rel="me noopener" className="hover:text-ink text-ink/75">blankcollar.university</a></li>
-              <li><span className="text-ink font-medium">blankcollar.vc</span></li>
+              <li><span className="text-ink font-medium">blankcollar.ventures</span></li>
               <li><a href="https://www.kristiankabashi.com" target="_blank" rel="me author noopener" className="hover:text-ink text-ink/75">Kristian Kabashi</a></li>
             </ul>
           </div>
@@ -756,7 +760,7 @@ function Footer() {
         </div>
       </div>
       <div className="mx-auto mt-12 flex max-w-7xl items-center justify-between border-t border-ink/10 pt-6 font-bot text-[11px] uppercase tracking-mono text-ink/50">
-        <span>© {year ?? ""} blankcollar.vc</span>
+        <span>© {year ?? ""} blankcollar.ventures</span>
         <span>{t.footer.motto}</span>
       </div>
     </footer>

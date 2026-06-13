@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "blankcollar.vc",
-    short_name: "blankcollar.vc",
+    name: "blankcollar.ventures",
+    short_name: "blankcollar.ventures",
     description:
-      "Pre-seed VC for the AI era. Knowledge + agentic OS for every founder, plus up to CHF 50'000 in capital.",
+      "We make founders fundable for the AI era — knowledge, AI operations, upskilling, and warm intros to the VCs we work with.",
     start_url: "/",
     display: "standalone",
     background_color: "#0E1320",

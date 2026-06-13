@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "blankcollar.vc — Kapital. Wissen. Agentic OS.";
+export const alt = "blankcollar.ventures — Wissen. AI. Zugang.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -62,7 +62,7 @@ export default function OG() {
           </div>
           <div style={{ display: "flex", fontSize: 20, letterSpacing: "0.18em", textTransform: "uppercase", fontFamily: "monospace" }}>
             <span style={{ fontWeight: 500 }}>blankcollar</span>
-            <span style={{ color: "rgba(244, 241, 234, 0.5)" }}>&nbsp;/ vc</span>
+            <span style={{ color: "rgba(244, 241, 234, 0.5)" }}>&nbsp;/ ventures</span>
           </div>
         </div>
 
@@ -81,7 +81,7 @@ export default function OG() {
           <span>KI hat verändert,</span>
           <span>was Gründer bauen.</span>
           <span style={{ color: "rgba(244, 241, 234, 0.45)" }}>
-            Wir haben verändert, was VCs liefern.
+            Wir verändern, wie sie finanziert werden.
           </span>
         </div>
 
@@ -98,7 +98,7 @@ export default function OG() {
             color: "rgba(244, 241, 234, 0.5)",
           }}
         >
-          <span>blankcollar.vc</span>
+          <span>blankcollar.ventures</span>
           <span style={{ color: "rgba(244, 241, 234, 0.25)" }}>●</span>
           <span>theblankcollar.com</span>
           <span style={{ color: "rgba(244, 241, 234, 0.25)" }}>●</span>

@@ -11,6 +11,23 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["framer-motion"],
   },
 
+  // Permanent redirect for the legacy domain. The site moved from
+  // blankcollar.vc → blankcollar.ventures (2026-06). As long as the old domain
+  // stays attached to this Vercel project, any request to (www.)blankcollar.vc
+  // is 308'd to the matching path on the new canonical host, preserving SEO
+  // equity. If a platform-level redirect is also set in the Vercel dashboard,
+  // this is a harmless belt-and-suspenders.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "(www\\.)?blankcollar\\.vc" }],
+        destination: "https://www.blankcollar.ventures/:path*",
+        permanent: true,
+      },
+    ];
+  },
+
   images: {
     // Modern formats first — AVIF (~30-50% smaller than WebP), WebP fallback,
     // browsers that support neither get the original.

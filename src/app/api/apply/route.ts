@@ -4,7 +4,7 @@ export const runtime = "nodejs";
 export const maxDuration = 30;
 
 const APPLY_TO = process.env.APPLY_TO_EMAIL || "hey@theblankcollar.com";
-const APPLY_FROM = process.env.APPLY_FROM_EMAIL || "blankcollar.vc <onboarding@resend.dev>";
+const APPLY_FROM = process.env.APPLY_FROM_EMAIL || "blankcollar.ventures <onboarding@resend.dev>";
 
 type Field = string | undefined;
 type Lang = "en" | "de";
@@ -43,42 +43,44 @@ const founderEmailCopy: Record<Lang, {
     subject: (c) => `We've got your application — ${c}`,
     greeting: (n) => `Hi ${n || "there"},`,
     intro: (c) =>
-      `Thanks for applying to blankcollar.vc on behalf of <strong>${c || "your company"}</strong>. Your application is in our inbox and we'll read it carefully.`,
+      `Thanks for applying to blankcollar.ventures on behalf of <strong>${c || "your company"}</strong>. Your application is in our inbox and we'll read it carefully.`,
     receivedHeading: "What happens next",
     timeline: [
       { n: "Day 1–3", label: "Read", body: "We read every application. No deck templates, no bots scoring you." },
       { n: "Day 3–10", label: "Conversation", body: "If there's signal, we'll book a 30-min call. Camera optional." },
-      { n: "Day 14", label: "Decision", body: "Yes, no, or honest reason why. If yes, paperwork starts the next morning." },
+      { n: "Day 14", label: "Decision", body: "Yes, no, or honest reason why. If yes, we start the next morning." },
     ],
     whileYouWait: "While you wait",
     links: [
       { label: "theblankcollar.com — see the knowledge layer", href: "https://www.theblankcollar.com" },
+      { label: "blankcollar.university — the courses we'll point you to", href: "https://www.blankcollar.university" },
       { label: "blankcollar.ai — the agentic OS we'd set up for you", href: "https://www.blankcollar.ai" },
     ],
     closing:
       "If anything urgent comes up, just reply to this email. It comes from a real human inbox.",
-    signoff: "— blankcollar.vc",
+    signoff: "— blankcollar.ventures",
     footerMotto: "Work is for bots. Life is for humans.",
   },
   de: {
     subject: (c) => `Wir haben deine Bewerbung — ${c}`,
     greeting: (n) => `Hi ${n || "Gründer"},`,
     intro: (c) =>
-      `Danke für deine Bewerbung bei blankcollar.vc für <strong>${c || "dein Unternehmen"}</strong>. Sie ist in unserem Posteingang und wir lesen sie sorgfältig.`,
+      `Danke für deine Bewerbung bei blankcollar.ventures für <strong>${c || "dein Unternehmen"}</strong>. Sie ist in unserem Posteingang und wir lesen sie sorgfältig.`,
     receivedHeading: "Was als Nächstes passiert",
     timeline: [
       { n: "Tag 1–3", label: "Lesen", body: "Wir lesen jede Bewerbung. Keine Deck-Vorlagen, keine Bots, die dich bewerten." },
       { n: "Tag 3–10", label: "Gespräch", body: "Wenn es Signal gibt, buchen wir einen 30-Minuten-Call. Kamera optional." },
-      { n: "Tag 14", label: "Entscheidung", body: "Ja, nein, oder ein ehrlicher Grund. Wenn ja, starten wir am nächsten Morgen mit dem Papierkram." },
+      { n: "Tag 14", label: "Entscheidung", body: "Ja, nein, oder ein ehrlicher Grund. Wenn ja, starten wir am nächsten Morgen." },
     ],
     whileYouWait: "Solange du wartest",
     links: [
       { label: "theblankcollar.com — sieh die Wissens-Ebene in Aktion", href: "https://www.theblankcollar.com" },
+      { label: "blankcollar.university — die Kurse, auf die wir dich hinweisen", href: "https://www.blankcollar.university" },
       { label: "blankcollar.ai — das agentische OS, das wir für dich einrichten", href: "https://www.blankcollar.ai" },
     ],
     closing:
       "Wenn etwas Dringendes auftaucht, antworte einfach auf diese Mail. Sie kommt aus einem echten Posteingang.",
-    signoff: "— blankcollar.vc",
+    signoff: "— blankcollar.ventures",
     footerMotto: "Arbeit ist für Bots. Leben ist für Menschen.",
   },
 };
@@ -116,7 +118,7 @@ function renderFounderEmail(lang: Lang, founderName: string, companyName: string
     <!-- Header band -->
     <div style="padding:32px;background:#0E1320;color:#F4F1EA;">
       <div style="display:inline-block;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,241,234,0.6);">
-        ● blankcollar.vc
+        ● blankcollar.ventures
       </div>
       <div style="margin-top:14px;font-size:24px;font-weight:500;letter-spacing:-0.02em;">${escape(c.greeting(firstName))}</div>
       <p style="margin-top:16px;font-size:15px;line-height:1.55;color:rgba(244,241,234,0.85);">
@@ -152,7 +154,7 @@ function renderFounderEmail(lang: Lang, founderName: string, companyName: string
 
     <!-- Footer strip -->
     <div style="padding:18px 32px;background:#FAFAF7;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.06em;color:#888;display:flex;justify-content:space-between;">
-      <span>blankcollar.vc</span>
+      <span>blankcollar.ventures</span>
       <span>${escape(c.footerMotto)}</span>
     </div>
   </div>
@@ -183,9 +185,9 @@ export async function POST(req: Request) {
     }
 
     const tierMap: Record<string, string> = {
-      "os-pass": "The OS Pass",
+      access: "The Essentials",
+      "os-pass": "The Essentials",
       "full-stack": "The Full Stack",
-      cheque: "The Cheque",
     };
     const tierRaw = get("tier") || "full-stack";
     const tier = tierMap[tierRaw] || tierRaw;
@@ -235,7 +237,7 @@ export async function POST(req: Request) {
             ${Object.entries(fields).map(([k, v]) => row(k, v)).join("")}
           </table>
           <div style="padding:20px 32px;background:#FAFAF7;font-family:ui-monospace,monospace;font-size:11px;color:#666;letter-spacing:0.06em;">
-            Sent via blankcollar.vc/apply · ${new Date().toISOString()}
+            Sent via blankcollar.ventures/apply · ${new Date().toISOString()}
           </div>
         </div>
       </div>

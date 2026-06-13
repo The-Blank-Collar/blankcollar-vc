@@ -9,15 +9,15 @@
 //
 // The same @graph is rendered on both the en (`/`) and de (`/de`) layouts.
 
-const CANONICAL_URL = "https://www.blankcollar.vc";
+const CANONICAL_URL = "https://www.blankcollar.ventures";
 
 const PERSON_ID = "https://www.kristiankabashi.com/#person";
 const ORG_ID = "https://www.theblankcollar.com/#org";
-const VC_ORG_ID = "https://www.blankcollar.vc/#org";
-const VC_WEBSITE_ID = "https://www.blankcollar.vc/#website";
+const VC_ORG_ID = "https://www.blankcollar.ventures/#org";
+const VC_WEBSITE_ID = "https://www.blankcollar.ventures/#website";
 
 const vcDescription =
-  "Pre-seed VC for the AI era. Knowledge + agentic OS for every founder we back, plus up to CHF 50'000 in capital. Switzerland-based, global.";
+  "blankcollar.ventures is the venture arm of The Blank Collar. We make founders fundable for the AI era — the knowledge from theblankcollar.com, upskilling on blankcollar.university, AI operations on blankcollar.ai, and warm intros to the VCs we work with. We don't write the cheque; we open the doors. Switzerland-based, global.";
 
 // Person sameAs — Kristian (personal + shared @theblankcollar handles). §1 verbatim.
 const personSameAs = [
@@ -46,11 +46,11 @@ const orgSameAs = [
   "https://github.com/theblankcollar",
   "https://www.blankcollar.ai",
   "https://www.blankcollar.university",
-  "https://www.blankcollar.vc",
+  "https://www.blankcollar.ventures",
 ];
 
 /**
- * Build the JSON-LD @graph for blankcollar.vc.
+ * Build the JSON-LD @graph for blankcollar.ventures.
  *
  * The graph is identical across languages except the WebSite node carries the
  * language hint. The bilingual site declares inLanguage ["en","de"] regardless,
@@ -60,16 +60,16 @@ export function buildSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      // Venture node — blankcollar.vc (§3)
+      // Venture node — blankcollar.ventures (§3)
       {
         "@type": "Organization",
         "@id": VC_ORG_ID,
-        name: "blankcollar.vc",
-        alternateName: ["blankcollar VC", "Blank Collar VC"],
+        name: "blankcollar.ventures",
+        alternateName: ["blankcollar ventures", "Blank Collar Ventures"],
         url: CANONICAL_URL,
         logo: `${CANONICAL_URL}/icon`,
         description: vcDescription,
-        slogan: "Capital. Knowledge. Agentic OS.",
+        slogan: "Knowledge. AI. Access.",
         areaServed: "Worldwide",
         foundingLocation: {
           "@type": "Place",
@@ -79,10 +79,12 @@ export function buildSiteSchema() {
           },
         },
         knowsAbout: [
-          "Pre-seed venture capital",
-          "AI-native startups",
-          "Agentic OS",
           "Founder enablement",
+          "AI-native startups",
+          "AI operations",
+          "Agentic OS",
+          "Startup fundraising",
+          "Venture capital access",
         ],
         parentOrganization: { "@id": ORG_ID },
         founder: { "@id": PERSON_ID },
@@ -92,7 +94,7 @@ export function buildSiteSchema() {
         "@type": "WebSite",
         "@id": VC_WEBSITE_ID,
         url: CANONICAL_URL,
-        name: "blankcollar.vc",
+        name: "blankcollar.ventures",
         description: vcDescription,
         inLanguage: ["en", "de"],
         publisher: { "@id": VC_ORG_ID },

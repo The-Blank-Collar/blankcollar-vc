@@ -46,9 +46,9 @@ export type HelpFit = "access" | "full-stack";
 export type TierId = "os-pass" | "full-stack" | "cheque";
 
 export const tierLabels: Record<TierId, string> = {
-  "os-pass": "The OS Pass",
+  "os-pass": "The Essentials",
   "full-stack": "The Full Stack",
-  cheque: "The Cheque",
+  cheque: "VC Access",
 };
 
 export type ApplicationData = {
@@ -173,6 +173,6 @@ export const biggestRiskLabels: Record<BiggestRisk, string> = {
 };
 
 export const helpFitLabels: Record<HelpFit, string> = {
-  access: "We just need access",
-  "full-stack": "We need the full stack",
+  access: "We need the lift",
+  "full-stack": "We're ready to raise",
 };
