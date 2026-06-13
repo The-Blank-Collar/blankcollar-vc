@@ -330,7 +330,7 @@ function Stack() {
   return (
     <section id="stack" className="relative bg-ink text-bone overflow-hidden">
       <div className="absolute inset-0 -z-0" aria-hidden>
-        <div className="absolute -right-1/3 top-0 h-[60vh] w-[60vh] rounded-full bg-accent/15 blur-[120px]" />
+        <div className="absolute -right-1/3 top-0 h-[60vh] w-[60vh] rounded-full bg-accent/15 blur-[70px]" />
       </div>
       <div className="relative z-10 px-6 py-24 md:px-10 md:py-36">
         <div className="mx-auto max-w-6xl">
@@ -649,8 +649,8 @@ function CTA() {
         {/* Static glow — these used to animate x/y on an infinite loop, which
             kept the compositor re-blurring two huge layers every frame and
             janked scrolling (badly on mobile). The look is identical at rest. */}
-        <div className="absolute -left-1/4 top-1/3 h-[60vh] w-[60vh] rounded-full bg-accent/40 blur-[120px]" />
-        <div className="absolute -right-1/4 bottom-0 h-[55vh] w-[55vh] rounded-full bg-ink/15 blur-[120px]" />
+        <div className="absolute -left-1/4 top-1/3 h-[60vh] w-[60vh] rounded-full bg-accent/40 blur-[70px]" />
+        <div className="absolute -right-1/4 bottom-0 h-[55vh] w-[55vh] rounded-full bg-ink/15 blur-[70px]" />
       </div>
 
       <div className="relative z-10 px-6 py-24 md:px-10 md:py-36">

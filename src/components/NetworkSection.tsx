@@ -10,7 +10,7 @@ export function NetworkSection() {
   return (
     <section className="relative bg-ink text-bone px-6 py-24 md:px-10 md:py-36">
       <div className="absolute inset-0 -z-0" aria-hidden>
-        <div className="absolute -left-1/4 top-1/3 h-[60vh] w-[60vh] rounded-full bg-accent/10 blur-[120px]" />
+        <div className="absolute -left-1/4 top-1/3 h-[60vh] w-[60vh] rounded-full bg-accent/10 blur-[70px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">

@@ -24,8 +24,8 @@ export function ApplyContent() {
   return (
     <main className="relative min-h-screen bg-ink text-bone">
       <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -right-1/3 top-0 h-[60vh] w-[60vh] rounded-full bg-accent/10 blur-[120px]" />
-        <div className="absolute -left-1/4 bottom-0 h-[50vh] w-[50vh] rounded-full bg-accent/5 blur-[120px]" />
+        <div className="absolute -right-1/3 top-0 h-[60vh] w-[60vh] rounded-full bg-accent/10 blur-[70px]" />
+        <div className="absolute -left-1/4 bottom-0 h-[50vh] w-[50vh] rounded-full bg-accent/5 blur-[70px]" />
       </div>
 
       <div className="relative z-10">

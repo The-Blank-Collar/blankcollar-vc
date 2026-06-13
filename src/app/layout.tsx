@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
-import { SmoothScroll } from "@/components/SmoothScroll";
 import { siteSchemaJson } from "@/lib/siteSchema";
 
 const roboto = Roboto({
@@ -104,7 +103,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans bg-bone text-ink antialiased">
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
       </body>
     </html>
   );
