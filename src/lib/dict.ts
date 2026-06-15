@@ -6,7 +6,7 @@
 //
 // POSITIONING (2026-06-13): blankcollar.ventures backs AI startups (companies
 // already building with AI) and helps them WIN — the Blank Collar framework, our
-// knowledge, and our operator experience (built/scaled/exited), plus AI operations
+// knowledge, and our operator experience (built/scaled/acquired), plus AI operations
 // (blankcollar.ai) and upskilling (blankcollar.university). Funding is ONE POSSIBLE
 // OUTCOME, not the offer. Reads for BOTH founders and the VCs we partner with.
 // We are NOT a fund and do NOT write cheques. (Do not reintroduce "we make you
@@ -231,7 +231,7 @@ const en = {
     eyebrow: "10 — Capital, when it fits",
     h1: "We know a lot",
     h2: "of investors.",
-    p1: "Not the pitch — just true. After years of building and exiting our own startups, we know the funds worth knowing: seed, Series A, family offices, the right angels.",
+    p1: "Not the pitch — just true. After years of building and scaling our own startups, we know the funds worth knowing: seed, Series A, family offices, the right angels.",
     p2: "We don't write cheques. But when a company we work with is ready, we make warm intros — directly, not via a portal. And it runs both ways: funds bring us their AI companies to work with.",
     stats: [
       { n: "Direct", label: "Relationships, not a portal" },
@@ -270,7 +270,7 @@ const en = {
     social: "Social",
     language: "Language",
     pageItems: ["Manifesto", "Stack", "Toolkit", "Portfolio", "Terms"],
-    motto: "Work is for bots. Life is for humans.",
+    motto: "Work is for Bots, life is for Humans.",
   },
   apply: {
     eyebrow: "Application",
@@ -667,7 +667,7 @@ const de: typeof en = {
     eyebrow: "10 — Kapital, wenn es passt",
     h1: "Wir kennen viele",
     h2: "Investoren.",
-    p1: "Nicht der Pitch — einfach wahr. Nach Jahren des Bauens und Verkaufens unserer eigenen Startups kennen wir die Fonds, die zählen: Seed, Series A, Family Offices, die richtigen Angels.",
+    p1: "Nicht der Pitch — einfach wahr. Nach Jahren des Bauens und Skalierens unserer eigenen Startups kennen wir die Fonds, die zählen: Seed, Series A, Family Offices, die richtigen Angels.",
     p2: "Wir schreiben keine Cheques. Aber wenn ein Unternehmen, mit dem wir arbeiten, bereit ist, machen wir warme Vorstellungen — direkt, nicht über ein Portal. Und es geht beidseitig: Fonds bringen uns ihre AI-Unternehmen zur Zusammenarbeit.",
     stats: [
       { n: "Direkt", label: "Beziehungen, kein Portal" },
@@ -706,7 +706,7 @@ const de: typeof en = {
     social: "Social",
     language: "Sprache",
     pageItems: ["Manifest", "Stack", "Toolkit", "Portfolio", "Konditionen"],
-    motto: "Arbeit ist für Bots. Leben ist für Menschen.",
+    motto: "Arbeit ist für Bots, Leben ist für Menschen.",
   },
   apply: {
     eyebrow: "Bewerbung",

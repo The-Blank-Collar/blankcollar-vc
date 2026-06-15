@@ -59,7 +59,7 @@ const founderEmailCopy: Record<Lang, {
     closing:
       "If anything urgent comes up, just reply to this email. It comes from a real human inbox.",
     signoff: "— blankcollar.ventures",
-    footerMotto: "Work is for bots. Life is for humans.",
+    footerMotto: "Work is for Bots, life is for Humans.",
   },
   de: {
     subject: (c) => `Wir haben deine Bewerbung — ${c}`,
@@ -81,7 +81,7 @@ const founderEmailCopy: Record<Lang, {
     closing:
       "Wenn etwas Dringendes auftaucht, antworte einfach auf diese Mail. Sie kommt aus einem echten Posteingang.",
     signoff: "— blankcollar.ventures",
-    footerMotto: "Arbeit ist für Bots. Leben ist für Menschen.",
+    footerMotto: "Arbeit ist für Bots, Leben ist für Menschen.",
   },
 };
 
