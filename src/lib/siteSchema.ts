@@ -11,13 +11,25 @@
 
 const CANONICAL_URL = "https://www.blankcollar.ventures";
 
+// Social channels for the footer social row. Order is intentional and shared.
+export type Social = { label: string; href: string };
+export const SOCIALS: Social[] = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/theblankcollar" },
+  { label: "X", href: "https://x.com/theblankcollar" },
+  { label: "Instagram", href: "https://www.instagram.com/theblankcollar" },
+  { label: "YouTube", href: "https://www.youtube.com/@theblankcollar" },
+  { label: "TikTok", href: "https://www.tiktok.com/@theblankcollar" },
+  { label: "Medium", href: "https://medium.com/@theblankcollar" },
+  { label: "GitHub", href: "https://github.com/theblankcollar" },
+];
+
 const PERSON_ID = "https://www.kristiankabashi.com/#person";
 const ORG_ID = "https://www.theblankcollar.com/#org";
 const VC_ORG_ID = "https://www.blankcollar.ventures/#org";
 const VC_WEBSITE_ID = "https://www.blankcollar.ventures/#website";
 
 const vcDescription =
-  "blankcollar.ventures is the ventures arm of The Blank Collar. We back AI startups and help them win — the Blank Collar framework, our operator experience building, scaling, and exiting companies, AI operations on blankcollar.ai, and upskilling on blankcollar.university. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
+  "blankcollar.ventures is the ventures arm of The Blank Collar. We back AI startups and help them win — the Blank Collar framework, our operator experience building and scaling companies, AI operations on blankcollar.ai, and upskilling on blankcollar.university. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
 
 // Person sameAs — Kristian (personal + shared @theblankcollar handles). §1 verbatim.
 const personSameAs = [

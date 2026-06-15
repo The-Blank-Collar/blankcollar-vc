@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { SplitWords } from "@/components/SplitWords";
-import { CountUp } from "@/components/CountUp";
 import { Reveal, useRevealObserver } from "@/components/Reveal";
-import { formatSwissNumber, useDict, useLang } from "@/lib/lang";
+import { useDict, useLang } from "@/lib/lang";
 import { StackDiagram } from "@/components/StackDiagram";
 import { ProcessFlow } from "@/components/ProcessFlow";
 import { ComparisonMatrix } from "@/components/ComparisonMatrix";
@@ -16,6 +15,7 @@ import { FoundersSection } from "@/components/FoundersSection";
 import { NetworkSection } from "@/components/NetworkSection";
 import { InvestmentTiers } from "@/components/InvestmentTiers";
 import { LangSwitch } from "@/components/LangSwitch";
+import { SOCIALS } from "@/lib/siteSchema";
 
 function useLocalizedHref(path: string): string {
   const lang = useLang();
@@ -186,6 +186,13 @@ function Hero() {
             {t.hero.sub4}
           </p>
 
+          <p
+            className="enter mt-5 max-w-2xl text-sm leading-relaxed text-ink/55 text-balance"
+            style={{ "--ed": "0.78s" } as CSSProperties}
+          >
+            {t.hero.inOpen}
+          </p>
+
           <div
             className="enter mt-8 flex flex-wrap items-center gap-3"
             style={{ "--ed": "0.85s" } as CSSProperties}
@@ -242,40 +249,6 @@ function Marquee() {
         ))}
       </div>
     </div>
-  );
-}
-
-function StatBand() {
-  const t = useDict();
-  const stats = [
-    { label: t.stats.domains, value: 10, prefix: "", suffix: "" },
-    { label: t.stats.decision, value: 14, prefix: "", suffix: useLang() === "de" ? " Tage" : " days" },
-    { label: t.stats.toolkit, value: 8, prefix: "", suffix: "" },
-    { label: t.stats.agents, value: 5, prefix: "", suffix: "" },
-  ];
-  return (
-    <section className="relative px-6 py-16 md:px-10 md:py-20">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-ink/10 bg-ink/10 md:grid-cols-4">
-          {stats.map((s, i) => (
-            <Reveal
-              as="div"
-              key={s.label}
-              y={20}
-              delay={i * 0.06}
-              className="bg-bone p-6 md:p-8"
-            >
-              <div className="font-bot text-[11px] uppercase tracking-mono text-ink/55">
-                {s.label}
-              </div>
-              <div className="mt-3 text-4xl font-medium tracking-tighter md:text-5xl tabular">
-                <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} format={formatSwissNumber} />
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -762,6 +735,26 @@ function Footer() {
         </div>
       </div>
 
+      {/* Social row — the blankcollar family channels. Clean text links, footer styling. */}
+      <div className="mx-auto mt-10 max-w-7xl">
+        <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">{t.footer.social}</h4>
+        <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+          {SOCIALS.map((s) => (
+            <li key={s.label}>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${s.label} (opens in a new tab)`}
+                className="hover:text-ink text-ink/75"
+              >
+                {s.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {/* Language switch lives in the footer on mobile (header keeps it on desktop). */}
       <div className="mx-auto mt-10 max-w-7xl lg:hidden">
         <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">{t.footer.language}</h4>
@@ -790,7 +783,6 @@ export function Site() {
       <Header />
       <main id="main" className="relative">
         <Hero />
-        <StatBand />
         <Manifesto />
         <FoundersSection />
         <Stack />
