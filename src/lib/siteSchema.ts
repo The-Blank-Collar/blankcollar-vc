@@ -28,6 +28,7 @@ const PERSON_ID = "https://www.kristiankabashi.com/#person";
 const ORG_ID = "https://www.theblankcollar.com/#org";
 const VC_ORG_ID = "https://www.blankcollar.ventures/#org";
 const VC_WEBSITE_ID = "https://www.blankcollar.ventures/#website";
+const BOOK_ID = "https://www.theblankcollar.com/#book";
 
 const vcDescription =
   "blankcollar.ventures is the ventures arm of The Blank Collar. We back AI startups and help them win — the Blank Collar framework, our operator experience building and scaling companies, AI operations on blankcollar.ai, and upskilling on blankcollar.university. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
@@ -60,6 +61,7 @@ const orgSameAs = [
   "https://www.blankcollar.ai",
   "https://www.blankcollar.university",
   "https://www.blankcollar.ventures",
+  "https://www.kristiankabashi.com",
 ];
 
 /**
@@ -120,7 +122,7 @@ export function buildSiteSchema() {
         name: "The Blank Collar",
         alternateName: "TBC",
         url: "https://www.theblankcollar.com",
-        slogan: "Work is for bots. Life is for humans.",
+        slogan: "Work is for Bots, life is for Humans.",
         founder: { "@id": PERSON_ID },
         sameAs: orgSameAs,
       },
@@ -133,6 +135,15 @@ export function buildSiteSchema() {
         jobTitle: "Founder",
         worksFor: { "@id": ORG_ID },
         sameAs: personSameAs,
+      },
+      // Book — "The Blank Collar Equation" (2nd edition 2026), authored by Kristian
+      {
+        "@type": "Book",
+        "@id": BOOK_ID,
+        name: "The Blank Collar Equation",
+        bookEdition: "2nd edition",
+        datePublished: "2026",
+        author: { "@id": PERSON_ID },
       },
     ],
   };
