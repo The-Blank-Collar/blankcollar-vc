@@ -6,7 +6,7 @@
 //
 // POSITIONING (2026-06-13): blankcollar.ventures backs AI startups (companies
 // already building with AI) and helps them WIN — the Blank Collar framework, our
-// knowledge, and our operator experience (built/scaled/exited), plus AI operations
+// knowledge, and our operator experience (built/scaled/acquired), plus AI operations
 // (blankcollar.ai) and upskilling (blankcollar.university). Funding is ONE POSSIBLE
 // OUTCOME, not the offer. Reads for BOTH founders and the VCs we partner with.
 // We are NOT a fund and do NOT write cheques. (Do not reintroduce "we make you
@@ -51,7 +51,7 @@ const en = {
     sub4: ". Funding, when it fits, is one outcome — not the point.",
     primaryCta: "Apply to work with us",
     secondaryCta: "Read the manifesto",
-    backedLabel: "Worked with:",
+    backedLabel: "Track record:",
     inOpen: "The method, shared in the open: the thinking is free, you pay only if you want it run for you.",
   },
   marquee: [
@@ -219,19 +219,21 @@ const en = {
     sub2: "Where the method gets applied.",
     statusActive: "Active",
     statusExited: "Acquired",
+    relationBuilt: "Built by us",
+    relationWorked: "Worked with",
     companies: [
-      { name: "Numarics", domain: "numarics.com", url: "https://numarics.com", category: "Fintech / Accounting", body: "AI-native accounting for SMEs and fiduciary partners. Built and scaled, then acquired by Radicant Holding in 2024.", origin: "CH", status: "exited" as const },
-      { name: "Cybee.ai", domain: "cybee.ai", url: "https://cybee.ai", category: "Cybersecurity", body: "Cybersecurity & compliance for SMBs. SOC 2, GDPR, ISO 27001 — automated, in plain language.", origin: "CH", status: "active" as const },
-      { name: "iQTax", domain: "iqtax.ch", url: "https://iqtax.ch", category: "AI Tax", body: "The AI platform for Swiss tax declarations. Upload, file, done — in minutes, not hours.", origin: "CH", status: "active" as const },
-      { name: "Alletta", domain: "alletta.ch", url: "https://alletta.ch", category: "InsurTech", body: "First fully digital, AI-powered health & legal insurance platform in Switzerland.", origin: "CH", status: "active" as const },
-      { name: "Visorway", domain: "visorway.ai", url: "https://visorway.ai", category: "AI Consulting", body: "AI-native consulting. One AI advisor in front of full IT and ESG advisory engines.", origin: "EU", status: "active" as const },
+      { name: "Numarics", domain: "numarics.com", url: "https://numarics.com", category: "Fintech / Accounting", body: "AI-native accounting for SMEs and fiduciary partners. Built and scaled, then acquired by Radicant Holding in 2024.", origin: "CH", status: "exited" as const, relation: "built" as const },
+      { name: "Cybee.ai", domain: "cybee.ai", url: "https://cybee.ai", category: "Cybersecurity", body: "Cybersecurity & compliance for SMBs. SOC 2, GDPR, ISO 27001 — automated, in plain language.", origin: "CH", status: "active" as const, relation: "built" as const },
+      { name: "iQTax", domain: "iqtax.ch", url: "https://iqtax.ch", category: "AI Tax", body: "The AI platform for Swiss tax declarations. Upload, file, done — in minutes, not hours.", origin: "CH", status: "active" as const, relation: "worked" as const },
+      { name: "Alletta", domain: "alletta.ch", url: "https://alletta.ch", category: "InsurTech", body: "First fully digital, AI-powered health & legal insurance platform in Switzerland.", origin: "CH", status: "active" as const, relation: "worked" as const },
+      { name: "Visorway", domain: "visorway.ai", url: "https://visorway.ai", category: "AI Consulting", body: "AI-native consulting. One AI advisor in front of full IT and ESG advisory engines.", origin: "EU", status: "active" as const, relation: "worked" as const },
     ],
   },
   netSection: {
     eyebrow: "10 — Capital, when it fits",
     h1: "We know a lot",
     h2: "of investors.",
-    p1: "Not the pitch — just true. After years of building and exiting our own startups, we know the funds worth knowing: seed, Series A, family offices, the right angels.",
+    p1: "Not the pitch — just true. After years of building and scaling our own startups, we know the funds worth knowing: seed, Series A, family offices, the right angels.",
     p2: "We don't write cheques. But when a company we work with is ready, we make warm intros — directly, not via a portal. And it runs both ways: funds bring us their AI companies to work with.",
     stats: [
       { n: "Direct", label: "Relationships, not a portal" },
@@ -270,7 +272,7 @@ const en = {
     social: "Social",
     language: "Language",
     pageItems: ["Manifesto", "Stack", "Toolkit", "Portfolio", "Terms"],
-    motto: "Work is for bots. Life is for humans.",
+    motto: "Work is for Bots, life is for Humans.",
   },
   apply: {
     eyebrow: "Application",
@@ -487,7 +489,7 @@ const de: typeof en = {
     sub4: ". Finanzierung, wenn sie passt, ist ein Outcome — nicht der Punkt.",
     primaryCta: "Mit uns arbeiten",
     secondaryCta: "Manifest lesen",
-    backedLabel: "Gearbeitet mit:",
+    backedLabel: "Track Record:",
     inOpen: "Die Methode, offen geteilt: das Denken ist gratis, bezahlt wird nur, wenn man es umsetzen lassen will.",
   },
   marquee: [
@@ -655,19 +657,21 @@ const de: typeof en = {
     sub2: "Wo die Methode angewendet wird.",
     statusActive: "Aktiv",
     statusExited: "Übernommen",
+    relationBuilt: "Von uns gebaut",
+    relationWorked: "Zusammengearbeitet",
     companies: [
-      { name: "Numarics", domain: "numarics.com", url: "https://numarics.com", category: "Fintech / Buchhaltung", body: "AI-natives Accounting für KMU und Treuhand. Aufgebaut und skaliert, dann 2024 von Radicant Holding übernommen.", origin: "CH", status: "exited" as const },
-      { name: "Cybee.ai", domain: "cybee.ai", url: "https://cybee.ai", category: "Cybersecurity", body: "Cybersecurity & Compliance für KMU. SOC 2, GDPR, ISO 27001 — automatisiert, in Klartext.", origin: "CH", status: "active" as const },
-      { name: "iQTax", domain: "iqtax.ch", url: "https://iqtax.ch", category: "AI Tax", body: "Die KI-Plattform für Schweizer Steuererklärungen. Hochladen, einreichen, fertig — in Minuten, nicht Stunden.", origin: "CH", status: "active" as const },
-      { name: "Alletta", domain: "alletta.ch", url: "https://alletta.ch", category: "InsurTech", body: "Die erste vollständig digitale, KI-gestützte Plattform für Kranken- und Rechtsschutzversicherungen in der Schweiz.", origin: "CH", status: "active" as const },
-      { name: "Visorway", domain: "visorway.ai", url: "https://visorway.ai", category: "AI Consulting", body: "AI-natives Consulting. Ein KI-Berater vor vollwertigen IT- und ESG-Beratungs-Engines.", origin: "EU", status: "active" as const },
+      { name: "Numarics", domain: "numarics.com", url: "https://numarics.com", category: "Fintech / Buchhaltung", body: "AI-natives Accounting für KMU und Treuhand. Aufgebaut und skaliert, dann 2024 von Radicant Holding übernommen.", origin: "CH", status: "exited" as const, relation: "built" as const },
+      { name: "Cybee.ai", domain: "cybee.ai", url: "https://cybee.ai", category: "Cybersecurity", body: "Cybersecurity & Compliance für KMU. SOC 2, GDPR, ISO 27001 — automatisiert, in Klartext.", origin: "CH", status: "active" as const, relation: "built" as const },
+      { name: "iQTax", domain: "iqtax.ch", url: "https://iqtax.ch", category: "AI Tax", body: "Die KI-Plattform für Schweizer Steuererklärungen. Hochladen, einreichen, fertig — in Minuten, nicht Stunden.", origin: "CH", status: "active" as const, relation: "worked" as const },
+      { name: "Alletta", domain: "alletta.ch", url: "https://alletta.ch", category: "InsurTech", body: "Die erste vollständig digitale, KI-gestützte Plattform für Kranken- und Rechtsschutzversicherungen in der Schweiz.", origin: "CH", status: "active" as const, relation: "worked" as const },
+      { name: "Visorway", domain: "visorway.ai", url: "https://visorway.ai", category: "AI Consulting", body: "AI-natives Consulting. Ein KI-Berater vor vollwertigen IT- und ESG-Beratungs-Engines.", origin: "EU", status: "active" as const, relation: "worked" as const },
     ],
   },
   netSection: {
     eyebrow: "10 — Kapital, wenn es passt",
     h1: "Wir kennen viele",
     h2: "Investoren.",
-    p1: "Nicht der Pitch — einfach wahr. Nach Jahren des Bauens und Verkaufens unserer eigenen Startups kennen wir die Fonds, die zählen: Seed, Series A, Family Offices, die richtigen Angels.",
+    p1: "Nicht der Pitch — einfach wahr. Nach Jahren des Bauens und Skalierens unserer eigenen Startups kennen wir die Fonds, die zählen: Seed, Series A, Family Offices, die richtigen Angels.",
     p2: "Wir schreiben keine Cheques. Aber wenn ein Unternehmen, mit dem wir arbeiten, bereit ist, machen wir warme Vorstellungen — direkt, nicht über ein Portal. Und es geht beidseitig: Fonds bringen uns ihre AI-Unternehmen zur Zusammenarbeit.",
     stats: [
       { n: "Direkt", label: "Beziehungen, kein Portal" },
@@ -706,7 +710,7 @@ const de: typeof en = {
     social: "Social",
     language: "Sprache",
     pageItems: ["Manifest", "Stack", "Toolkit", "Portfolio", "Konditionen"],
-    motto: "Arbeit ist für Bots. Leben ist für Menschen.",
+    motto: "Arbeit ist für Bots, Leben ist für Menschen.",
   },
   apply: {
     eyebrow: "Bewerbung",

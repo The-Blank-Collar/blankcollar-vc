@@ -30,7 +30,7 @@ const siteUrl = (() => {
 })();
 
 const enDescription =
-  "blankcollar.ventures backs AI startups and helps them win — the Blank Collar framework, our operator experience building, scaling, and exiting companies, plus AI operations and upskilling. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
+  "blankcollar.ventures backs AI startups and helps them win — the Blank Collar framework, our operator experience building, scaling, and seeing companies acquired, plus AI operations and upskilling. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

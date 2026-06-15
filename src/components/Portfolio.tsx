@@ -4,6 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
 
 type Status = "exited" | "active";
+type Relation = "built" | "worked";
 
 function StatusBadge({ status, label }: { status: Status; label: string }) {
   if (status === "exited") {
@@ -17,6 +18,21 @@ function StatusBadge({ status, label }: { status: Status; label: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-bone-soft/60 px-2.5 py-1 font-bot text-[10px] uppercase tracking-mono text-ink/55">
       <span className="dot-pulse inline-block h-1.5 w-1.5 rounded-full bg-ink/55" />
+      {label}
+    </span>
+  );
+}
+
+function RelationBadge({ relation, label }: { relation: Relation; label: string }) {
+  const built = relation === "built";
+  return (
+    <span
+      className={`inline-flex items-center rounded-full border px-2.5 py-1 font-bot text-[10px] uppercase tracking-mono ${
+        built
+          ? "border-ink/35 bg-ink/[0.06] text-ink/70"
+          : "border-ink/12 bg-transparent text-ink/45"
+      }`}
+    >
       {label}
     </span>
   );
@@ -47,6 +63,10 @@ export function Portfolio() {
               <div className="text-2xl font-medium tracking-tighter md:text-3xl">
                 {c.name}
               </div>
+              <RelationBadge
+                relation={c.relation}
+                label={c.relation === "built" ? t.portfolio.relationBuilt : t.portfolio.relationWorked}
+              />
               <StatusBadge
                 status={c.status}
                 label={c.status === "exited" ? t.portfolio.statusExited : t.portfolio.statusActive}
