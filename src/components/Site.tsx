@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import Link from "next/link";
 import { SplitWords } from "@/components/SplitWords";
 import { Reveal, useRevealObserver } from "@/components/Reveal";
@@ -16,6 +16,18 @@ import { NetworkSection } from "@/components/NetworkSection";
 import { InvestmentTiers } from "@/components/InvestmentTiers";
 import { LangSwitch } from "@/components/LangSwitch";
 import { SOCIALS } from "@/lib/siteSchema";
+
+// Social icons, keyed by label — matches the rest of the Blank Collar family.
+const SOCIAL_ICONS: Record<string, ReactNode> = {
+  LinkedIn: (<svg viewBox="0 0 24 24" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 10.5V16" /><path d="M7 7.3v.01" /><path d="M11.5 16v-3a1.8 1.8 0 0 1 3.5 0v3" /><path d="M11.5 16v-5.5" /></svg>),
+  X: (<svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" /></svg>),
+  Instagram: (<svg viewBox="0 0 24 24" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={2}><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" /></svg>),
+  Facebook: (<svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>),
+  YouTube: (<svg viewBox="0 0 24 24" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={2}><rect x="2.5" y="5.5" width="19" height="13" rx="4" /><polygon points="10,9.2 15.5,12 10,14.8" fill="currentColor" stroke="none" /></svg>),
+  TikTok: (<svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor"><path d="M14.5 3c.45 2.2 1.9 3.6 4 3.85v2.9c-1.45.05-2.8-.4-4-1.2v5.6a5.35 5.35 0 1 1-5.35-5.35c.3 0 .6.03.9.08v3a2.4 2.4 0 1 0 1.7 2.27V3h2.75z" /></svg>),
+  Medium: (<svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor"><path d="M13.54 12a6.77 6.77 0 1 1-13.54 0 6.77 6.77 0 0 1 13.54 0Zm7.42 0c0 3.54-1.52 6.41-3.39 6.41s-3.39-2.87-3.39-6.41 1.52-6.41 3.39-6.41 3.39 2.87 3.39 6.41ZM24 12c0 3.17-.53 5.75-1.19 5.75S21.62 15.17 21.62 12s.53-5.75 1.19-5.75S24 8.83 24 12Z" /></svg>),
+  GitHub: (<svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" /></svg>),
+};
 
 function useLocalizedHref(path: string): string {
   const lang = useLang();
@@ -738,17 +750,17 @@ function Footer() {
       {/* Social row — the blankcollar family channels. Clean text links, footer styling. */}
       <div className="mx-auto mt-10 max-w-7xl">
         <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">{t.footer.social}</h4>
-        <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+        <ul className="mt-4 flex max-w-[420px] flex-nowrap items-center gap-2.5">
           {SOCIALS.map((s) => (
-            <li key={s.label}>
+            <li key={s.label} className="flex min-w-0 flex-1" style={{ maxWidth: 38 }}>
               <a
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${s.label} (opens in a new tab)`}
-                className="hover:text-ink text-ink/75"
+                className="flex aspect-square w-full items-center justify-center border border-ink/15 text-ink/70 transition-colors hover:border-ink hover:text-ink"
               >
-                {s.label}
+                {SOCIAL_ICONS[s.label] ?? s.label}
               </a>
             </li>
           ))}
