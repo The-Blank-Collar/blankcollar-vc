@@ -35,8 +35,7 @@ const vcDescription =
 const personSameAs = [
   "https://www.linkedin.com/in/kristiankabashi/",
   "https://x.com/theblankcollar",
-  "https://www.instagram.com/theblankcollar/",
-  "https://www.facebook.com/theblankcollar",
+  "https://www.instagram.com/theblankcollar",
   "https://www.youtube.com/@theblankcollar",
   "https://www.tiktok.com/@theblankcollar",
   "https://medium.com/@theblankcollar",
@@ -50,8 +49,7 @@ const personSameAs = [
 const orgSameAs = [
   "https://www.linkedin.com/company/theblankcollar",
   "https://x.com/theblankcollar",
-  "https://www.instagram.com/theblankcollar/",
-  "https://www.facebook.com/theblankcollar",
+  "https://www.instagram.com/theblankcollar",
   "https://www.youtube.com/@theblankcollar",
   "https://www.tiktok.com/@theblankcollar",
   "https://medium.com/@theblankcollar",
