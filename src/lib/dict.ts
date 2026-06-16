@@ -46,7 +46,7 @@ const en = {
     h1b: "founders build.",
     h2: "We help them win.",
     sub1: "We're the ventures arm of blankcollar — we back AI startups and help them win: the Blank Collar framework and our own experience building and scaling companies. The thinking from ",
-    sub2: ", a configured agentic OS on ",
+    sub2: ", the open-source agentic OS from ",
     sub3: ", and upskilling on ",
     sub4: ". Funding, when it fits, is one outcome — not the point.",
     primaryCta: "Apply to work with us",
@@ -76,7 +76,7 @@ const en = {
     p1a: "The hardest part of an AI startup isn't the cheque, and it isn't the model — it's everything around it: the operating model, the go-to-market, the first hires, the pricing, the focus. The things that decide whether a good AI product becomes a company that wins.",
     p2a: "blankcollar.ventures works on exactly that with you — the Blank Collar framework from ",
     p2b: ", upskilling on ",
-    p2c: ", and a configured agentic OS on ",
+    p2c: ", and the open-source agentic OS from ",
     p2d: ", applied hands-on by operators who built and scaled their own. Funding is one outcome we can open doors to. It's not the point.",
   },
   founders: {
@@ -102,7 +102,7 @@ const en = {
     layers: [
       { label: "01", name: "Framework", site: "theblankcollar.com", voice: "human", description: "The Blank Collar model for an AI-era company — TBC = V + D(P/HX)^AI, made concrete for yours." },
       { label: "02", name: "Experience", site: "blankcollar.ventures", voice: "human", description: "Operators who built and scaled — in the room with you, hands-on.", current: true },
-      { label: "03", name: "AI Operations", site: "blankcollar.ai", voice: "bot", description: "We configure your agentic OS so the work runs as automation, not advice." },
+      { label: "03", name: "AI Operations", site: "blankcollar.ai", voice: "bot", description: "We set up the open-source agentic OS from blankcollar.ai, so the work runs as automation, not advice." },
       { label: "04", name: "Upskilling", site: "blankcollar.university", voice: "human", description: "Your team levels up on AI-era operating — so the edge compounds and stays." },
     ],
   },
@@ -119,7 +119,7 @@ const en = {
         capital: "Win faster",
         features: [
           "The Blank Collar framework, applied to your company",
-          "A configured agentic OS on blankcollar.ai",
+          "The open-source agentic OS from blankcollar.ai, set up for you",
           "Upskilling for you and your team on blankcollar.university",
           "Hands-on operator guidance — and warm VC intros when it fits",
         ],
@@ -484,7 +484,7 @@ const de: typeof en = {
     h1b: "was Gründer bauen.",
     h2: "Wir helfen ihnen zu gewinnen.",
     sub1: "Wir sind der Ventures-Arm von blankcollar — wir backen AI-Startups und helfen ihnen zu gewinnen: das Blank Collar Framework und unsere eigene Erfahrung aus dem Aufbauen und Skalieren von Unternehmen. Das Denken von ",
-    sub2: ", ein konfiguriertes agentisches OS auf ",
+    sub2: ", das Open-Source-agentische OS von ",
     sub3: ", und Upskilling auf ",
     sub4: ". Finanzierung, wenn sie passt, ist ein Outcome — nicht der Punkt.",
     primaryCta: "Mit uns arbeiten",
@@ -514,7 +514,7 @@ const de: typeof en = {
     p1a: "Der schwierigste Teil eines AI-Startups ist nicht der Cheque, und es ist nicht das Modell — es ist alles drumherum: das Betriebsmodell, das Go-to-Market, die ersten Hires, die Preisgestaltung, der Fokus. Die Dinge, die entscheiden, ob aus einem guten AI-Produkt ein Unternehmen wird, das gewinnt.",
     p2a: "blankcollar.ventures arbeitet genau daran mit dir — das Blank Collar Framework von ",
     p2b: ", Upskilling auf ",
-    p2c: ", und ein konfiguriertes agentisches OS auf ",
+    p2c: ", und das Open-Source-agentische OS von ",
     p2d: ", hands-on angewandt von Operatorn, die selbst gebaut und skaliert haben. Finanzierung ist ein Outcome, zu dem wir Türen öffnen können. Sie ist nicht der Punkt.",
   },
   founders: {
@@ -540,7 +540,7 @@ const de: typeof en = {
     layers: [
       { label: "01", name: "Framework", site: "theblankcollar.com", voice: "human", description: "Das Blank Collar Modell für ein Unternehmen der KI-Ära — TBC = V + D(P/HX)^AI, konkret für deins." },
       { label: "02", name: "Erfahrung", site: "blankcollar.ventures", voice: "human", description: "Operator, die aufgebaut und skaliert haben — mit dir im Raum, hands-on.", current: true },
-      { label: "03", name: "AI-Operations", site: "blankcollar.ai", voice: "bot", description: "Wir konfigurieren dein agentisches OS, damit die Arbeit als Automation läuft, nicht als Ratschlag." },
+      { label: "03", name: "AI-Operations", site: "blankcollar.ai", voice: "bot", description: "Wir richten das Open-Source-agentische OS von blankcollar.ai ein, damit die Arbeit als Automation läuft, nicht als Ratschlag." },
       { label: "04", name: "Upskilling", site: "blankcollar.university", voice: "human", description: "Dein Team levelt im AI-Zeit-Operating auf — damit der Vorsprung wächst und bleibt." },
     ],
   },
@@ -557,7 +557,7 @@ const de: typeof en = {
         capital: "Schneller gewinnen",
         features: [
           "Das Blank Collar Framework, angewandt auf dein Unternehmen",
-          "Ein konfiguriertes agentisches OS auf blankcollar.ai",
+          "Das Open-Source-agentische OS von blankcollar.ai, für dich eingerichtet",
           "Upskilling für dich und dein Team auf blankcollar.university",
           "Hands-on Operator-Begleitung — und warme VC-Intros, wenn es passt",
         ],
