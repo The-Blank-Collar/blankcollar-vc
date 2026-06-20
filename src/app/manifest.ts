@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "blankcollar.ventures",
     short_name: "blankcollar.ventures",
     description:
-      "We back AI startups and help them win — the Blank Collar framework, operator experience, AI operations, and upskilling. For founders and VCs.",
+      "We back AI startups and help them win: the Blank Collar framework, operator experience, AI operations, and upskilling. For founders and VCs.",
     start_url: "/",
     display: "standalone",
     background_color: "#0E1320",

@@ -31,9 +31,9 @@ const VC_WEBSITE_ID = "https://www.blankcollar.ventures/#website";
 const BOOK_ID = "https://www.theblankcollar.com/#book";
 
 const vcDescription =
-  "blankcollar.ventures is the ventures arm of The Blank Collar. We back AI startups and help them win — the Blank Collar framework, our operator experience building and scaling companies, AI operations on blankcollar.ai, and upskilling on blankcollar.university. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
+  "blankcollar.ventures is the ventures arm of The Blank Collar. We back AI startups and help them win: the Blank Collar framework, our operator experience building and scaling companies, AI operations on blankcollar.ai, and upskilling on blankcollar.university. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
 
-// Person sameAs — Kristian (personal + shared @theblankcollar handles). §1 verbatim.
+// Person sameAs - Kristian (personal + shared @theblankcollar handles). §1 verbatim.
 const personSameAs = [
   "https://www.linkedin.com/in/kristiankabashi/",
   "https://x.com/theblankcollar",
@@ -48,7 +48,7 @@ const personSameAs = [
   "https://www.forbes.com/councils/forbesbusinesscouncil/2023/04/17/embracing-the-blank-collar-a-new-paradigm-for-success-in-the-future-of-work/",
 ];
 
-// Org sameAs — The Blank Collar (brand handles + ventures). §1 verbatim.
+// Org sameAs - The Blank Collar (brand handles + ventures). §1 verbatim.
 const orgSameAs = [
   "https://www.linkedin.com/company/theblankcollar",
   "https://x.com/theblankcollar",
@@ -69,13 +69,13 @@ const orgSameAs = [
  *
  * The graph is identical across languages except the WebSite node carries the
  * language hint. The bilingual site declares inLanguage ["en","de"] regardless,
- * so both layouts pass the same value — `lang` is accepted for clarity/future.
+ * so both layouts pass the same value - `lang` is accepted for clarity/future.
  */
 export function buildSiteSchema() {
   return {
     "@context": "https://schema.org",
     "@graph": [
-      // Venture node — blankcollar.ventures (§3)
+      // Venture node - blankcollar.ventures (§3)
       {
         "@type": "Organization",
         "@id": VC_ORG_ID,
@@ -105,7 +105,7 @@ export function buildSiteSchema() {
         parentOrganization: { "@id": ORG_ID },
         founder: { "@id": PERSON_ID },
       },
-      // WebSite node (§3) — bilingual
+      // WebSite node (§3) - bilingual
       {
         "@type": "WebSite",
         "@id": VC_WEBSITE_ID,
@@ -115,7 +115,7 @@ export function buildSiteSchema() {
         inLanguage: ["en", "de"],
         publisher: { "@id": VC_ORG_ID },
       },
-      // TBC Org anchor (§2) — verbatim
+      // TBC Org anchor (§2) - verbatim
       {
         "@type": "Organization",
         "@id": ORG_ID,
@@ -126,7 +126,7 @@ export function buildSiteSchema() {
         founder: { "@id": PERSON_ID },
         sameAs: orgSameAs,
       },
-      // Person anchor (§2) — verbatim
+      // Person anchor (§2) - verbatim
       {
         "@type": "Person",
         "@id": PERSON_ID,
@@ -136,7 +136,7 @@ export function buildSiteSchema() {
         worksFor: { "@id": ORG_ID },
         sameAs: personSameAs,
       },
-      // Book — "The Blank Collar Equation" (2nd edition 2026), authored by Kristian
+      // Book - "The Blank Collar Equation" (2nd edition 2026), authored by Kristian
       {
         "@type": "Book",
         "@id": BOOK_ID,

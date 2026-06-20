@@ -26,7 +26,7 @@ type RevealProps = {
 
 /**
  * A scroll-reveal element. Renders plain markup with `data-reveal` and CSS
- * custom properties — no hooks, no motion library — so it costs nothing at
+ * custom properties - no hooks, no motion library - so it costs nothing at
  * hydration. The shared observer (see useRevealObserver) flips it visible
  * when it scrolls into view.
  */

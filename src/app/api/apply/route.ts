@@ -40,7 +40,7 @@ const founderEmailCopy: Record<Lang, {
   footerMotto: string;
 }> = {
   en: {
-    subject: (c) => `We've got your application — ${c}`,
+    subject: (c) => `We've got your application: ${c}`,
     greeting: (n) => `Hi ${n || "there"},`,
     intro: (c) =>
       `Thanks for applying to blankcollar.ventures on behalf of <strong>${c || "your company"}</strong>. Your application is in our inbox and we'll read it carefully.`,
@@ -52,17 +52,17 @@ const founderEmailCopy: Record<Lang, {
     ],
     whileYouWait: "While you wait",
     links: [
-      { label: "theblankcollar.com — see the knowledge layer", href: "https://www.theblankcollar.com" },
-      { label: "blankcollar.university — the courses we'll point you to", href: "https://www.blankcollar.university" },
-      { label: "blankcollar.ai — the agentic OS we'd set up for you", href: "https://www.blankcollar.ai" },
+      { label: "theblankcollar.com: see the knowledge layer", href: "https://www.theblankcollar.com" },
+      { label: "blankcollar.university: the courses we'll point you to", href: "https://www.blankcollar.university" },
+      { label: "blankcollar.ai: the agentic OS we'd set up for you", href: "https://www.blankcollar.ai" },
     ],
     closing:
       "If anything urgent comes up, just reply to this email. It comes from a real human inbox.",
-    signoff: "— blankcollar.ventures",
+    signoff: "blankcollar.ventures",
     footerMotto: "Work is for Bots, life is for Humans.",
   },
   de: {
-    subject: (c) => `Wir haben deine Bewerbung — ${c}`,
+    subject: (c) => `Wir haben deine Bewerbung: ${c}`,
     greeting: (n) => `Hi ${n || "Gründer"},`,
     intro: (c) =>
       `Danke für deine Bewerbung bei blankcollar.ventures für <strong>${c || "dein Unternehmen"}</strong>. Sie ist in unserem Posteingang und wir lesen sie sorgfältig.`,
@@ -74,13 +74,13 @@ const founderEmailCopy: Record<Lang, {
     ],
     whileYouWait: "Solange du wartest",
     links: [
-      { label: "theblankcollar.com — sieh die Wissens-Ebene in Aktion", href: "https://www.theblankcollar.com" },
-      { label: "blankcollar.university — die Kurse, auf die wir dich hinweisen", href: "https://www.blankcollar.university" },
-      { label: "blankcollar.ai — das agentische OS, das wir für dich einrichten", href: "https://www.blankcollar.ai" },
+      { label: "theblankcollar.com: sieh die Wissens-Ebene in Aktion", href: "https://www.theblankcollar.com" },
+      { label: "blankcollar.university: die Kurse, auf die wir dich hinweisen", href: "https://www.blankcollar.university" },
+      { label: "blankcollar.ai: das agentische OS, das wir für dich einrichten", href: "https://www.blankcollar.ai" },
     ],
     closing:
       "Wenn etwas Dringendes auftaucht, antworte einfach auf diese Mail. Sie kommt aus einem echten Posteingang.",
-    signoff: "— blankcollar.ventures",
+    signoff: "blankcollar.ventures",
     footerMotto: "Arbeit ist für Bots, Leben ist für Menschen.",
   },
 };
@@ -162,7 +162,7 @@ function renderFounderEmail(lang: Lang, founderName: string, companyName: string
 </html>`;
 }
 
-// VC / fund intake — a fund brings us a portfolio (or pipeline) AI company.
+// VC / fund intake - a fund brings us a portfolio (or pipeline) AI company.
 // Lighter than the founder application: just the fund, the company, and why.
 async function handleVcSubmission(
   get: (k: string) => Field,
@@ -178,7 +178,7 @@ async function handleVcSubmission(
   }
 
   const fields: Record<string, Field> = {
-    Submission: "VC / fund — bring a company",
+    Submission: "VC / fund, bring a company",
     Lang: lang,
     Fund: fundName,
     Contact: yourName,
@@ -213,7 +213,7 @@ async function handleVcSubmission(
 
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
-    console.warn("[apply:vc] RESEND_API_KEY not set — running in mock mode");
+    console.warn("[apply:vc] RESEND_API_KEY not set - running in mock mode");
     console.log("[apply:vc] would send INTERNAL:", { to: APPLY_TO, fund: fundName, company });
     return Response.json({ ok: true, mock: true });
   }
@@ -223,7 +223,7 @@ async function handleVcSubmission(
     from: APPLY_FROM,
     to: APPLY_TO,
     replyTo: email,
-    subject: `VC intro — ${company} (via ${fundName})`,
+    subject: `VC intro: ${company} (via ${fundName})`,
     html: internalHtml,
     text: internalText,
   });
@@ -340,20 +340,20 @@ export async function POST(req: Request) {
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      console.warn("[apply] RESEND_API_KEY not set — running in mock mode");
-      console.log("[apply] would send INTERNAL:", { to: APPLY_TO, subject: `Application — ${companyName}`, attachments: attachments.map((a) => a.filename) });
+      console.warn("[apply] RESEND_API_KEY not set - running in mock mode");
+      console.log("[apply] would send INTERNAL:", { to: APPLY_TO, subject: `Application: ${companyName}`, attachments: attachments.map((a) => a.filename) });
       console.log("[apply] would send FOUNDER:", { to: founderEmail, subject: founderEmailCopy[lang].subject(companyName), lang });
       return Response.json({ ok: true, mock: true });
     }
 
     const resend = new Resend(apiKey);
 
-    // 1) Internal email — application content + pitch deck attachment
+    // 1) Internal email - application content + pitch deck attachment
     const internalRes = await resend.emails.send({
       from: APPLY_FROM,
       to: APPLY_TO,
       replyTo: founderEmail,
-      subject: `Application — ${companyName} · ${tier}`,
+      subject: `Application: ${companyName} · ${tier}`,
       html: internalHtml,
       text: internalText,
       attachments,
@@ -367,7 +367,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2) Founder confirmation email — fire and forget, don't fail the whole
+    // 2) Founder confirmation email - fire and forget, don't fail the whole
     //    submission if it bounces (rare email-sending issue shouldn't block
     //    the application from being received).
     try {

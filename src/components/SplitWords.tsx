@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 /**
  * Word-by-word rising reveal, done entirely in CSS (see globals.css
  * .reveal-words). Each word is clipped and translated up, staggered via a
- * per-word `--i` index. No motion library — this used to create one motion
+ * per-word `--i` index. No motion library - this used to create one motion
  * component per word (~89 across the page), which dominated hydration cost.
  *
  * `immediate` plays the reveal on load (above-the-fold hero text, so the LCP

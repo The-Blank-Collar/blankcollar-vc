@@ -280,7 +280,7 @@ function buildSteps(t: Dict): StepConfig[] {
   const help = buildHelpFitCards(t);
 
   return [
-    // 0 — You: name/email/role/location/linkedin
+    // 0 - You: name/email/role/location/linkedin
     {
       section: "you",
       title: t.apply.steps.you1,
@@ -317,7 +317,7 @@ function buildSteps(t: Dict): StepConfig[] {
           ? v.location
           : null,
     },
-    // 1 — You: superpower
+    // 1 - You: superpower
     {
       section: "you",
       title: t.apply.steps.you2,
@@ -328,7 +328,7 @@ function buildSteps(t: Dict): StepConfig[] {
       validate: (d) => (d.superpowers.length === 0 ? v.superpower : null),
     },
 
-    // 2 — Team
+    // 2 - Team
     {
       section: "team",
       title: t.apply.steps.team,
@@ -351,7 +351,7 @@ function buildSteps(t: Dict): StepConfig[] {
           : null,
     },
 
-    // 3 — Company: name + website
+    // 3 - Company: name + website
     {
       section: "company",
       title: t.apply.steps.company,
@@ -367,7 +367,7 @@ function buildSteps(t: Dict): StepConfig[] {
       ),
       validate: (d) => (!d.companyName.trim() ? v.companyName : null),
     },
-    // 4 — Stage
+    // 4 - Stage
     {
       section: "company",
       title: t.apply.steps.stage,
@@ -376,7 +376,7 @@ function buildSteps(t: Dict): StepConfig[] {
       ),
       validate: (d) => (!d.companyStage ? v.stage : null),
     },
-    // 5 — Sector + one-liner
+    // 5 - Sector + one-liner
     {
       section: "company",
       title: t.apply.steps.sectorPitch,
@@ -395,7 +395,7 @@ function buildSteps(t: Dict): StepConfig[] {
         !d.sector ? v.sector : !d.oneLiner.trim() ? v.oneLiner : null,
     },
 
-    // 6 — Vision: problem + customer
+    // 6 - Vision: problem + customer
     {
       section: "vision",
       title: t.apply.steps.problem,
@@ -412,7 +412,7 @@ function buildSteps(t: Dict): StepConfig[] {
       validate: (d) =>
         !d.problem.trim() ? v.problem : !d.customer.trim() ? v.customer : null,
     },
-    // 7 — Vision: solution + differentiator
+    // 7 - Vision: solution + differentiator
     {
       section: "vision",
       title: t.apply.steps.solution,
@@ -433,7 +433,7 @@ function buildSteps(t: Dict): StepConfig[] {
           ? v.differentiator
           : null,
     },
-    // 8 — Why now
+    // 8 - Why now
     {
       section: "vision",
       title: t.apply.steps.whyNow,
@@ -446,7 +446,7 @@ function buildSteps(t: Dict): StepConfig[] {
       validate: (d) => (!d.whyNow.trim() ? v.whyNow : null),
     },
 
-    // 9 — Ask: traction
+    // 9 - Ask: traction
     {
       section: "ask",
       title: t.apply.steps.traction,
@@ -462,7 +462,7 @@ function buildSteps(t: Dict): StepConfig[] {
       ),
       validate: (d) => (!d.interviewRange ? v.interviews : null),
     },
-    // 10 — Risk
+    // 10 - Risk
     {
       section: "ask",
       title: t.apply.steps.risk,
@@ -472,7 +472,7 @@ function buildSteps(t: Dict): StepConfig[] {
       ),
       validate: (d) => (!d.biggestRisk ? v.risk : null),
     },
-    // 11 — Fit: funding (optional — funding is an outcome, not a requirement)
+    // 11 - Fit: funding (optional - funding is an outcome, not a requirement)
     {
       section: "ask",
       title: t.apply.steps.ask,
@@ -489,7 +489,7 @@ function buildSteps(t: Dict): StepConfig[] {
       ),
     },
 
-    // 12 — Materials: help fit + why us
+    // 12 - Materials: help fit + why us
     {
       section: "materials",
       title: t.apply.steps.helpFit,
@@ -507,7 +507,7 @@ function buildSteps(t: Dict): StepConfig[] {
       validate: (d) =>
         !d.helpFit ? v.helpFit : !d.whyUs.trim() ? v.whyUs : null,
     },
-    // 13 — Materials: links + something else
+    // 13 - Materials: links + something else
     {
       section: "materials",
       title: t.apply.steps.materials,
@@ -526,7 +526,7 @@ function buildSteps(t: Dict): StepConfig[] {
       ),
     },
 
-    // 14 — Review
+    // 14 - Review
     {
       section: "review",
       title: "",
@@ -810,15 +810,15 @@ function ReviewStep({
   const t = useDict();
   const c = t.apply.cards;
 
-  const stageLabel = data.companyStage ? c.stage[data.companyStage].label : "—";
-  const sectorLabel = data.sector ? c.sector[data.sector] : "—";
-  const workedLabel = data.workedTogether ? c.worked[data.workedTogether].label : "—";
-  const interviewLabel = data.interviewRange ? c.interview[data.interviewRange].label : "—";
-  const riskLabel = data.biggestRisk ? c.risk[data.biggestRisk].label : "—";
-  const helpFitLabel = data.helpFit ? c.helpFit[data.helpFit].label : "—";
+  const stageLabel = data.companyStage ? c.stage[data.companyStage].label : "-";
+  const sectorLabel = data.sector ? c.sector[data.sector] : "-";
+  const workedLabel = data.workedTogether ? c.worked[data.workedTogether].label : "-";
+  const interviewLabel = data.interviewRange ? c.interview[data.interviewRange].label : "-";
+  const riskLabel = data.biggestRisk ? c.risk[data.biggestRisk].label : "-";
+  const helpFitLabel = data.helpFit ? c.helpFit[data.helpFit].label : "-";
   const superpowerLabel = data.superpowers.length > 0
     ? data.superpowers.map((s) => c.superpower[s].label).join(", ")
-    : "—";
+    : "-";
 
   const groups: { title: string; goto: number; rows: { k: string; value: string }[] }[] = [
     {
@@ -926,7 +926,7 @@ function ReviewStep({
                     {r.k}
                   </dt>
                   <dd className="col-span-12 whitespace-pre-line text-bone/85 md:col-span-9">
-                    {r.value || "—"}
+                    {r.value || "-"}
                   </dd>
                 </div>
               ))}
@@ -1037,7 +1037,7 @@ function Confirmation({
       </h1>
       <p className="mt-6 max-w-2xl text-lg text-bone/75 leading-relaxed">
         {t.apply.confirm.bodyPre}
-        <strong>{companyName || "—"}</strong>
+        <strong>{companyName || "-"}</strong>
         {t.apply.confirm.bodyMid}
         <span className="font-bot text-accent">{founderEmail}</span>
         {t.apply.confirm.bodyEnd}

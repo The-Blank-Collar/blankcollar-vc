@@ -4,7 +4,7 @@ import { Reveal } from "@/components/Reveal";
 import { useDict } from "@/lib/lang";
 
 const glyphs = [
-  // Pitch deck — slide stack
+  // Pitch deck - slide stack
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <rect x="4" y="6" width="16" height="11" rx="1.5" />
@@ -12,7 +12,7 @@ const glyphs = [
       <line x1="8" y1="13" x2="13" y2="13" />
     </svg>
   ),
-  // Data room — folder/cabinet
+  // Data room - folder/cabinet
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <rect x="4" y="5" width="16" height="14" rx="1.5" />
@@ -20,7 +20,7 @@ const glyphs = [
       <line x1="9" y1="14" x2="15" y2="14" />
     </svg>
   ),
-  // Business model — diagram
+  // Business model - diagram
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <rect x="3" y="4" width="7" height="6" />
@@ -32,14 +32,14 @@ const glyphs = [
       <line x1="17.5" y1="10" x2="17.5" y2="14" />
     </svg>
   ),
-  // Cap table — pie / equity
+  // Cap table - pie / equity
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <circle cx="12" cy="12" r="8" />
       <path d="M12 4v8l6 4" />
     </svg>
   ),
-  // Fundraising plan — checklist
+  // Fundraising plan - checklist
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <rect x="5" y="4" width="14" height="16" rx="1.5" />
@@ -48,7 +48,7 @@ const glyphs = [
       <line x1="9" y1="17" x2="13" y2="17" />
     </svg>
   ),
-  // Hiring playbook — people
+  // Hiring playbook - people
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <circle cx="9" cy="8" r="3" />
@@ -57,14 +57,14 @@ const glyphs = [
       <path d="M14 19c0-2 2-4 4-4s3 1 3 3" />
     </svg>
   ),
-  // Customer discovery — magnifier
+  // Customer discovery - magnifier
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <circle cx="11" cy="11" r="6" />
       <line x1="15.5" y1="15.5" x2="20" y2="20" />
     </svg>
   ),
-  // Pricing & packaging — tiers
+  // Pricing & packaging - tiers
   (
     <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <rect x="4" y="14" width="4" height="6" />

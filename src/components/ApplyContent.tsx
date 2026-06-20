@@ -65,7 +65,7 @@ export function ApplyContent() {
               {t.apply.eyebrow}
             </div>
 
-            {/* Audience toggle — founders apply directly; funds bring us a company */}
+            {/* Audience toggle - founders apply directly; funds bring us a company */}
             <div className="inline-flex rounded-full border border-bone/15 bg-bone/[0.03] p-1">
               {(["founder", "vc"] as const).map((a) => (
                 <button

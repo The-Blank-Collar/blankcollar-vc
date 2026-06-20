@@ -24,7 +24,7 @@ const empty: VcData = {
   why: "",
 };
 
-// Lightweight VC / fund intake — funds bring us a portfolio (or pipeline) AI
+// Lightweight VC / fund intake - funds bring us a portfolio (or pipeline) AI
 // company to work with. Posts to the same /api/apply route with kind=vc.
 export function VcForm() {
   const t = useDict();

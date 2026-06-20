@@ -17,7 +17,7 @@ import { InvestmentTiers } from "@/components/InvestmentTiers";
 import { LangSwitch } from "@/components/LangSwitch";
 import { SOCIALS } from "@/lib/siteSchema";
 
-// Social icons, keyed by label — matches the rest of the Blank Collar family.
+// Social icons, keyed by label - matches the rest of the Blank Collar family.
 const SOCIAL_ICONS: Record<string, ReactNode> = {
   LinkedIn: (<svg viewBox="0 0 24 24" width={18} height={18} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M7 10.5V16" /><path d="M7 7.3v.01" /><path d="M11.5 16v-3a1.8 1.8 0 0 1 3.5 0v3" /><path d="M11.5 16v-5.5" /></svg>),
   X: (<svg viewBox="0 0 24 24" width={18} height={18} fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" /></svg>),
@@ -62,7 +62,7 @@ function Header() {
   const applyHref = useLocalizedHref("/apply");
   const [scrolled, setScrolled] = useState(false);
 
-  // Plain passive scroll listener — no motion library, no per-frame React work.
+  // Plain passive scroll listener - no motion library, no per-frame React work.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -131,7 +131,7 @@ function Hero() {
   const heroRef = useRef<HTMLElement>(null);
   const meshRef = useRef<HTMLDivElement>(null);
 
-  // Lightweight parallax on the gradient mesh — desktop pointer only. On touch
+  // Lightweight parallax on the gradient mesh - desktop pointer only. On touch
   // the mesh stays static (native scroll stays buttery, no per-frame work).
   useEffect(() => {
     if (typeof window === "undefined" || !window.matchMedia) return;
@@ -633,7 +633,7 @@ function CTA() {
   return (
     <section id="apply" className="relative overflow-hidden bg-bone-soft">
       <div aria-hidden className="absolute inset-0">
-        {/* Static glow — these used to animate x/y on an infinite loop, which
+        {/* Static glow - these used to animate x/y on an infinite loop, which
             kept the compositor re-blurring two huge layers every frame and
             janked scrolling (badly on mobile). The look is identical at rest. */}
         <div className="absolute -left-1/4 top-1/3 h-[60vh] w-[60vh] rounded-full bg-accent/40 blur-[70px]" />
@@ -747,7 +747,7 @@ function Footer() {
         </div>
       </div>
 
-      {/* Social row — the blankcollar family channels. Clean text links, footer styling. */}
+      {/* Social row - the blankcollar family channels. Clean text links, footer styling. */}
       <div className="mx-auto mt-10 max-w-7xl">
         <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">{t.footer.social}</h4>
         <ul className="mt-4 flex max-w-[420px] flex-nowrap items-center gap-2.5">
