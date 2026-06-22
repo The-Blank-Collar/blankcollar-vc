@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import { siteSchemaJson } from "@/lib/siteSchema";
@@ -91,11 +92,13 @@ export const metadata: Metadata = {
   category: "ventures platform",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const pathname = (await headers()).get("x-pathname") || "";
+  const lang = pathname.startsWith("/de") ? "de-CH" : "en";
   return (
-    <html lang="en" className={`${roboto.variable} ${robotoMono.variable}`}>
+    <html lang={lang} className={`${roboto.variable} ${robotoMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
