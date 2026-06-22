@@ -17,7 +17,6 @@ export const SOCIALS: Social[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/company/theblankcollar" },
   { label: "X", href: "https://x.com/theblankcollar" },
   { label: "Instagram", href: "https://www.instagram.com/theblankcollar" },
-  { label: "Facebook", href: "https://www.facebook.com/theblankcollar" },
   { label: "YouTube", href: "https://www.youtube.com/@theblankcollar" },
   { label: "TikTok", href: "https://www.tiktok.com/@theblankcollar" },
   { label: "Medium", href: "https://medium.com/@theblankcollar" },

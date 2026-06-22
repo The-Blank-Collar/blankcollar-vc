@@ -30,7 +30,7 @@ const siteUrl = (() => {
 })();
 
 const enDescription =
-  "blankcollar.ventures backs AI startups and helps them win: the Blank Collar framework, our operator experience building and scaling companies, plus AI operations and upskilling. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
+  "blankcollar.ventures is the operating partner that makes AI founders fundable: the Blank Collar framework, operator experience, AI ops and upskilling.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "blankcollar.ventures: We help AI startups win",
+    title: "blankcollar.ventures: We help AI startups win.",
     description: enDescription,
     url: siteUrl,
     siteName: "blankcollar.ventures",
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "blankcollar.ventures: We help AI startups win",
+    title: "blankcollar.ventures: We help AI startups win.",
     description: enDescription,
   },
   robots: {
