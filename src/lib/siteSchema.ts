@@ -45,6 +45,8 @@ const personSameAs = [
   "https://www.crunchbase.com/person/kristian-kabashi",
   "https://www.amazon.com/Blank-Collar-Equation-manifesto-future-ebook/dp/B0CGYXPPKX",
   "https://www.forbes.com/councils/forbesbusinesscouncil/2023/04/17/embracing-the-blank-collar-a-new-paradigm-for-success-in-the-future-of-work/",
+  "https://orcid.org/0009-0001-7405-9801",
+  "https://www.wikidata.org/wiki/Q139973679",
 ];
 
 // Org sameAs - The Blank Collar (brand handles + ventures). §1 verbatim.
@@ -135,13 +137,13 @@ export function buildSiteSchema() {
         worksFor: { "@id": ORG_ID },
         sameAs: personSameAs,
       },
-      // Book - "The Blank Collar Equation" (2nd edition 2026), authored by Kristian
+      // Book - "The Blank Collar Equation". The canonical #book node (1st ed 2023,
+      // 2nd ed 2026) is defined on theblankcollar.com; reference it by @id here so
+      // this site never redefines a conflicting datePublished.
       {
         "@type": "Book",
         "@id": BOOK_ID,
         name: "The Blank Collar Equation",
-        bookEdition: "2nd edition",
-        datePublished: "2026",
         author: { "@id": PERSON_ID },
       },
     ],
