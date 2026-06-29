@@ -254,6 +254,33 @@ const en = {
       { k: "Where", v: "Global, remote-first" },
     ],
   },
+  faq: {
+    eyebrow: "12 · FAQ",
+    h1: "The honest",
+    h2: "answers.",
+    items: [
+      {
+        q: "Are you a fund?",
+        a: "No. We're the ventures arm of blankcollar, run by operators who built and scaled their own startups. We work alongside AI founders to help the company win. Funding is one outcome we can open doors to, not the offer.",
+      },
+      {
+        q: "Do you write cheques?",
+        a: "We don't. We bring the Blank Collar framework, hands-on operator experience, AI operations, and upskilling. When a company we work with is ready to raise, we make warm VC intros directly, not through a portal.",
+      },
+      {
+        q: "How does funding work, then?",
+        a: "It's an outcome, not the point. After years of building and scaling our own startups, we know the funds worth knowing. When the timing is right, we introduce you. And it runs both ways: funds bring us their AI companies to work with.",
+      },
+      {
+        q: "Who should apply?",
+        a: "Founders building an AI startup, and the funds that back them. Founders work with us directly. Funds bring us their AI companies. Same framework, same operators, same goal: help the company win.",
+      },
+      {
+        q: "What do you actually do?",
+        a: "We rebuild the company's functions around AI: the framework applied to your company, agents configured on blankcollar.ai so the work runs as automation, and your team upskilled on blankcollar.university so the edge compounds and stays.",
+      },
+    ],
+  },
   cta: {
     badge: "Now taking on companies",
     h1a: "Building",
@@ -690,6 +717,33 @@ const de: typeof en = {
       { k: "Unser Cheque", v: "Wir schreiben keinen" },
       { k: "Kapital", v: "Warme VC-Intros, wenn es passt" },
       { k: "Wo", v: "Global, remote-first" },
+    ],
+  },
+  faq: {
+    eyebrow: "12 · FAQ",
+    h1: "Die ehrlichen",
+    h2: "Antworten.",
+    items: [
+      {
+        q: "Seid ihr ein Fonds?",
+        a: "Nein. Wir sind der Ventures-Arm von blankcollar, geführt von Operatorn, die ihre eigenen Startups gebaut und skaliert haben. Wir arbeiten neben AI-Gründern, damit das Unternehmen gewinnt. Finanzierung ist ein Outcome, zu dem wir Türen öffnen können, nicht das Angebot.",
+      },
+      {
+        q: "Schreibt ihr Cheques?",
+        a: "Nein. Wir bringen das Blank Collar Framework, hands-on Operator-Erfahrung, AI-Operations und Upskilling. Wenn ein Unternehmen, mit dem wir arbeiten, bereit ist zu raisen, machen wir warme VC-Intros direkt, nicht über ein Portal.",
+      },
+      {
+        q: "Wie funktioniert Finanzierung dann?",
+        a: "Sie ist ein Outcome, nicht der Punkt. Nach Jahren des Bauens und Skalierens unserer eigenen Startups kennen wir die Fonds, die zählen. Wenn das Timing passt, stellen wir dich vor. Und es geht beidseitig: Fonds bringen uns ihre AI-Unternehmen zur Zusammenarbeit.",
+      },
+      {
+        q: "Wer sollte sich bewerben?",
+        a: "Gründer, die ein AI-Startup bauen, und die Fonds, die sie finanzieren. Gründer arbeiten direkt mit uns. Fonds bringen uns ihre AI-Unternehmen. Gleiches Framework, gleiche Operator, gleiches Ziel: dem Unternehmen zum Gewinnen verhelfen.",
+      },
+      {
+        q: "Was macht ihr konkret?",
+        a: "Wir bauen die Funktionen des Unternehmens rund um AI neu: das Framework angewandt auf dein Unternehmen, Agents konfiguriert auf blankcollar.ai, damit die Arbeit als Automation läuft, und dein Team upgeskillt auf blankcollar.university, damit der Vorsprung wächst und bleibt.",
+      },
     ],
   },
   cta: {

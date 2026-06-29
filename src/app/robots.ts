@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 
 // Canonical host for the entity-merge rollout. Hardcoded to www so the robots
-// host/sitemap directives are stable regardless of the deploy URL.
+// sitemap directive is stable regardless of the deploy URL. (No `host:`
+// directive: only Yandex honors it; Google and Bing ignore it.)
 const BASE = "https://www.blankcollar.ventures";
 
 export default function robots(): MetadataRoute.Robots {
@@ -32,6 +33,5 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${BASE}/sitemap.xml`,
-    host: BASE,
   };
 }

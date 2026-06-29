@@ -8,12 +8,18 @@ const siteUrl = (() => {
   return "http://localhost:3000";
 })();
 
+// Stable per-route lastModified dates. We deliberately avoid `new Date()`:
+// a build-time "now" makes every route look freshly edited on every deploy,
+// which trains crawlers to ignore the signal. Bump a route's date here only
+// when that route's content actually changes.
+const HOME_LAST_MODIFIED = "2026-06-29";
+const APPLY_LAST_MODIFIED = "2026-06-20";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
   return [
     {
       url: siteUrl,
-      lastModified,
+      lastModified: HOME_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 1,
       alternates: {
@@ -25,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteUrl}/de`,
-      lastModified,
+      lastModified: HOME_LAST_MODIFIED,
       changeFrequency: "weekly",
       priority: 0.9,
       alternates: {
@@ -37,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteUrl}/apply`,
-      lastModified,
+      lastModified: APPLY_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.8,
       alternates: {
@@ -49,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${siteUrl}/de/apply`,
-      lastModified,
+      lastModified: APPLY_LAST_MODIFIED,
       changeFrequency: "monthly",
       priority: 0.7,
       alternates: {

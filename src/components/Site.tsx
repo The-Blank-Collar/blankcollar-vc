@@ -627,6 +627,65 @@ function Terms() {
   );
 }
 
+function Faq() {
+  const t = useDict();
+
+  // FAQPage JSON-LD, built from the active-language dict so EN and DE each
+  // emit their own localized Q&A. Rendered in the server HTML (this client
+  // component is SSR'd), so crawlers see it without executing JS. The visible
+  // FAQ below is the source of truth; these strings mirror it 1:1.
+  const faqJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: t.faq.items.map((it) => ({
+      "@type": "Question",
+      name: it.q,
+      acceptedAnswer: { "@type": "Answer", text: it.a },
+    })),
+  });
+
+  return (
+    <section id="faq" className="relative px-6 py-24 md:px-10 md:py-36">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: faqJson }}
+      />
+      <div className="mx-auto max-w-7xl">
+        <Eyebrow text={t.faq.eyebrow} />
+
+        <h2 className="font-medium text-display-md text-balance">
+          <span className="block">
+            <SplitWords text={t.faq.h1} />
+          </span>
+          <span className="block text-ink/40">
+            <SplitWords text={t.faq.h2} delay={0.18} />
+          </span>
+        </h2>
+
+        <dl className="mt-14 divide-y divide-ink/10 border-y border-ink/10">
+          {t.faq.items.map((it, i) => (
+            <Reveal
+              as="div"
+              key={it.q}
+              y={16}
+              delay={i * 0.04}
+              duration={0.6}
+              className="grid gap-3 py-7 md:grid-cols-12 md:gap-8 md:py-9"
+            >
+              <dt className="md:col-span-5 text-xl font-medium tracking-tight text-balance md:text-2xl">
+                {it.q}
+              </dt>
+              <dd className="md:col-span-7 text-[16px] leading-relaxed text-ink/70 text-balance md:text-lg">
+                {it.a}
+              </dd>
+            </Reveal>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 function CTA() {
   const t = useDict();
   const applyHref = useLocalizedHref("/apply");
@@ -806,6 +865,7 @@ export function Site() {
         <PortfolioSection />
         <NetworkSection />
         <Terms />
+        <Faq />
         <CTA />
       </main>
       <Footer />
