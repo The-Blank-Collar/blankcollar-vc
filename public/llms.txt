@@ -1,23 +1,23 @@
 # blankcollar.ventures
 
 > blankcollar.ventures is the ventures arm of The Blank Collar. We back AI startups (companies already
-> building with AI) and help them win — applying the Blank Collar framework, our own experience building,
+> building with AI) and help them win, applying the Blank Collar framework, our own experience building,
 > scaling, and seeing startups acquired, AI operations (a configured agentic OS) on blankcollar.ai, and upskilling
-> on blankcollar.university. We are NOT a fund and do not write cheques. Funding is one possible outcome —
-> when a company is ready, we make warm intros to the VCs we work with — not the offer. We work with both
+> on blankcollar.university. We are NOT a fund and do not write cheques. Funding is one possible outcome, 
+> when a company is ready, we make warm intros to the VCs we work with, not the offer. We work with both
 > founders and the VCs we partner with. Switzerland-based, global.
 
-blankcollar.ventures is part of The Blank Collar — the post-AI worker practice. "Work is for Bots, life is for Humans."
+blankcollar.ventures is part of The Blank Collar, the post-AI worker practice. "Work is for Bots, life is for Humans."
 Coined in 2016 and founded in 2018 by Kristian Kabashi (Zürich, Switzerland). The Blank Collar is the
 umbrella brand; its ventures are blankcollar.ai (the AI operating system), blankcollar.university (the
 school), and blankcollar.ventures (the operating partner for AI startups).
 
 ## Key facts
-- Founder: Kristian Kabashi — https://www.kristiankabashi.com
-- Brand: The Blank Collar — https://www.theblankcollar.com
-- This venture: blankcollar.ventures — we back AI startups and help them win (the Blank Collar framework,
+- Founder: Kristian Kabashi, https://www.kristiankabashi.com
+- Brand: The Blank Collar, https://www.theblankcollar.com
+- This venture: blankcollar.ventures, we back AI startups and help them win (the Blank Collar framework,
   operator experience, AI operations, upskilling); funding is one outcome, not the offer; we do not write
-  cheques — https://www.blankcollar.ventures
+  cheques, https://www.blankcollar.ventures
 - Audience: founders (apply to work with us) and VCs/funds (bring us a portfolio company).
 
 ## Canonical links

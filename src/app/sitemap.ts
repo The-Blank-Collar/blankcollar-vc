@@ -12,13 +12,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   return [
     {
-      url: `${siteUrl}/`,
+      url: siteUrl,
       lastModified,
       changeFrequency: "weekly",
       priority: 1,
       alternates: {
         languages: {
-          en: `${siteUrl}/`,
+          en: siteUrl,
           de: `${siteUrl}/de`,
         },
       },
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       alternates: {
         languages: {
-          en: `${siteUrl}/`,
+          en: siteUrl,
           de: `${siteUrl}/de`,
         },
       },
