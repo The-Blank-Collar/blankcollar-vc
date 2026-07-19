@@ -568,7 +568,7 @@ const de: typeof en = {
       { label: "01", name: "Framework", site: "theblankcollar.com", voice: "human", description: "Das Blank Collar Modell für ein Unternehmen der AI-Ära: TBC = V + D(P/HX)^AI, konkret für deins." },
       { label: "02", name: "Erfahrung", site: "blankcollar.ventures", voice: "human", description: "Operator, die aufgebaut und skaliert haben, mit dir im Raum, hands-on.", current: true },
       { label: "03", name: "AI-Operations", site: "blankcollar.ai", voice: "bot", description: "Wir richten das agentische Open-Source-OS von blankcollar.ai ein, damit die Arbeit als Automation läuft, nicht als Ratschlag." },
-      { label: "04", name: "Upskilling", site: "blankcollar.university", voice: "human", description: "Dein Team baut Kompetenz für die AI-Ära auf, damit der Vorsprung wächst und bleibt." },
+      { label: "04", name: "Upskilling", site: "blankcollar.university", voice: "human", description: "Dein Team baut Kompetenz für die AI-Ära auf; der Vorsprung bleibt, auch wenn wir weg sind." },
     ],
   },
   tiers: {
