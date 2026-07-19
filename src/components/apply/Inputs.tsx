@@ -181,7 +181,7 @@ export function FileDrop({ file, onFile, accept = ".pdf,.ppt,.pptx,.key", maxByt
         </div>
       ) : (
         <label className="flex cursor-pointer flex-col items-start gap-2">
-          <span className="font-medium text-bone">Click to upload pitch deck</span>
+          <span className="font-medium text-bone">Upload a deck or one-pager</span>
           <span className="text-[12px] text-bone/45">PDF, PPT, PPTX, KEY · up to 25 MB</span>
           <input
             type="file"

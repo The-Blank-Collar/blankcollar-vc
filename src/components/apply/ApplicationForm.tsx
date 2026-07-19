@@ -1001,7 +1001,7 @@ function FeedbackBubble({ text }: { text: string }) {
       </span>
       <div className="text-[13.5px] leading-relaxed text-bone/85">
         <span className="font-bot text-[10px] uppercase tracking-mono text-accent">
-          agent.review ●
+          apply.notes ●
         </span>
         <span className="ml-2">{text}</span>
       </div>
@@ -1085,7 +1085,7 @@ function Confirmation({
 
       <div className="mt-12 rounded-2xl border border-bone/10 bg-bone/[0.03] p-5 text-[13.5px] leading-relaxed text-bone/65">
         <span className="font-bot text-[10px] uppercase tracking-mono text-accent">
-          agent.review ●
+          apply.notes ●
         </span>
         {t.apply.confirm.replyNote}
       </div>

@@ -123,7 +123,7 @@ export function NetworkGraphic() {
             fontSize="13"
             fill="#0E1320"
           >
-            BC.VC
+            YOU
           </text>
         </g>
 
@@ -138,7 +138,7 @@ export function NetworkGraphic() {
             fill="rgb(232, 255, 92)"
             letterSpacing="0.18em"
           >
-            ● PRE-SEED · YOU
+            ● WARM INTROS
           </text>
         </g>
       </svg>

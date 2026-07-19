@@ -52,7 +52,7 @@ const founderEmailCopy: Record<Lang, {
     ],
     whileYouWait: "While you wait",
     links: [
-      { label: "theblankcollar.com: see the knowledge layer", href: "https://www.theblankcollar.com" },
+      { label: "theblankcollar.com: the framework, in full", href: "https://www.theblankcollar.com" },
       { label: "blankcollar.university: the courses we'll point you to", href: "https://www.blankcollar.university" },
       { label: "blankcollar.ai: the agentic OS we'd set up for you", href: "https://www.blankcollar.ai" },
     ],
@@ -74,12 +74,12 @@ const founderEmailCopy: Record<Lang, {
     ],
     whileYouWait: "Solange du wartest",
     links: [
-      { label: "theblankcollar.com: sieh die Wissens-Ebene in Aktion", href: "https://www.theblankcollar.com" },
+      { label: "theblankcollar.com: sieh dir die Wissensebene an", href: "https://www.theblankcollar.com" },
       { label: "blankcollar.university: die Kurse, auf die wir dich hinweisen", href: "https://www.blankcollar.university" },
       { label: "blankcollar.ai: das agentische OS, das wir für dich einrichten", href: "https://www.blankcollar.ai" },
     ],
     closing:
-      "Wenn etwas Dringendes auftaucht, antworte einfach auf diese Mail. Sie kommt aus einem echten Posteingang.",
+      "Wenn etwas Dringendes auftaucht, antworte einfach auf diese Mail. Sie wird von einem Menschen gelesen.",
     signoff: "blankcollar.ventures",
     footerMotto: "Arbeit ist für Bots, Leben ist für Menschen.",
   },
