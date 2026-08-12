@@ -100,7 +100,7 @@ const en = {
     youAreHere: "● You are here",
     together: "Together = a startup that wins",
     layers: [
-      { label: "01", name: "Framework", site: "theblankcollar.com", voice: "human", description: "The Blank Collar model for an AI-era company: TBC = V + D(P/HX)^AI, made concrete for yours." },
+      { label: "01", name: "Framework", site: "theblankcollar.com", voice: "human", description: "The Blank Collar model for an AI-era company: the Framework, made concrete for yours." },
       { label: "02", name: "Experience", site: "blankcollar.ventures", voice: "human", description: "Operators who built and scaled, sitting in the room with you.", current: true },
       { label: "03", name: "AI Operations", site: "blankcollar.ai", voice: "bot", description: "We set up the open-source agentic OS from blankcollar.ai, so the work runs as automation, not advice." },
       { label: "04", name: "Upskilling", site: "blankcollar.university", voice: "human", description: "Your team levels up on AI-era operating; the edge stays after we leave." },
@@ -565,7 +565,7 @@ const de: typeof en = {
     youAreHere: "● Du bist hier",
     together: "Zusammen = ein Startup, das gewinnt",
     layers: [
-      { label: "01", name: "Framework", site: "theblankcollar.com", voice: "human", description: "Das Blank Collar Modell für ein Unternehmen der AI-Ära: TBC = V + D(P/HX)^AI, konkret für deins." },
+      { label: "01", name: "Framework", site: "theblankcollar.com", voice: "human", description: "Das Blank Collar Modell für ein Unternehmen der AI-Ära: das Framework, konkret für deins." },
       { label: "02", name: "Erfahrung", site: "blankcollar.ventures", voice: "human", description: "Operator, die aufgebaut und skaliert haben, mit dir im Raum, hands-on.", current: true },
       { label: "03", name: "AI-Operations", site: "blankcollar.ai", voice: "bot", description: "Wir richten das agentische Open-Source-OS von blankcollar.ai ein, damit die Arbeit als Automation läuft, nicht als Ratschlag." },
       { label: "04", name: "Upskilling", site: "blankcollar.university", voice: "human", description: "Dein Team baut Kompetenz für die AI-Ära auf; der Vorsprung bleibt, auch wenn wir weg sind." },

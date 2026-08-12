@@ -136,7 +136,7 @@ export function buildSiteSchema() {
         worksFor: { "@id": ORG_ID },
         sameAs: personSameAs,
       },
-      // Book - "The Blank Collar" (2nd ed 2026; first published 2023 as "The Blank
+      // Book - "The Blank Collar" (2026, standalone successor to "The Blank
       // Collar Equation"). The canonical #book node is defined on theblankcollar.com;
       // reference it by @id here so this site never redefines a conflicting datePublished.
       {
