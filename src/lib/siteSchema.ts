@@ -44,7 +44,7 @@ const personSameAs = [
   "https://github.com/theblankcollar",
   "https://www.crunchbase.com/person/kristian-kabashi",
   "https://www.forbes.com/councils/forbesbusinesscouncil/2023/04/17/embracing-the-blank-collar-a-new-paradigm-for-success-in-the-future-of-work/",
-  "https://orcid.org/0009-0001-7405-9801",
+  "https://orcid.org/0009-0002-7532-6569",
   "https://www.wikidata.org/wiki/Q139973679",
 ];
 
