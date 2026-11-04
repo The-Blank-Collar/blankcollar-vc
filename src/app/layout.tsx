@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Roboto, Roboto_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteSchemaJson } from "@/lib/siteSchema";
+
+// blankcollar.ventures GA4 property 562355360.
+const GA_ID = "G-D1JTL398VX";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -107,6 +112,8 @@ export default async function RootLayout({
       </head>
       <body className="font-sans bg-bone text-ink antialiased">
         {children}
+        <GoogleAnalytics gaId={GA_ID} />
+        <Analytics />
       </body>
     </html>
   );
