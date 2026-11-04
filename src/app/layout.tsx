@@ -6,9 +6,8 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteSchemaJson } from "@/lib/siteSchema";
 
-// Replace G-PENDING with this site's own GA4 measurement ID.
-// While it is G-PENDING, no Google tag is rendered.
-const GA_ID = "G-PENDING";
+// blankcollar.ventures GA4 property 562355360.
+const GA_ID = "G-D1JTL398VX";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -113,7 +112,7 @@ export default async function RootLayout({
       </head>
       <body className="font-sans bg-bone text-ink antialiased">
         {children}
-        {GA_ID !== "G-PENDING" ? <GoogleAnalytics gaId={GA_ID} /> : null}
+        <GoogleAnalytics gaId={GA_ID} />
         <Analytics />
       </body>
     </html>
