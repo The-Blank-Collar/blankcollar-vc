@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { Roboto, Roboto_Mono } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteSchemaJson } from "@/lib/siteSchema";
+
+// Replace G-PENDING with this site's own GA4 measurement ID.
+// While it is G-PENDING, no Google tag is rendered.
+const GA_ID = "G-PENDING";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -107,6 +113,8 @@ export default async function RootLayout({
       </head>
       <body className="font-sans bg-bone text-ink antialiased">
         {children}
+        {GA_ID !== "G-PENDING" ? <GoogleAnalytics gaId={GA_ID} /> : null}
+        <Analytics />
       </body>
     </html>
   );
