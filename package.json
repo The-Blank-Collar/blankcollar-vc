@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/third-parties": "15.5.23",
+    "@vercel/analytics": "2.0.1",
     "framer-motion": "11.18.2",
     "next": "15.5.23",
     "react": "19.0.0",
