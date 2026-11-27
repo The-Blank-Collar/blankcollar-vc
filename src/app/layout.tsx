@@ -31,25 +31,24 @@ const siteUrl = (() => {
 })();
 
 const enDescription =
-  "blankcollar.ventures is the operating partner that makes AI founders fundable: the Blank Collar framework, operator experience, AI ops and upskilling.";
+  "blankcollar.ventures is a free guide to the Blank Collar Framework for people starting a company. It isn't a fund and nothing here is for sale.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "blankcollar.ventures: We help AI startups win.",
+    default: "blankcollar.ventures: the Blank Collar Framework for startups, free",
     template: "%s · blankcollar.ventures",
   },
   description: enDescription,
   applicationName: "blankcollar.ventures",
   keywords: [
-    "AI startups",
-    "startup operating partner",
-    "Blank Collar framework",
-    "founder enablement",
-    "AI operations",
-    "agentic OS",
-    "upskilling",
-    "venture studio Switzerland",
+    "Blank Collar Framework",
+    "startup guide",
+    "free startup education",
+    "AI in startups",
+    "mental models for founders",
+    "open-source agentic OS",
+    "free business book",
     "blankcollar",
     "theblankcollar",
   ],
@@ -65,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "blankcollar.ventures: We help AI startups win.",
+    title: "blankcollar.ventures: the Blank Collar Framework for startups, free",
     description: enDescription,
     url: siteUrl,
     siteName: "blankcollar.ventures",
@@ -75,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "blankcollar.ventures: We help AI startups win.",
+    title: "blankcollar.ventures: the Blank Collar Framework for startups, free",
     description: enDescription,
   },
   robots: {
@@ -89,7 +88,7 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  category: "ventures platform",
+  category: "education",
 };
 
 export default async function RootLayout({

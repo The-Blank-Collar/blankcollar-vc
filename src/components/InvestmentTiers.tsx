@@ -40,15 +40,9 @@ export function InvestmentTiers() {
           <div className="mb-2 font-bot text-[11px] uppercase tracking-mono text-ink/55">
             {tier.audience}
           </div>
-          <h3 className="text-3xl font-medium tracking-tighter text-ink md:text-4xl">
+          <h3 className="mb-6 border-b border-ink/10 pb-6 text-3xl font-medium tracking-tighter text-ink md:text-4xl">
             {tier.name}
           </h3>
-
-          <div className="my-6 flex items-baseline gap-2 border-b border-ink/10 pb-6">
-            <span className="text-2xl font-medium tracking-tighter text-ink md:text-3xl">
-              {tier.capital}
-            </span>
-          </div>
 
           <ul className="flex-1 space-y-3 text-[15px] leading-relaxed text-ink/80">
             {tier.features.map((f) => (

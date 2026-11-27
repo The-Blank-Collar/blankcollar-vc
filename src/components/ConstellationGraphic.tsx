@@ -53,8 +53,8 @@ export function ConstellationGraphic() {
         {[...services, ...agents].map((n, i) => {
           const r = i < services.length ? outerR : innerR;
           const rad = (n.angle * Math.PI) / 180;
-          const x = c + Math.cos(rad) * r;
-          const y = c + Math.sin(rad) * r;
+          const x = Math.round((c + Math.cos(rad) * r) * 100) / 100;
+          const y = Math.round((c + Math.sin(rad) * r) * 100) / 100;
           return (
             <line
               key={`line-${n.label}`}
@@ -96,8 +96,8 @@ export function ConstellationGraphic() {
 
         {agents.map((a) => {
           const rad = (a.angle * Math.PI) / 180;
-          const x = c + Math.cos(rad) * innerR;
-          const y = c + Math.sin(rad) * innerR;
+          const x = Math.round((c + Math.cos(rad) * innerR) * 100) / 100;
+          const y = Math.round((c + Math.sin(rad) * innerR) * 100) / 100;
           return (
             <g key={a.label}>
               <circle cx={x} cy={y} r={5} fill="rgb(232, 255, 92)" />
@@ -119,8 +119,8 @@ export function ConstellationGraphic() {
 
         {services.map((s) => {
           const rad = (s.angle * Math.PI) / 180;
-          const x = c + Math.cos(rad) * outerR;
-          const y = c + Math.sin(rad) * outerR;
+          const x = Math.round((c + Math.cos(rad) * outerR) * 100) / 100;
+          const y = Math.round((c + Math.sin(rad) * outerR) * 100) / 100;
           return (
             <g key={s.label}>
               <circle cx={x} cy={y} r={6} fill="currentColor" opacity={0.85} />

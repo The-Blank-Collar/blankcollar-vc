@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { siteSchemaJson } from "@/lib/siteSchema";
 
 const deDescription =
-  "blankcollar.ventures ist der Operating Partner, der AI-Startups fundable macht: das Blank Collar Framework, Operator-Erfahrung, AI-Operations und Upskilling.";
+  "blankcollar.ventures ist ein Gratis-Guide zum Blank Collar Framework für alle, die eine Firma gründen. Kein Fonds, und hier wird nichts verkauft.";
 
 export const metadata: Metadata = {
-  title: { absolute: "blankcollar.ventures: Wir helfen AI-Startups zu gewinnen." },
+  title: { absolute: "blankcollar.ventures: das Blank Collar Framework für Startups, gratis" },
   description: deDescription,
   alternates: {
     canonical: "/de",
@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "blankcollar.ventures: Wir helfen AI-Startups zu gewinnen.",
+    title: "blankcollar.ventures: das Blank Collar Framework für Startups, gratis",
     description: deDescription,
     locale: "de_CH",
     alternateLocale: ["en_US"],
   },
   twitter: {
-    title: "blankcollar.ventures: Wir helfen AI-Startups zu gewinnen.",
+    title: "blankcollar.ventures: das Blank Collar Framework für Startups, gratis",
     description: deDescription,
   },
 };

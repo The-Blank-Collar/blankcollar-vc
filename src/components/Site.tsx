@@ -10,9 +10,7 @@ import { ProcessFlow } from "@/components/ProcessFlow";
 import { ComparisonMatrix } from "@/components/ComparisonMatrix";
 import { ConstellationGraphic } from "@/components/ConstellationGraphic";
 import { FounderToolkit } from "@/components/FounderToolkit";
-import { Portfolio } from "@/components/Portfolio";
 import { FoundersSection } from "@/components/FoundersSection";
-import { NetworkSection } from "@/components/NetworkSection";
 import { InvestmentTiers } from "@/components/InvestmentTiers";
 import { LangSwitch } from "@/components/LangSwitch";
 import { SOCIALS } from "@/lib/siteSchema";
@@ -37,6 +35,35 @@ function useLocalizedHref(path: string): string {
   return path;
 }
 
+// Where the free material lives. This page is a guide: every call to action
+// leaves for the sister site that holds the thing itself. There is no form and
+// no application on blankcollar.ventures.
+function useFamilyLinks() {
+  const de = useLang() === "de";
+  const tbc = de ? "https://www.theblankcollar.com/de" : "https://www.theblankcollar.com";
+  return {
+    tbc,
+    framework: `${tbc}/framework`,
+    book: `${tbc}/book`,
+    ai: "https://www.blankcollar.ai",
+    university: de ? "https://www.blankcollar.university/de" : "https://www.blankcollar.university",
+  };
+}
+
+// A sister-site name inside running copy, linked to that site.
+function SiteLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener"
+      className="font-bot text-ink underline decoration-ink/25 underline-offset-4 transition-colors hover:decoration-ink"
+    >
+      {children}
+    </a>
+  );
+}
+
 function Logo({ onDark = false }: { onDark?: boolean }) {
   const homeHref = useLocalizedHref("/");
   return (
@@ -59,7 +86,7 @@ function Logo({ onDark = false }: { onDark?: boolean }) {
 
 function Header() {
   const t = useDict();
-  const applyHref = useLocalizedHref("/apply");
+  const links = useFamilyLinks();
   const [scrolled, setScrolled] = useState(false);
 
   // Plain passive scroll listener - no motion library, no per-frame React work.
@@ -88,19 +115,21 @@ function Header() {
           <a href="#stack" className="hover:opacity-60 transition-opacity">{t.header.stack}</a>
           <a href="#tiers" className="hover:opacity-60 transition-opacity">{t.header.tiers}</a>
           <a href="#toolkit" className="hover:opacity-60 transition-opacity">{t.header.toolkit}</a>
-          <a href="#portfolio" className="hover:opacity-60 transition-opacity">{t.header.portfolio}</a>
+          <a href="#process" className="hover:opacity-60 transition-opacity">{t.header.process}</a>
           <a href="#terms" className="hover:opacity-60 transition-opacity">{t.header.terms}</a>
         </nav>
         <div className="flex items-center gap-3">
           <div className="hidden lg:flex">
             <LangSwitch basePath="/" />
           </div>
-          <Link
-            href={applyHref}
+          <a
+            href={links.framework}
+            target="_blank"
+            rel="noopener"
             className="shrink-0 whitespace-nowrap rounded-full bg-ink px-4 py-2 font-bot text-[12px] uppercase tracking-mono text-bone hover:bg-ink/85 transition-colors"
           >
-            {t.common.applyArrow}
-          </Link>
+            {t.common.frameworkArrow}
+          </a>
         </div>
       </div>
     </header>
@@ -127,7 +156,7 @@ function EyebrowDark({ text }: { text: string }) {
 
 function Hero() {
   const t = useDict();
-  const applyHref = useLocalizedHref("/apply");
+  const links = useFamilyLinks();
   const heroRef = useRef<HTMLElement>(null);
   const meshRef = useRef<HTMLDivElement>(null);
 
@@ -190,11 +219,11 @@ function Hero() {
             style={{ "--ed": "0.7s" } as CSSProperties}
           >
             {t.hero.sub1}
-            <span className="font-bot text-ink">theblankcollar.com</span>
+            <SiteLink href={links.tbc}>theblankcollar.com</SiteLink>
             {t.hero.sub2}
-            <span className="font-bot text-ink">blankcollar.ai</span>
+            <SiteLink href={links.ai}>blankcollar.ai</SiteLink>
             {t.hero.sub3}
-            <span className="font-bot text-ink">blankcollar.university</span>
+            <SiteLink href={links.university}>blankcollar.university</SiteLink>
             {t.hero.sub4}
           </p>
 
@@ -209,13 +238,15 @@ function Hero() {
             className="enter mt-8 flex flex-wrap items-center gap-3"
             style={{ "--ed": "0.85s" } as CSSProperties}
           >
-            <Link
-              href={applyHref}
+            <a
+              href={links.framework}
+              target="_blank"
+              rel="noopener"
               className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3.5 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
             >
               {t.hero.primaryCta}
               <span className="transition-transform group-hover:translate-x-0.5">→</span>
-            </Link>
+            </a>
             <a
               href="#manifesto"
               className="inline-flex items-center gap-3 rounded-full border border-ink/20 px-6 py-3.5 font-bot text-[12px] uppercase tracking-mono hover:bg-ink/5"
@@ -232,12 +263,6 @@ function Hero() {
             <span>Numarics</span>
             <span aria-hidden className="text-ink/25">●</span>
             <span>Cybee.ai</span>
-            <span aria-hidden className="text-ink/25">●</span>
-            <span>iQTax</span>
-            <span aria-hidden className="text-ink/25">●</span>
-            <span>Alletta</span>
-            <span aria-hidden className="text-ink/25">●</span>
-            <span>Visorway</span>
           </div>
         </div>
       </div>
@@ -266,6 +291,7 @@ function Marquee() {
 
 function Manifesto() {
   const t = useDict();
+  const links = useFamilyLinks();
   return (
     <section id="manifesto" className="relative px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto max-w-7xl">
@@ -299,11 +325,11 @@ function Manifesto() {
             className="md:col-span-6 md:col-start-7 text-lg leading-relaxed text-ink/75 md:text-xl text-balance"
           >
             {t.manifesto.p2a}
-            <span className="font-bot text-ink">theblankcollar.com</span>
+            <SiteLink href={links.tbc}>theblankcollar.com</SiteLink>
             {t.manifesto.p2b}
-            <span className="font-bot text-ink">blankcollar.university</span>
+            <SiteLink href={links.university}>blankcollar.university</SiteLink>
             {t.manifesto.p2c}
-            <span className="font-bot text-ink">blankcollar.ai</span>
+            <SiteLink href={links.ai}>blankcollar.ai</SiteLink>
             {t.manifesto.p2d}
           </Reveal>
         </div>
@@ -352,7 +378,7 @@ function Stack() {
 
 function Tiers() {
   const t = useDict();
-  const applyHref = useLocalizedHref("/apply");
+  const links = useFamilyLinks();
   return (
     <section id="tiers" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
@@ -387,13 +413,15 @@ function Tiers() {
           className="mt-12 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-ink/10 bg-bone-soft/50 px-6 py-5"
         >
           <div className="text-[15px] text-ink/75 max-w-xl">{t.tiers.ctaBody}</div>
-          <Link
-            href={applyHref}
+          <a
+            href={links.framework}
+            target="_blank"
+            rel="noopener"
             className="group inline-flex items-center gap-3 rounded-full bg-ink px-6 py-3 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
           >
             {t.tiers.ctaLink}
             <span className="transition-transform group-hover:translate-x-0.5">→</span>
-          </Link>
+          </a>
         </Reveal>
       </div>
     </section>
@@ -402,6 +430,7 @@ function Tiers() {
 
 function Toolkit() {
   const t = useDict();
+  const links = useFamilyLinks();
   return (
     <section id="toolkit" className="relative px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
@@ -423,9 +452,9 @@ function Toolkit() {
           className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
         >
           {t.toolkit.sub1}
-          <span className="font-bot text-ink">blankcollar.university</span>
+          <SiteLink href={links.university}>blankcollar.university</SiteLink>
           {t.toolkit.sub2}
-          <span className="font-bot text-ink">blankcollar.ai</span>
+          <SiteLink href={links.ai}>blankcollar.ai</SiteLink>
           {t.toolkit.sub3}
         </Reveal>
 
@@ -439,6 +468,7 @@ function Toolkit() {
 
 function Network() {
   const t = useDict();
+  const links = useFamilyLinks();
   return (
     <section className="relative bg-bone-soft px-6 py-24 md:px-10 md:py-36">
       <div className="mx-auto max-w-7xl">
@@ -461,7 +491,7 @@ function Network() {
             <div className="mt-7 space-y-4 text-ink/70 text-[16px] leading-relaxed">
               <p className="text-balance">
                 {t.network.p}
-                <span className="font-bot text-ink">blankcollar.ai</span>
+                <SiteLink href={links.ai}>blankcollar.ai</SiteLink>
                 {t.network.p2}
               </p>
               <ul className="mt-5 space-y-3">
@@ -547,40 +577,6 @@ function Compare() {
 
         <div className="mt-14">
           <ComparisonMatrix />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function PortfolioSection() {
-  const t = useDict();
-  return (
-    <section id="portfolio" className="relative px-6 py-24 md:px-10 md:py-36">
-      <div className="mx-auto max-w-7xl">
-        <Eyebrow text={t.portfolio.eyebrow} />
-
-        <h2 className="font-medium text-display-md text-balance">
-          <span className="block">
-            <SplitWords text={t.portfolio.h1} />
-          </span>
-          <span className="block text-ink/40">
-            <SplitWords text={t.portfolio.h2} delay={0.18} />
-          </span>
-        </h2>
-
-        <Reveal
-          as="p"
-          y={16}
-          delay={0.2}
-          className="mt-6 max-w-2xl text-base text-ink/70 leading-relaxed md:text-lg text-balance"
-        >
-          {t.portfolio.sub1}
-          <span className="text-ink">{t.portfolio.sub2}</span>
-        </Reveal>
-
-        <div className="mt-14">
-          <Portfolio />
         </div>
       </div>
     </section>
@@ -688,9 +684,9 @@ function Faq() {
 
 function CTA() {
   const t = useDict();
-  const applyHref = useLocalizedHref("/apply");
+  const links = useFamilyLinks();
   return (
-    <section id="apply" className="relative overflow-hidden bg-bone-soft">
+    <section id="start" className="relative overflow-hidden bg-bone-soft">
       <div aria-hidden className="absolute inset-0">
         {/* Static glow - these used to animate x/y on an infinite loop, which
             kept the compositor re-blurring two huge layers every frame and
@@ -741,15 +737,19 @@ function CTA() {
             delay={0.55}
             className="mt-9 flex flex-wrap items-center justify-center gap-4"
           >
-            <Link
-              href={applyHref}
+            <a
+              href={links.framework}
+              target="_blank"
+              rel="noopener"
               className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 font-bot text-[12px] uppercase tracking-mono text-bone transition-colors hover:bg-ink/85"
             >
               {t.cta.primary}
               <span className="transition-transform group-hover:translate-x-0.5">→</span>
-            </Link>
+            </a>
             <a
-              href="#portfolio"
+              href={links.book}
+              target="_blank"
+              rel="noopener"
               className="inline-flex items-center gap-3 rounded-full border border-ink/20 px-7 py-4 font-bot text-[12px] uppercase tracking-mono hover:bg-ink/5"
             >
               {t.cta.secondary}
@@ -763,11 +763,11 @@ function CTA() {
 
 function Footer() {
   const t = useDict();
-  const applyHref = useLocalizedHref("/apply");
+  const links = useFamilyLinks();
   const [year, setYear] = useState<number | null>(null);
   useEffect(() => setYear(new Date().getFullYear()), []);
 
-  const pageAnchors = ["#manifesto", "#stack", "#toolkit", "#portfolio", "#terms"];
+  const pageAnchors = ["#manifesto", "#stack", "#toolkit", "#process", "#terms"];
 
   return (
     <footer className="border-t border-ink/10 px-6 py-12 md:px-10">
@@ -800,7 +800,7 @@ function Footer() {
             <h4 className="font-bot text-[11px] uppercase tracking-mono text-ink/50">{t.footer.contact}</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><a href="mailto:hey@theblankcollar.com" className="hover:text-ink text-ink/75">hey@theblankcollar.com</a></li>
-              <li><Link href={applyHref} className="hover:text-ink text-ink/75">{t.common.applyArrow}</Link></li>
+              <li><a href={links.framework} target="_blank" rel="noopener" className="hover:text-ink text-ink/75">{t.common.frameworkArrow}</a></li>
             </ul>
           </div>
         </div>
@@ -862,8 +862,6 @@ export function Site() {
         <Network />
         <Process />
         <Compare />
-        <PortfolioSection />
-        <NetworkSection />
         <Terms />
         <Faq />
         <CTA />
