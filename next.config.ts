@@ -25,6 +25,10 @@ const nextConfig: NextConfig = {
         destination: "https://www.blankcollar.ventures/:path*",
         permanent: true,
       },
+      // The application form was removed on 2026-11-27: the site is a free
+      // guide with nothing to apply for. Old links land on the home page.
+      { source: "/apply", destination: "/", permanent: true },
+      { source: "/de/apply", destination: "/de", permanent: true },
     ];
   },
 

@@ -18,11 +18,11 @@ export function ProcessFlow() {
             delay={i * 0.08}
             className="group relative flex flex-col gap-4 bg-bone p-8 md:gap-5"
           >
-            <div className="flex items-center justify-between">
-              <span className="font-bot text-[11px] uppercase tracking-mono text-ink/50">
+            <div className="flex flex-col gap-1">
+              <span className="whitespace-nowrap font-bot text-[11px] uppercase tracking-mono text-ink/50">
                 {t.process.stepLabel} {step.n}
               </span>
-              <span className="font-bot text-[11px] uppercase tracking-mono text-ink/40 tabular">
+              <span className="min-h-[1em] break-words font-bot text-[11px] uppercase tracking-mono text-ink/40 tabular">
                 {step.detail}
               </span>
             </div>

@@ -12,8 +12,7 @@ const siteUrl = (() => {
 // a build-time "now" makes every route look freshly edited on every deploy,
 // which trains crawlers to ignore the signal. Bump a route's date here only
 // when that route's content actually changes.
-const HOME_LAST_MODIFIED = "2026-08-12";
-const APPLY_LAST_MODIFIED = "2026-06-20";
+const HOME_LAST_MODIFIED = "2026-11-27";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -38,30 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           en: siteUrl,
           de: `${siteUrl}/de`,
-        },
-      },
-    },
-    {
-      url: `${siteUrl}/apply`,
-      lastModified: APPLY_LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          en: `${siteUrl}/apply`,
-          de: `${siteUrl}/de/apply`,
-        },
-      },
-    },
-    {
-      url: `${siteUrl}/de/apply`,
-      lastModified: APPLY_LAST_MODIFIED,
-      changeFrequency: "monthly",
-      priority: 0.7,
-      alternates: {
-        languages: {
-          en: `${siteUrl}/apply`,
-          de: `${siteUrl}/de/apply`,
         },
       },
     },

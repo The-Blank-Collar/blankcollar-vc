@@ -30,7 +30,7 @@ const VC_WEBSITE_ID = "https://www.blankcollar.ventures/#website";
 const BOOK_ID = "https://www.theblankcollar.com/#book";
 
 const vcDescription =
-  "blankcollar.ventures is the ventures arm of The Blank Collar. We back AI startups and help them win: the Blank Collar framework, our operator experience building and scaling companies, AI operations on blankcollar.ai, and upskilling on blankcollar.university. For founders and the VCs we partner with. Funding is one outcome, not the offer. Switzerland-based, global.";
+  "blankcollar.ventures is the startup guide of The Blank Collar: a free, educational resource that shows people starting a company how to use the Blank Collar Framework. It is not a fund, takes no applications and sells nothing. The method and the free book are on theblankcollar.com, the open-source agentic OS on blankcollar.ai and the free curriculum on blankcollar.university.";
 
 // Person sameAs - Kristian (personal + shared @theblankcollar handles). §1 verbatim.
 const personSameAs = [
@@ -84,7 +84,7 @@ export function buildSiteSchema() {
         url: CANONICAL_URL,
         logo: `${CANONICAL_URL}/icon`,
         description: vcDescription,
-        slogan: "We help AI startups win.",
+        slogan: "The Blank Collar Framework for startups, free.",
         areaServed: "Worldwide",
         foundingLocation: {
           "@type": "Place",
@@ -94,13 +94,11 @@ export function buildSiteSchema() {
           },
         },
         knowsAbout: [
-          "AI startups",
-          "Founder enablement",
-          "Blank Collar framework",
-          "AI operations",
+          "Blank Collar Framework",
+          "Startup education",
+          "AI in startups",
+          "Mental models for founders",
           "Agentic OS",
-          "Startup operating partner",
-          "Venture capital access",
         ],
         parentOrganization: { "@id": ORG_ID },
         founder: { "@id": PERSON_ID },
